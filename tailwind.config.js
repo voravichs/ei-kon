@@ -27,7 +27,7 @@ export default {
         '4xl': [
           '0 0px 20px rgba(0, 0, 0, 0.65)',
           '0 0px 100px rgba(0, 0, 0, 0.50)'
-        ]
+        ],
       }
     },
   },

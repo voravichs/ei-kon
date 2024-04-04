@@ -1,6 +1,7 @@
 import logowhite from "../assets/images/eikonlogowhite.png"
 import { FaHandPointRight } from "react-icons/fa";
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom";
 
 /**
  * Home Page
@@ -31,7 +32,9 @@ export default function Home() {
                                 >
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
-                                <p className="drop-shadow-4xl text-card-accent">New Character</p>
+                                <Link to={"charCreate"}>
+                                    <p className="drop-shadow-4xl text-card-accent">New Character</p>
+                                </Link>
                             </div>
                             <hr className="border-2 rounded" />
                         </div>
@@ -50,7 +53,9 @@ export default function Home() {
                                 >
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
-                                <p className="drop-shadow-4xl text-card-accent">Load Character</p>
+                                <Link to={"load"}>
+                                    <p className="drop-shadow-4xl text-card-accent">Load Character</p>
+                                </Link>
                             </div>
                             <hr className="border-2 rounded" />
                         </div>
@@ -69,7 +74,9 @@ export default function Home() {
                                 >
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
-                                <p className="drop-shadow-4xl text-card-accent">Compendium</p>
+                                <Link to={"archive"}>
+                                    <p className="drop-shadow-4xl text-card-accent">Compendium</p>     
+                                </Link>
                             </div>
                             <hr className="border-2 rounded" />
                         </div>
@@ -88,7 +95,9 @@ export default function Home() {
                                 >
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
-                                <p className="drop-shadow-4xl text-card-accent">About</p>
+                                <Link to={"about"}>
+                                    <p className="drop-shadow-4xl text-card-accent">About</p>
+                                </Link>
                             </div>
                             <hr className="border-2 rounded" />
                         </div>
