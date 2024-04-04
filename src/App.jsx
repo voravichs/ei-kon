@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import {Home, Layout, NoPage} from './pages'
+import {Home, Layout, CharCreate ,NoPage} from './pages'
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Layout/>}>
+            <Route path="charcreate" element={<CharCreate/>} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
