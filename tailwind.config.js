@@ -13,7 +13,7 @@ export default {
         'card-accent': '#F8F6F2',
       },
       backgroundImage: {
-        'main': "url('/img/bg-main-20op.PNG')",
+        'main': "url('./assets/bg-main-20op.PNG')",
       },
       fontFamily: {
         'bona-nova': ["Bona Nova", "serif"],
