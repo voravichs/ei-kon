@@ -2,7 +2,7 @@ import logowhite from "../assets/images/eikonlogowhite.png"
 import { FaHandPointRight } from "react-icons/fa";
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
-
+import './bg.css'
 /**
  * Home Page
  */
@@ -75,7 +75,7 @@ export default function Home() {
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
                                 <Link to={"archive"}>
-                                    <p className="drop-shadow-4xl text-card-accent">Compendium</p>     
+                                    <p className="drop-shadow-4xl text-card-accent">Compendium</p>
                                 </Link>
                             </div>
                             <hr className="border-2 rounded" />

@@ -20,6 +20,12 @@ code {
   .flex-center {
     @apply flex justify-center items-center;
   }
+  .slick-card {
+    @apply rounded-tl-3xl rounded-br-3xl border ;
+  }
+  .ticket {
+    @apply rounded-r-3xl border border-l-[24px];
+  }
 }
 
 /* Bona Nova */
@@ -96,4 +102,3 @@ code {
   font-style: italic;
   font-display: swap;
 }
-

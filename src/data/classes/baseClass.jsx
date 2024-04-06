@@ -40,7 +40,6 @@ const classes = {
             },
         ],
         "jobs": [bastion, demonslayer, colossus, knave],
-
     },
 
     "vagabond": {
