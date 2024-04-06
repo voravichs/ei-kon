@@ -12,9 +12,6 @@ export default {
         'lavender-accent': '#D6E4FF',
         'card-accent': '#F8F6F2',
       },
-      backgroundImage: {
-        'main': "url('./assets/bg-main-20op.PNG')",
-      },
       fontFamily: {
         'bona-nova': ["Bona Nova", "serif"],
         'noto-sans': ["Noto Sans", "sans-serif"]
