@@ -8,7 +8,7 @@ function App() {
 
 
   return (
-    <div className='overflow-hidden h-svh'>
+    <div className='overflow-hidden'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

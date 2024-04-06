@@ -16,6 +16,10 @@ code {
     monospace;
 }
 
+.bg-main {
+  background-image: url("./assets/images/bg-main-20op.png");
+}
+
 @layer base {
   .flex-center {
     @apply flex justify-center items-center;

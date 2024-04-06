@@ -2,7 +2,6 @@ import logowhite from "../assets/images/eikonlogowhite.png"
 import { FaHandPointRight } from "react-icons/fa";
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
-import './bg.css'
 /**
  * Home Page
  */

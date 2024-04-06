@@ -16,7 +16,7 @@ export default function ArchiveKeywords() {
     const [combatActive, setCombatActive] = useState(false);
 
     return (
-        <div className="h-dvh px-32 bg-card-accent py-8 flex flex-col gap-8">
+        <div className="px-32 pt-32 pb-8 flex flex-col gap-8">
             <h1 className="flex-center text-5xl font-bona-nova font-bold tracking-widest">
                 KEYWORDS
             </h1>
@@ -47,22 +47,21 @@ export default function ArchiveKeywords() {
                 }
             </div>
 
-
             <div className="flex items-center gap-4">
                 <FaSearch className="text-lg opacity-50" />
                 <input className="border rounded-full text-xl py-2 px-8 drop-shadow-lg font-noto-sans"
                     placeholder={"search keywords"} />
             </div>
             {conditionActive &&
-                <div className="flex gap-8 flex-wrap font-bona-nova">
+                <div className="flex-center gap-4 flex-wrap font-bona-nova">
                     {statusConditionsList.map(item => {
                         return (
                             <div
-                                className="w-52 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
+                                className="w-80 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
                                 key={item.name}
                             >
-                                <p className="font-bold text-2xl text-center">{item.name}</p>
-                                <span className="absolute z-10 w-60 bottom-[4.5rem] -left-4 scale-0 rounded bg-gray-800 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
+                                <p className="font-bold text-4xl flex-center gap-2">{item.icon}{item.name}</p>
+                                <span className="absolute z-10 w-96 bottom-[4.5rem] -left-6 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
                                     <p className="font-bold">{item.name}</p>
                                     <p>{item.desc}</p>
                                 </span>
@@ -72,15 +71,15 @@ export default function ArchiveKeywords() {
                 </div>
             }
             {rulesActive &&
-                <div className="flex gap-8 flex-wrap font-bona-nova">
+                <div className="flex-center gap-4 flex-wrap font-bona-nova">
                     {rulesList.map(item => {
                         return (
                             <div
-                                className="w-52 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
+                                className="w-80 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
                                 key={item.name}
                             >
-                                <p className="font-bold text-2xl text-center">{item.name}</p>
-                                <span className="absolute z-10 w-60 bottom-[4.5rem] -left-4 scale-0 rounded bg-gray-800 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
+                                <p className="font-bold text-4xl flex-center gap-2">{item.name}</p>
+                                <span className="absolute z-10 w-96 bottom-[4.5rem] -left-4 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
                                     <p className="font-bold">{item.name}</p>
                                     <p>{item.desc}</p>
                                 </span>
@@ -90,15 +89,15 @@ export default function ArchiveKeywords() {
                 </div>
             }
             {combatActive &&
-                <div className="flex gap-8 flex-wrap font-bona-nova">
+                <div className="flex-center gap-4 flex-wrap font-bona-nova">
                     {combatGlossaryList.map(item => {
                         return (
                             <div
-                                className="w-52 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
+                                className="w-96 h-16 bg-secondary text-white rounded-lg p-4 group relative cursor-pointer"
                                 key={item.name}
                             >
-                                <p className="font-bold text-xl text-center">{item.name}</p>
-                                <span className="absolute z-10 w-60 bottom-[4.5rem] -left-4 scale-0 rounded bg-gray-800 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
+                                <p className="font-bold text-4xl flex-center gap-2">{item.name}</p>
+                                <span className="absolute z-10 w-96 bottom-[4.5rem] left-0 scale-0 rounded bg-gray-800 p-2 text-sm font-noto-sans text-white group-hover:scale-100">
                                     <p className="font-bold">{item.name}</p>
                                     <p>{item.desc}</p>
                                 </span>

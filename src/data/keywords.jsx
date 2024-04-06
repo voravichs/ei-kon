@@ -1,163 +1,199 @@
+import { GiPointySword, GiStarStruck, GiEnrage, GiWaxSeal, GiShatteredHeart, GiKnockedOutStars, GiBrokenAxe, GiBrokenShield, GiBlood, GiNailedFoot, GiDeadHead, GiSwordClash, GiAngelOutfit, GiDodge, GiWindyStripes, GiFluffyWing, GiGhost, GiInvisible, GiPiercedBody, GiBrickWall, GiHealing, GiHidden, GiStrong, GiEyeTarget, GiBullHorns, GiLobArrow, GiSwordsPower, GiGuards, GiHeartPlus } from "react-icons/gi";
+import { FaEyeSlash, FaPeace } from "react-icons/fa";
+import { TbArrowsDiagonal2 } from "react-icons/tb";
+
 const statusConditions = {
     "slashed": {
         "name": "Slashed",
         "desc": "Take 4 damage after you or an ally uses an ability that moves you, but no more than once a turn.",
-        "value": 0
+        "value": 0,
+        "icon": <GiPointySword/>
     },
     "blind": {
         "name": "Blind",
         "desc": "Max range of all abilities is 2",
-        "value": 0
+        "value": 0,
+        "icon": <FaEyeSlash/>
     },
     "dazed": {
         "name": "Dazed",
         "desc": "+1 curse on attacks",
-        "value": 0
+        "value": 0,
+        "icon": <GiStarStruck/>
     },
     "hatredOfX": {
         "name": "Hatred of X",
         "desc": "Deal half damage to all foes other than foe X. End this status at the end of your turn, or if foe X becomes immune to damage or un-targetable.",
-        "value": "X"
+        "value": "X",
+        "icon": <GiEnrage/>
     },
     "pacified": {
         "name": "Pacified",
         "desc": "Character deals half damage. Breaks when damaged by a foe's ability.",
-        "value": 0
+        "value": 0,
+        "icon": <FaPeace/>
     },
     "sealed": {
         "name": "Sealed",
         "desc": "Character cannot inflict statuses.",
-        "value": 0
+        "value": 0,
+        "icon": <GiWaxSeal/>
     },
     "shattered": {
         "name": "Shattered",
         "desc": "Character cannot gain or benefit from vigor.",
-        "value": 0
+        "value": 0,
+        "icon": <GiShatteredHeart/>
     },
     "stunned": {
         "name": "Stunned",
         "desc": "Can't take interrupts. Your next ability used ends your turn, then end this status.",
-        "value": 0
+        "value": 0,
+        "icon": <GiKnockedOutStars/>
     },
     "weakened": {
         "name": "Weakened",
         "desc": "All damage dealt reduced by 2.",
-        "value": 0
+        "value": 0,
+        "icon": <GiBrokenAxe/>
     },
     "vulnerable": {
         "name": "Vulnerable",
         "desc": "All damage taken increased by 1.",
-        "value": 0
+        "value": 0,
+        "icon": <GiBrokenShield/>
     },
     "bloodied": {
         "name": "Bloodied",
         "desc": "At or under 50% hp",
-        "value": 0
+        "value": 0,
+        "icon": <GiBlood/>
     },
     "immobile": {
         "name": "Immobile",
         "desc": "Can't move, be moved, or be removed from the battlefield in any way.",
-        "value": 0
+        "value": 0,
+        "icon": <GiNailedFoot/>
     },
     "incapacitated": {
         "name": "Incapacitated",
         "desc": "An incapacitated character doesn't take turns, doesn't provide obstruction or engagement, can't move, take actions, or use abilities or traits. All effects on that character end. All effects, marks and summons created by that character are removed. Objects and terrain effects remain.",
-        "value": 0
+        "value": 0,
+        "icon": <GiDeadHead/>
     },
     "counter": {
         "name": "Counter",
         "desc": "When damaged by an ability, deal 2 damage back, each time damage is applied.",
-        "value": 0
+        "value": 0,
+        "icon": <GiSwordClash/>
     },
     "defiance": {
         "name": "Defiance",
         "desc": "Prevents hit points from being reduced past 1 hp. When this triggers, remove this effect and character becomes immune to all damage for the rest of the current turn.",
-        "value": 0
+        "value": 0,
+        "icon": <GiBullHorns/>
     },
     "divine": {
         "name": "Divine",
         "desc": "Damage from this ability cannot be reduced, mitigated, or negated in any way except immunity (ignores armor, weak, resistance, defiance, and bypasses vigor).",
-        "value": 0
+        "value": 0,
+        "icon": <GiAngelOutfit/>
     },
     "dodge": {
         "name": "Dodge",
         "desc": "Immune to all damage from misses, successful saves, and area effects.",
-        "value": 0
+        "value": 0,
+        "icon": <GiDodge/>
     },
     "evasion": {
         "name": "Evasion",
         "desc": "Roll a d6 when attacked. On a 4+, the attack automatically misses. Check before the attack roll.",
-        "value": 0
+        "value": 0,
+        "icon": <GiWindyStripes />
     },
     "flying": {
         "name": "Flying",
         "desc": "A flying character ignores terrain damage and movement penalties, height movement penalties, obstruction, and engagement.",
-        "value": 0
+        "value": 0,
+        "icon": <GiFluffyWing/>
     },
     "intangible": {
         "name": "Intangible",
         "desc": "Immune to damage and effects from foes. Does not provide obstruction or engagement.",
-        "value": 0
+        "value": 0,
+        "icon": <GiInvisible/>
     },
     "phasing": {
         "name": "Phasing",
         "desc": "Can ignore obstruction and pass through, but not end your turn in, terrain, objects, or characters.",
-        "value": 0
+        "value": 0,
+        "icon": <GiGhost/>
     },
     "pierce": {
         "name": "Pierce",
         "desc": "Damage cannot be reduced by armor or weakened.",
-        "value": 0
+        "value": 0,
+        "icon": <GiPiercedBody/>
     },
     "rampart": {
         "name": "Rampart",
         "desc": "Foes cannot enter or exit a space affected by a rampart effect by dashing, flying, or teleporting.",
-        "value": 0
+        "value": 0,
+        "icon": <GiBrickWall/>
     },
     "regeneration": {
         "name": "Regeneration",
         "desc": "If bloodied, gain 4 vigor at the end of your turn.",
-        "value": 0
+        "value": 0,
+        "icon": <GiHealing/>
     },
     "skirmisher": {
         "name": "Skirmisher",
         "desc": "Can move diagonally, and dash is full speed",
-        "value": 0
+        "value": 0,
+        "icon": <TbArrowsDiagonal2/>
     },
     "stealth": {
         "name": "Stealth",
         "desc": "Cannot be directly targeted except from an adjacent space. Breaks on using any ability other than dash or standard move.",
-        "value": 0
+        "value": 0,
+        "icon": <GiHidden/>
     },
     "sturdy": {
         "name": "Sturdy",
         "desc": "When moved or removed and placed by a foe, can only be moved max 1 space a turn.",
-        "value": 0
+        "value": 0,
+        "icon": <GiStrong/>
     },
     "trueStrike": {
         "name": "True strike",
         "desc": "Ignores dodge, blind, evasion, and stealth",
-        "value": 0
+        "value": 0,
+        "icon": <GiEyeTarget/>
     },
     "unerring": {
         "name": "Unerring",
         "desc": "Ignores cover and aetherwall",
-        "value": 0
+        "value": 0,
+        "icon": <GiLobArrow/>
     },
     "unstoppable": {
         "name": "Unstoppable",
         "desc": "Immune to all statuses. Cannot be moved by foes, and movement ignores engagement and rampart.",
-        "value": 0
+        "value": 0,
+        "icon": <GiSwordsPower/>
     },
     "vigilance_x": {
         "name": "Vigilance X",
-        "desc": "A special effect with X charges, each represented by a d6. Like triggered effects, vigilance can only be used once per trigger. Vigilance charges stack if a character gains more than one. A character can spend any number of charges of Vigilance for one of the following effects, rolling 1d6 per charge spent and picking the highest result:• When an ally in range 2 is damaged by a foe’s ability, reduce the damage by the amount rolled as if with armor • When a foe breaks adjacency with you, deal that much damage to them.",
-        "value": "X"
+        "desc": "A special effect with X charges, each represented by a d6. Like triggered effects, vigilance can only be used once per trigger. Vigilance charges stack if a character gains more than one. A character can spend any number of charges of Vigilance for one of the following effects, rolling 1d6 per charge spent and picking the highest result:• When an ally in range 2 is damaged by a foe's ability, reduce the damage by the amount rolled as if with armor • When a foe breaks adjacency with you, deal that much damage to them.",
+        "value": "X",
+        "icon": <GiGuards/>
     },
     "vigor": {
         "name": "Vigor",
         "desc": "Gain a shield that goes over your hit points, equal to your VIT value. Damage goes to Vigor before Hit Points, and it benefits from armor and resistance. Vigor stacks, but cannot go past 25% of your hp. If you gain a vigor surge, gain maximum vigor. Lose all vigor at the end of combat.",
-        "value": 0
+        "value": 0,
+        "icon": <GiHeartPlus/>
     }
 }
 
