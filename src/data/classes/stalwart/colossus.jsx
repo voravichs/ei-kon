@@ -1,4 +1,5 @@
 import keywordData from "../../keywords";
+import img from "../../../assets/images/colossus.PNG"
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -168,6 +169,7 @@ const ch1Abilities = [
 const colossus = {
     "jobName": "Colossus",
     "title": "High Flying Grappler",
+    "img": img,
     "desc": "Ferocious followers of Arenheir, the Wolf Titan, the Colossi are a martial order of berserkers, pankrationists, and warriors that reaches across all of Arden Eld. They travel throughout the land seeking powerful foes, and taking trophies to return to their great lodges to offer in tribute to Arenheir in fierce hope of resurrecting their god. At their lodges they feast and drink to their deeds, companions, and boasts Colossi seek glory and challenge through battle, and will often go for only the absolute strongest warriors and monsters, heedless of their own safety. They fight with wild abandon and unconventional techniques that would make even the dirtiest Knave raise an eyebrow.",
     "traits": [
         {

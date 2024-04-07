@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, Layout, NoPage, CharCreate, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About } from './pages'
+import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About } from './pages'
 
 function App() {
 
@@ -14,6 +14,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Layout />}>
             <Route path="charcreate" element={<CharCreate />} />
+            <Route path="charcreate">
+              <Route path="jobs" element={<Jobs/>} />
+              <Route path="abilities" element={<Abilities/>} />
+            </Route>
             <Route path="load" element={<LoadChar />} />
             <Route path="archive" element={<ArchiveFront />} />
             <Route path="archive" >

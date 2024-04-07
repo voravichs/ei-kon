@@ -1,4 +1,5 @@
 import keywordData from "../../keywords";
+import img from "../../../assets/images/demonslayer.PNG"
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -182,6 +183,7 @@ const ch1Abilities = [
 const demonslayer = {
     "jobName": "Demon Slayer",
     "title": "Master of the Forbidden Arts",
+    "img": img,
     "desc": "Warriors of impossible strength and insane bravado, demon slayers are warriors that specialize in fighting the largest and most dangerous monsters to crawl out of the pits that riddle the land. They relish in fighting against impossible odds, training themselves in forbidden techniques, arcane arts, and oversized weaponry that normal Kin would quake at wielding. They organize themselves into loose orders and train and hunt together, sharing tales and trophies of the colossal horrors they have slain. Some say in order to fight their quarries, the slayers must ingest demon blood to gain their strength, giving them dark and forbidden power that makes other Kin fear and respect them in equal measure.",
     "traits": [
         {

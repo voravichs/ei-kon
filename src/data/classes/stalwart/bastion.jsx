@@ -1,4 +1,5 @@
 import keywordData from "../../keywords";
+import img from "../../../assets/images/bastion.PNG"
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -169,7 +170,8 @@ const ch1Abilities = [
 const bastion = {
     "jobName": "Bastion",
     "title": "Unbreakable Knight",
-    "desc": "The Bastions are the shield lords of Arden Eld, larger than life figures that tread the ancient imperial roads with their heads held high and armor gleaming. From town to town they acas errant knights and mercenaries, protecting the weak and vulnerable, and driving back thBlights with hammer-like blows from their greatshields, which they throw like a discus with incrediblforce. The imperious and mighty presence of a Bastion in town is a stabilizing force and can become aevent for a whole village. All Bastions follow an ancient and long-forgotten hero's code, an old oath tstand against chaos in all its forms.",
+    "img": img,
+    "desc": "The Bastions are the shield lords of Arden Eld, larger than life figures that tread the ancient imperial roads with their heads held high and armor gleaming. From town to town they act as errant knights and mercenaries, protecting the weak and vulnerable, and driving back the Blights with hammer-like blows from their greatshields, which they throw like a discus with incredible force. The imperious and mighty presence of a Bastion in town is a stabilizing force and can become aevent for a whole village. All Bastions follow an ancient and long-forgotten hero's code, an old oath to stand against chaos in all its forms.",
     "traits": [
         {
             "name": "Strive",

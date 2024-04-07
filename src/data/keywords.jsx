@@ -257,6 +257,18 @@ const rules = {
         "desc": "A pit space is just what it sounds like, but could also be deep water, mud, etc. Pits count as one level lower of elevation than their base space.",
         "types": [],
         "value": 0
+    },
+    "defense": {
+        "name": "Defense",
+        "desc": "If the total of an attack roll equals or surpasses a target's defense, that attack hits.",
+        "types": [],
+        "value": 0
+    },
+    "movement": {
+        "name": "Movement",
+        "desc": "Movement can only be performed in an orthogonal direction and cannot be split up.",
+        "types": [],
+        "value": 0
     }
 }
 

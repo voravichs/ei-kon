@@ -31,7 +31,7 @@ export default function Home() {
                                 >
                                     <FaHandPointRight className="opacity-0 group-hover:opacity-100" />
                                 </motion.div>
-                                <Link to={"charCreate"}>
+                                <Link to={"charcreate"}>
                                     <p className="drop-shadow-4xl text-card-accent">New Character</p>
                                 </Link>
                             </div>
@@ -88,7 +88,7 @@ export default function Home() {
                                     transition={{
                                         ease: "linear",
                                         duration: 1,
-                                        times: [0, 0, 5, 1],
+                                        times: [0, 0.5, 1],
                                         repeat: Infinity
                                     }}
                                 >

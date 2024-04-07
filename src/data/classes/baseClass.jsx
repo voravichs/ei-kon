@@ -9,6 +9,8 @@ const { heroic, armor_x, rush_x } = combatGlossary
 const classes = {
     "stalwart": {
         "class": "stalwart",
+        "desc": "Weapon master and unparalleled soldier",
+        "longdesc": "<p> Stalwarts are <strong>tough and vigorous warriors</strong>, with heavy armor and abilities that let them stand their ground, protect their allies, and control space. They largely eschew the use of ranged attacks but are mythic soldiers and gods of the battlefield, able to perform incredible feats of physical prowess and resilience. </p><p>Stalwarts boast <strong>Slashed</strong> and <strong>Weakened</strong>, which allow them to slow down speedy foes and lower their damage, and have access to <strong>Rampart</strong> and <strong>Vigilance</strong>, which makes it much more risky for characters to move around them. They also easily gain <strong>Sturdy</strong>, making them resistant to being moved, and can in turn <strong>Shove</strong> their foes, knocking them around the battlefield.</p>",
         "vit": 10,
         "hp": 40,
         "defense": 6,
