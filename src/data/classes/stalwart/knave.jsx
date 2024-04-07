@@ -28,10 +28,8 @@ const ch1Abilities = [
             "name": "Combo: The Hook",
             "desc": "Gains range 2 and effect: Shove character 1 towards you."
         },
-        "talents": {
-            1: "Deals bonus damage if your foe is suffering from a status.",
-            2: "Comeback: Gain vigilance +1"
-        },
+        "talent1": "Deals bonus damage if your foe is suffering from a status.",
+        "talent2": "Comeback: Gain vigilance +1",
         "mastery": {
             "name": "Sadist",
             "desc": "After this ability resolves, you may rush 1 and gain 2 vigor for every status your foe is suffering from."
@@ -46,7 +44,7 @@ const ch1Abilities = [
         "effects": [
             "You may Rush 1, then each adjacent foe deals 1 piercing damage to you, as if damaging you with an ability. You then deal 2 damage, once, for each foe that damaged you this way to all adjacent foes, to a maximum of three times."
         ],
-        "extra_effect": [
+        "extra_effects": [
             {
                 "type": "Heroic",
                 "desc": "Affects all foes in range 2."
@@ -56,10 +54,8 @@ const ch1Abilities = [
                 "desc": "Then, you may shove all affected foes 1 towards or away from you."
             }
         ],
-        "talents": {
-            1: "If this ability only affects one foe, they gain hatred of you.",
-            2: "You can sacrifice 2 after this ability resolves to deal 2 damage again to all adjacent foes."
-        },
+        "talent1": "If this ability only affects one foe, they gain hatred of you.",
+        "talent2": "You can sacrifice 2 after this ability resolves to deal 2 damage again to all adjacent foes.",
         "mastery": {
             "name": "Storm of Fury",
             "desc": "Before dealing each instance of damage, you may rush 1."
@@ -86,10 +82,8 @@ const ch1Abilities = [
             "name": "Combo: Indignation",
             "desc": "Gains True Strike and replace the base effect with effect: gain +1 vigilance for every status your foe is suffering from, to a maximum of three times, then gain counter until the end of your next turn."
         },
-        "talents": {
-            1: "While this ability's effect is active, attacks against adjacent allies gain +1 curse.",
-            2: "You may sacrifice 4 to gain or lose a combo token after using any version of this ability."
-        },
+        "talent1": "While this ability's effect is active, attacks against adjacent allies gain +1 curse.",
+        "talent2": "You may sacrifice 4 to gain or lose a combo token after using any version of this ability.",
         "mastery": {
             "name": "Iron Maiden",
             "desc": "Also gains effect: until the end of your next turn, immediately after you activate vigilance, deal 2 damage to all adjacent foes."
@@ -103,7 +97,7 @@ const ch1Abilities = [
         "type": ["stance", "adds interrupt"],
         "stance_info": "When you enter this stance or when it refreshes, gain the Dire Parry interrupt until the start of your next turn.",
         "interrupt": {
-            "name": "Heroic Intervention",
+            "name": "Dire Parry",
             "count": 1,
             "type": ["interrupt"],
             "trigger": "A foe targets an ally in range 2 with an ability",
@@ -118,10 +112,8 @@ const ch1Abilities = [
                 "desc": "Also gain vigor equal to your gamble result after this ability resolves."
             }
         ],
-        "talents": {
-            1: "You can also sacrifice 2 to roll 1 more d6 while gambling.",
-            2: "Comeback: Gain vigilance +1 after Riposte resolves."
-        },
+        "talent1": "You can also sacrifice 2 to roll 1 more d6 while gambling.",
+        "talent2": "Comeback: Gain vigilance +1 after Riposte resolves.",
         "mastery": {
             "name": "Strong Left",
             "desc": "Refresh Riposte at the start of your turn. Uses of Dire Parry can stack up to 3 times, and you can bank these uses."
@@ -144,10 +136,8 @@ const ch1Abilities = [
                 "desc": "You may refresh or exit this stance at the start of your turn."
             }
         ],
-        "talents": {
-            1: "You may rush 2 towards your hated foe at the start of their turn, but only once a round.",
-            2: "While in this stance, you have regeneration."
-        },
+        "talent1": "You may rush 2 towards your hated foe at the start of their turn, but only once a round.",
+        "talent2": "While in this stance, you have regeneration.",
         "mastery": {
             "name": "Infectious Hatred",
             "desc": "While in Dark Knight, you have Aura 1. Foes that end their turn in the aura must save or gain hatred of you."
@@ -173,10 +163,8 @@ const ch1Abilities = [
                 "desc": "Shove your foe 1 space, then 1 additional space for every character they passed through instead, to a maximum of 4 extra spaces."
             }
         ],
-        "talents": {
-            1: "Comeback: this ability gains range 2. Remove your target and place them into adjacency before activating this effect.",
-            2: "During the spin, you can cause your target to take damage and phase through objects the same way as characters, though those objects are not shoved."
-        },
+        "talent1": "Comeback: this ability gains range 2. Remove your target and place them into adjacency before activating this effect.",
+        "talent2": "During the spin, you can cause your target to take damage and phase through objects the same way as characters, though those objects are not shoved.",
         "mastery": {
             "name": "Perfect Strongarm",
             "desc": "Perform two full circles instead, and you may rush 2 before the second circle."

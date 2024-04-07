@@ -25,10 +25,8 @@ const ch1Abilities = [
                 "desc": "Repeat the above effect"
             }
         ],
-        "talents": {
-            1: "Heracule's shoves can be in any direction.",
-            2: "Heracule's second effect triggers +1 more time."
-        },
+        "talent1":"Heracule's shoves can be in any direction.",
+        "talent2": "Heracule's second effect triggers +1 more time.",
         "mastery": {
             "name": "Perfect Heracule",
             "desc": "Heracule gains rebound, and its second effect triggers +1 more time."
@@ -49,10 +47,8 @@ const ch1Abilities = [
                 "desc": "Foe is slashed, and refund the action cost of this ability."
             }
         ],
-        "talents": {
-            1: "You may rush 1 before using Battering Ram.",
-            2: "You can also shove objects with Battering Ram. The object triggers collide effects on the first character it collides with."
-        },
+        "talent1": "You may rush 1 before using Battering Ram.",
+        "talent2": "You can also shove objects with Battering Ram. The object triggers collide effects on the first character it collides with.",
         "mastery": {
             "name": "Gate Smasher",
             "desc": "Once a turn, if you trigger Battering Ram's Collide or Heroic effect, the ability can be used one more time this turn."
@@ -76,10 +72,8 @@ const ch1Abilities = [
                 "desc": "Gains True Strike and becomes Burst 2 (target)"
             }
         ],
-        "talents": {
-            1: "If Land Waster's effect shockwave shoves 3 or more foes or allies, it shoves +1 and stuns your target.",
-            2: "If Land Waster's effect shockwave shoves 2 or more foes or allies, cure yourself."
-        },
+        "talent1": "If Land Waster's effect shockwave shoves 3 or more foes or allies, it shoves +1 and stuns your target.",
+        "talent2": "If Land Waster's effect shockwave shoves 2 or more foes or allies, cure yourself.",
         "mastery": {
             "name": "Ajax",
             "desc": "Terrain effect: Before Land Waster's effect triggers, you tear up the very ground, creating a height 1 boulder object in range 3 of you."
@@ -91,17 +85,15 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "Stride forth, with your shield held before you, battering aside foes.",
         "type": [],
-        "effect": "Rush 1, then rush 1. After each rush, shove all adjacent characters 1.",
+        "effects": ["Rush 1, then rush 1. After each rush, shove all adjacent characters 1."],
         "extra_effects": [
             {
                 "type": "Collide or Heroic",
                 "desc": "Rush 1 again, then shove all adjacent characters 1."
             }
         ],
-        "talents": {
-            1: "Collide: Become unstoppable for the rest of your turn",
-            2: "If you only shove one foe, they gain hatred of you after this ability resolves."
-        },
+        "talent1": "Collide: Become unstoppable for the rest of your turn",
+        "talent2": "If you only shove one foe, they gain hatred of you after this ability resolves.",
         "mastery": {
             "name": "Second Wind",
             "desc": "At round 4 or higher in combat, valiant becomes a free action."
@@ -131,10 +123,8 @@ const ch1Abilities = [
                 "desc": "Immediately activate the interrupt effect."
             }
         ],
-        "talents": {
-            1: "While you are in the aura, attacks against your ally gain +1 curse.",
-            2: "You and your ally both have have counter while you are in the aura."
-        },
+        "talent1": "While you are in the aura, attacks against your ally gain +1 curse.",
+        "talent2": "You and your ally both have have counter while you are in the aura.",
         "mastery": {
             "name": "Perfect Battlement",
             "desc": "At round 4 or higher, Endless Battlement has no maximum range, deals 4 damage instead of 2, and becomes interrupt 2."
@@ -147,17 +137,15 @@ const ch1Abilities = [
         "count": 1,
         "type": ["interrupt"],
         "trigger": "An ally ends a movement in an adjacent space",
-        "effect": "Shove that ally 2 in any direction.",
+        "effects": ["Shove that ally 2 in any direction."],
         "extra_effects": [
             {
                 "type": "Collide or Heroic",
                 "desc": "That ally gains 2 vigor and may rush 1."
             }
         ],
-        "talents": {
-            1: "Your shield becomes a valid target for allied abilities. You can expend this interrupt to grant them rebound.",
-            2: "Catapult can also be triggered on foes. When triggered on foes, the effect becomes effect: shove 1. Collide: you may rush 1"
-        },
+        "talent1": "Your shield becomes a valid target for allied abilities. You can expend this interrupt to grant them rebound.",
+        "talent2": "Catapult can also be triggered on foes. When triggered on foes, the effect becomes effect: shove 1. Collide: you may rush 1",
         "mastery": {
             "name": "Mangonel",
             "desc": "Catapult becomes Interrupt 3."

@@ -25,10 +25,8 @@ const ch1Abilities = [
                 "desc": "Gains range 2, and repeat the area effect in a new line 3 area in range. The areas cannot overlap."
             }
         ],
-        "talents": {
-            1: "Exceed: Gain 6 vigor.",
-            2: "You can rush 1 before using Demon Cutter. Charge: Rush 3 instead."
-        },
+        "talent1": "Exceed: Gain 6 vigor.",
+        "talent2": "You can rush 1 before using Demon Cutter. Charge: Rush 3 instead.",
         "mastery": {
             "name": "Blood Drinking Devil Blade",
             "desc": "After this ability resolves, gain 2 vigor for every foe damaged."
@@ -56,10 +54,8 @@ const ch1Abilities = [
                 "desc": "Rush 3 after throwing your weapon."
             }
         ],
-        "talents": {
-            1: "If you end your turn adjacent to your thrown weapon, gain vigilance +1",
-            2: "Yourself and allies that end their turn adjacent to your weapon gain 2 vigor."
-        },
+        "talent1": "If you end your turn adjacent to your thrown weapon, gain vigilance +1",
+        "talent2": "Yourself and allies that end their turn adjacent to your weapon gain 2 vigor.",
         "mastery": {
             "name": "Exalted Blossoms Devil Blade",
             "desc": "You may teleport to any space adjacent to your weapon at the start and end of your turn."
@@ -84,10 +80,8 @@ const ch1Abilities = [
                 "desc": "Gains true strike, and may repeat the effect."
             }
         ],
-        "talents": {
-            1: "Exceed: Deal fray damage again to all characters in any area created by this ability.",
-            2: "Charge: Increase range to 5, and all areas may be increased to medium blasts instead."
-        },
+        "talent1": "Exceed: Deal fray damage again to all characters in any area created by this ability.",
+        "talent2": "Charge: Increase range to 5, and all areas may be increased to medium blasts instead.",
         "mastery": {
             "name": "Dark Wind Devil Blade",
             "desc": "After using this ability, you may teleport to any space of any area created, then all foes in any area you created with this ability are slashed and take 2 divine damage."
@@ -110,10 +104,8 @@ const ch1Abilities = [
                 "desc": "Gain vigor 4 after this ability resolves."
             }
         ],
-        "talents": {
-            1: "You can rush 1 before triggering this ability, and your ally may rush 1 afterwards.",
-            2: "Shove the triggering foe and ally each 1 space in any direction after this ability resolves."
-        },
+        "talent1": "You can rush 1 before triggering this ability, and your ally may rush 1 afterwards.",
+        "talent2": "Shove the triggering foe and ally each 1 space in any direction after this ability resolves.",
         "mastery": {
             "name": "Shirahadori",
             "desc": "The damage from Righteous Disdain cannot reduce you past 1 hp."
@@ -138,10 +130,8 @@ const ch1Abilities = [
                 "desc": "Weaken all adjacent characters after the first or second rush."
             }
         ],
-        "talents": {
-            1: "Instead of any rush from Demon claw, you can gain 2 vigor.",
-            2: "After the second rush, you can shove an adjacent character 2 spaces."
-        },
+        "talent1": "Instead of any rush from Demon claw, you can gain 2 vigor.",
+        "talent2": "After the second rush, you can shove an adjacent character 2 spaces.",
         "mastery": {
             "name": "Raging Demon",
             "desc": "Demon Claw's damage increases by 1 for every 25% of your maximum hp you are missing, up to a maximum of +3 damage."
@@ -163,10 +153,8 @@ const ch1Abilities = [
                 "desc": "Gain +2 vigilance instead."
             }
         ],
-        "talents": {
-            1: "Gain 2 vigor after any time Gates of Hell's second effect activates.",
-            2: "Vigilance's range increases by +1 while Gates of Hell is active."
-        },
+        "talent1": "Gain 2 vigor after any time Gates of Hell's second effect activates.",
+        "talent2": "Vigilance's range increases by +1 while Gates of Hell is active.",
         "mastery": {
             "name": "Flash Step",
             "desc": "After Gates of Hell resolves, you create an afterimage terrain effect in a free adjacent space. The afterimage is dangerous terrain, but only for foes. You also gain the ability Flash Step.",

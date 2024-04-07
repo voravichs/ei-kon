@@ -25,10 +25,8 @@ const ch1Abilities = [
                 "desc": "Create a pit under your target."
             }
         ],
-        "talents": {
-            1: "Valkyrie gains range 4.",
-            2: "You are unstoppable and immune to all damage while flying with Valkyrie. Charge: You may fly 3 instead."
-        },
+        "talent1": "Valkyrie gains range 4.",
+        "talent2": "You are unstoppable and immune to all damage while flying with Valkyrie. Charge: You may fly 3 instead.",
         "mastery": {
             "name": "Call of Erenhelion",
             "desc": "When you use Valkyrie, all allies may fly 1. If they end this flight on a lower elevation than they started, they may fly 1 again."
@@ -51,10 +49,8 @@ const ch1Abilities = [
                 "desc": "Create difficult terrain underneath any character shoved by this ability."
             }
         ],
-        "talents": {
-            1: "The boulder bounces before landing, dealing 2 damage in a small blast area effect anywhere in range. Charge: Large blast.",
-            2: "The boulder bounces before landing, creating a pit anywhere in free space in range."
-        },
+        "talent1": "The boulder bounces before landing, dealing 2 damage in a small blast area effect anywhere in range. Charge: Large blast.",
+        "talent2": "The boulder bounces before landing, creating a pit anywhere in free space in range.",
         "mastery": {
             "name": "Titan Strength",
             "desc": "Gains range 5 and Comeback: Boulder may be placed as a height 2 pillar instead."
@@ -76,10 +72,8 @@ const ch1Abilities = [
                 "desc": "You may rush 2 before or after using this ability."
             }
         ],
-        "talents": {
-            1: "Comeback: Hit your foe so hard that you create 2 spaces of difficult terrain in adjacent spaces after this ability resolves.",
-            2: "Shove your foe 1, then shove yourself 1 away from your foe. Charge: Increase shoves to 2."
-        },
+        "talent1": "Comeback: Hit your foe so hard that you create 2 spaces of difficult terrain in adjacent spaces after this ability resolves.",
+        "talent2": "Shove your foe 1, then shove yourself 1 away from your foe. Charge: Increase shoves to 2.",
         "mastery": {
             "name": "Giant Kicker",
             "desc": "At round 4 or later, dropkick gains true strike and a line 4 area effect that must include your target. The area deals fray damage to all characters other than your target."
@@ -104,10 +98,8 @@ const ch1Abilities = [
                 "desc": "Attack may also create a small blast area effect on its target, dealing 2 damage to all characters inside."
             }
         ],
-        "talent": {
-            1: "Attack gains Exceed: Also create a height 1 boulder object adjacent to your foe.",
-            2: "Attack gains Exceed: The pit also becomes dangerous terrain."
-        },
+        "talent1": "Attack gains Exceed: Also create a height 1 boulder object adjacent to your foe.",
+        "talent2": "Attack gains Exceed: The pit also becomes dangerous terrain.",
         "mastery": {
             "name": "Blood Rush",
             "desc": "At round 4 or later, Massive Overhead also grants you 4 vigor and no longer ends your turn."
@@ -129,10 +121,8 @@ const ch1Abilities = [
                 "desc": "Gains true strike and creates a pit under your target."
             }
         ],
-        "talents": {
-            1: "You may rush 2 or fly 2 before using Takedown.",
-            2: "You can also choose to shove your target 2, then shove yourself 2. Collide: Deal fray damage."
-        },
+        "talent1": "You may rush 2 or fly 2 before using Takedown.",
+        "talent2": "You can also choose to shove your target 2, then shove yourself 2. Collide: Deal fray damage.",
         "mastery": {
             "name": "Fierce Elbow",
             "desc": "When you takedown a character, the character takes 2 damage once after the ability resolves for each difference in elevation between you and them when you started this ability, for a maximum of three times."
@@ -154,10 +144,8 @@ const ch1Abilities = [
                 "desc": "Sacrifice cost costs 0 hp but counts as sacrificing 6."
             }
         ],
-        "talent": {
-            1: "This ability deals bonus damage to your target if you land them in a pit.",
-            2: "You can use this ability on allies. If you do, reduce its action cost to 1, they are immune to its damage and statuses, and both of you can rush 1 after it resolves."
-        },
+        "talent1": "This ability deals bonus damage to your target if you land them in a pit.",
+        "talent2": "You can use this ability on allies. If you do, reduce its action cost to 1, they are immune to its damage and statuses, and both of you can rush 1 after it resolves.",
         "mastery": {
             "name": "Titanheart",
             "desc": "You can target two adjacent characters with this ability."
