@@ -25,7 +25,7 @@ export default function Home() {
                                     transition={{
                                         ease: "linear",
                                         duration: 1,
-                                        times: [0, 0, 5, 1],
+                                        times: [0, 0.5, 1],
                                         repeat: Infinity
                                     }}
                                 >
@@ -46,7 +46,7 @@ export default function Home() {
                                     transition={{
                                         ease: "linear",
                                         duration: 1,
-                                        times: [0, 0, 5, 1],
+                                        times: [0, 0.5, 1],
                                         repeat: Infinity
                                     }}
                                 >
@@ -67,7 +67,7 @@ export default function Home() {
                                     transition={{
                                         ease: "linear",
                                         duration: 1,
-                                        times: [0, 0, 5, 1],
+                                        times: [0, 0.5, 1],
                                         repeat: Infinity
                                     }}
                                 >

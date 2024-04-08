@@ -8,7 +8,7 @@ import { FaArrowCircleRight } from "react-icons/fa";
 import { motion } from "framer-motion"
 import { useState } from "react";
 import parse from 'html-react-parser';
-import { Link, createSearchParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 /**
  * Character Creation Page
  */
@@ -17,7 +17,7 @@ export default function CharCreate() {
     const { stalwart, vagabond, mendicant, wright } = classes;
     const { rules, combatGlossary } = keywords;
 
-    const [classSelected, setClassSelected] = useState("");
+    const [classSelected, setClassSelected] = useState();
 
     const tooltip = {
         initial: { scale: 0.5, opacity: 0 },
@@ -36,7 +36,7 @@ export default function CharCreate() {
                             stiffness: 700,
                             damping: 30
                         }}
-                        onClick={() => setClassSelected("stalwart")}
+                        onClick={() => setClassSelected(stalwart)}
                         className="slick-card py-4 px-8 z-10 border-b-[24px] border-red-400 bg-red-600 flex-center gap-4 drop-shadow cursor-pointer">
                         <GiAxeSword className="text-white text-7xl" />
                         <p className="uppercase text-white font-bold">Stalwart</p>
@@ -69,7 +69,7 @@ export default function CharCreate() {
                             <p>to begin</p>
                         </motion.div>
                     }
-                    {classSelected === "stalwart" &&
+                    {classSelected &&
                         <motion.div
                             initial={{ opacity: 0, x: -150 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -212,7 +212,7 @@ export default function CharCreate() {
                             <div className="absolute top-4 right-4">
                                 <IoIosCloseCircle
                                     onClick={() => setClassSelected("")}
-                                    className="text-4xl text-red-600 cursor-pointer" />
+                                    className="text-5xl text-red-600 cursor-pointer" />
                             </div>
                             <motion.div
                                 animate={{ x: [-5, 10, -5] }}
@@ -223,14 +223,13 @@ export default function CharCreate() {
                                     repeat: Infinity
                                 }}
                                 className="absolute top-1/2 -right-12 bg-white rounded-full">
-                                <Link to={{
-                                    pathname: "jobs",
-                                    search: `?${createSearchParams({
-                                        class: classSelected
-                                    })}`
-                                }}>
-                                    <FaArrowCircleRight
-                                        className="text-6xl text-red-600 cursor-pointer" />
+                                <Link 
+                                    to={'/charcreate/jobs'}
+                                    state={{
+                                        classSelected: JSON.parse(JSON.stringify(classSelected)),
+                                    }}>
+                                        <FaArrowCircleRight
+                                            className="text-6xl text-red-600 cursor-pointer" />
                                 </Link>
 
                             </motion.div>

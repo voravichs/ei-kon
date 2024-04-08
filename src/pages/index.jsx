@@ -4,6 +4,7 @@ import NoPage from "./NoPage"
 import CharCreate from "./CharCreation/CharCreate"
 import Jobs from "./CharCreation/Jobs"
 import Abilities from "./CharCreation/Abilities"
+import Finalize from "./CharCreation/Finalize"
 import LoadChar from "./LoadChar"
 import ArchiveFront from "./Archive/ArchiveFront"
 import ArchiveKeywords from "./Archive/ArchiveKeywords"
@@ -18,6 +19,7 @@ export {
     CharCreate,
     Jobs,
     Abilities,
+    Finalize,
     LoadChar,
     ArchiveFront,
     ArchiveKeywords,

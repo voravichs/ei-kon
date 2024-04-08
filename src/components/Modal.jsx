@@ -19,7 +19,7 @@ export default function Modal({ability}) {
 
     return(
         <>
-            <FaExpandArrowsAlt onClick={() => setShowModal(true)} className="absolute bottom-2 right-2 on hover:animate-ping"/>
+            <FaExpandArrowsAlt onClick={() => setShowModal(true)} className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"/>
             {/* Modal */}
             {showModal ? (
                 <>

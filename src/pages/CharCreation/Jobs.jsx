@@ -3,7 +3,7 @@ import classes from "../../data/classes/baseClass";
 import { GiEvilEyes, GiRosaShield, GiRustySword, GiWingfoot } from "react-icons/gi";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-import { useSearchParams, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion"
 import { useState } from "react";
 
@@ -16,8 +16,8 @@ export default function Jobs() {
     let bastion, demonslayer, colossus, knave;
     [bastion, demonslayer, colossus, knave] = stalwart.jobs;
 
-    let [searchParams] = useSearchParams();
-    const className = searchParams.get("class");
+    const location = useLocation();
+    const { classSelected } = location.state;
 
     const [jobSelected, setJobSelected] = useState("");
     const [selected, setSelected] = useState(false);
@@ -30,7 +30,7 @@ export default function Jobs() {
     return (
         <>
             <div className="absolute top-0 left-4 w-20 h-3/5 bg-primary" />
-            {className  === "stalwart" &&
+            {classSelected.class === "stalwart" &&
                 <div className="flex h-dvh pt-32 px-8 pb-8">
                     <div className="w-1/5 h-full flex flex-col gap-2 font-bona-nova text-3xl">
                         <motion.div
@@ -153,9 +153,6 @@ export default function Jobs() {
                                 </div>
                                 <div className="absolute bottom-0 right-0 bg-white rounded-full flex flex-col items-center">
                                     <p className="opacity-50 uppercase">select abilities</p>
-                                    <Link>
-
-                                    </Link>
                                     <motion.div
                                         animate={{ x: [-5, 10, -5] }}
                                         transition={{
@@ -168,7 +165,7 @@ export default function Jobs() {
                                             to={'/charcreate/abilities'}
                                             state={{
                                                 job: JSON.parse(JSON.stringify(jobSelected)),
-                                                className: className
+                                                classSelected: classSelected
                                             }}>
                                                 <FaArrowCircleRight className="text-6xl text-red-600 cursor-pointer" />
                                         </Link>
