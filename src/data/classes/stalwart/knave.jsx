@@ -1,10 +1,10 @@
 import keywordData from "../../keywords";
 import img from "../../../assets/images/knave.PNG"
 
-const { statusConditions, rules, combatGlossary } = keywordData;
+const { statusConditions, rules, combatGlossary, actions } = keywordData;
 
 const { vigilance_x, hatredOfX, unstoppable, slashed, weakened, evasion, dodge, stealth, divine, sturdy, regeneration } = statusConditions
-const { status, ongoing, defeated, curse } = rules;
+const { status, ongoing, defeated, curse, action, interrupt } = rules;
 const { heroic, stance, bonus_damage, cure, trueStrike, combo, rush_x, slay, vigor, shove_x, sacrifice_x, counter, gamble, comeback, aura_x, collide} = combatGlossary
 
 const ch1Abilities = [
@@ -95,7 +95,6 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "When you come at a knave, you best not miss.",
         "type": ["stance", "adds interrupt"],
-        "stance_info": "When you enter this stance or when it refreshes, gain the Dire Parry interrupt until the start of your next turn.",
         "interrupt": {
             "name": "Dire Parry",
             "count": 1,
@@ -104,9 +103,17 @@ const ch1Abilities = [
             "effects": [
                 "Gamble, then deal that much damage to your foe. On a 6, they are also slashed and shoved 1. If you have vigilance, you can spend any number of vigilance charges when gambling to roll one extra d6 per charge spent."
             ],
-            "tags": [gamble, slashed, shove_x, vigilance_x]
+            "tags": [gamble, slashed, shove_x, vigilance_x, interrupt]
         },
         "extra_effects": [
+            {
+                "type": "Stance",
+                "desc": "When you enter this stance or when it refreshes, gain the Dire Parry interrupt until the start of your next turn."
+            },
+            {
+                "type": "Refresh",
+                "desc": "Refresh this stance when a foe damages you or an adjacent ally with an ability."
+            },
             {
                 "type": "Heroic",
                 "desc": "Also gain vigor equal to your gamble result after this ability resolves."
@@ -125,15 +132,18 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "You give into the heat of battle, becoming a creature of violence and instinct.",
         "type": ["stance"],
-        "stance_info": "While in this stance:\nYou gain hatred+ of the closet foe to you at the start of your turn or when you enter this stance. If multiple foes are equidistant, you may choose.\nYou are sturdy.\nYou gain vigilance +1 at the end of your turn.",
         "extra_effects": [
             {
-                "type": "Heroic",
-                "desc": "On entering this stance, you may gain 2 vigor per status affecting you, including from this stance."
+                "type": "Stance",
+                "desc": "While in this stance:\nYou gain hatred+ of the closet foe to you at the start of your turn or when you enter this stance. If multiple foes are equidistant, you may choose.\nYou are sturdy.\nYou gain vigilance +1 at the end of your turn."
             },
             {
                 "type": "Refresh",
                 "desc": "You may refresh or exit this stance at the start of your turn."
+            },
+            {
+                "type": "Heroic",
+                "desc": "On entering this stance, you may gain 2 vigor per status affecting you, including from this stance."
             }
         ],
         "talent1": "You may rush 2 towards your hated foe at the start of their turn, but only once a round.",
@@ -142,7 +152,7 @@ const ch1Abilities = [
             "name": "Infectious Hatred",
             "desc": "While in Dark Knight, you have Aura 1. Foes that end their turn in the aura must save or gain hatred of you."
         },
-        "tags": [hatredOfX, sturdy, vigilance_x, heroic, vigor, rush_x, regeneration, aura_x]
+        "tags": [hatredOfX, sturdy, vigilance_x, heroic, vigor, rush_x, regeneration, aura_x, stance]
     },
     {
         "name": "Strongarm",
@@ -195,7 +205,8 @@ const knave = {
             "name": "Taunt",
             "desc": "(1 action) - A foe in range 3 gains hatred of you.",
             "chapter": 1,
-            "tags": [hatredOfX]
+            "includedaction": actions.taunt,
+            "tags": [action]
         },
         {
             "name": "Spite",
@@ -216,7 +227,10 @@ const knave = {
         "resolve": 2,
         "action": 1,
         "desc": "There is no weapon greater than a well-timed and well-aimed insult.",
-        "effect": "A foe in range 3 becomes slashed+, weakened+, cannot gain or benefit from evasion, dodge, or stealth, and gains hatred+ of you. These effects continue until the end of their next turn. Special: On elite and legend foes, this ability lasts two turns instead.",
+        "effects": [
+            "A foe in range 3 becomes slashed+, weakened+, cannot gain or benefit from evasion, dodge, or stealth, and gains hatred+ of you. These effects continue until the end of their next turn.",
+            "<b>Special: </b>On elite and legend foes, this ability lasts two turns instead."
+        ],
         "ultimate": {
             "name": "Dread Mock",
             "desc": "Gains range 5 and also deals divine fray damage to your foe."

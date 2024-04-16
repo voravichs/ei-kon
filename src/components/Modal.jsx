@@ -23,11 +23,11 @@ export default function Modal({ability}) {
             {/* Modal */}
             {showModal ? (
                 <>
-                    <div className="flex-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none cursor-default">
-                        <div className="relative w-1/3 my-6 mx-auto max-w-3xl">
+                    <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default">
+                        <div className="relative w-1/3 z-50 my-6 mx-auto max-w-3xl">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
-                                {/*header*/}
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full  text-base bg-white outline-none focus:outline-none">
+                                {/* header */}
                                 <div className="p-4 border-b border-solid rounded-t text-black">
                                     <div className="grid grid-cols-4 items-center mb-2"> 
                                         {ability.actions == 1 
@@ -79,6 +79,7 @@ export default function Modal({ability}) {
                                             </motion.div>
                                         }
                                         <h3 className="text-2xl text-center col-span-2 text-primary font-bold"> {ability.name} </h3>
+                                        {/* Close button */}
                                         <button
                                             className="text-red-500 text-4xl justify-self-end"
                                             type="button"
@@ -97,11 +98,11 @@ export default function Modal({ability}) {
                                         })}    
                                     </div>
                                 </div>
-                                {/*body*/}
+                                {/* body */}
                                 <div className="p-4 flex flex-col text-black border-b border-solid">
                                     {/* Attack Roll */}
                                     {ability.attackroll &&
-                                        <div className="text-sm leading-relaxed mb-2">
+                                        <div className="leading-relaxed mb-2">
                                             <span className="text-primary font-bold">Attack Roll: </span>
                                             {ability.attackroll}
                                         </div>
@@ -109,37 +110,22 @@ export default function Modal({ability}) {
 
                                     {/* Area */}
                                     {ability.area &&
-                                        <div className="text-sm leading-relaxed mb-2">
+                                        <div className="leading-relaxed mb-2">
                                             <span className="text-primary font-bold">Area: </span>
                                             {ability.area}
                                         </div>
                                     }
 
-                                    {/* Stance */}
-                                    {ability.stance_info &&
-                                        <div className="text-sm leading-relaxed mb-2">
-                                            <span className="text-primary font-bold">Stance: </span>
-                                            {ability.stance_info}
-                                        </div>
-                                    }
-                                    {/* Stance Refresh */}
-                                    {ability.stance_refresh_info &&
-                                        <div className="text-sm leading-relaxed mb-2">
-                                            <span className="text-primary font-bold">Refresh: </span>
-                                            {ability.stance_refresh_info}
-                                        </div>
-                                    }
-
                                     {/* Count */}
                                     {ability.count &&
-                                        <div className="text-sm leading-relaxed mb-2">
+                                        <div className="leading-relaxed mb-2">
                                             <span className="text-primary italic">Interrupt {ability.count}</span>
                                         </div>
                                     }
 
                                     {/* Trigger */}
                                     {ability.trigger &&
-                                        <div className="text-sm leading-relaxed mb-2">
+                                        <div className="leading-relaxed mb-2">
                                             <span className="text-primary font-bold">Trigger: </span>
                                             {ability.trigger}
                                         </div>
@@ -151,7 +137,7 @@ export default function Modal({ability}) {
                                             {ability.effects.map(effect => {
                                                 return (
                                                     <div key={effect + ability}>
-                                                        <p className="text-sm leading-relaxed">
+                                                        <p className="leading-relaxed">
                                                             <span className="text-primary font-bold">Effect: </span>
                                                             {effect}
                                                         </p>
@@ -167,7 +153,7 @@ export default function Modal({ability}) {
                                             {ability.extra_effects.map(extraeffect => {
                                                 return (
                                                     <div key={extraeffect}>
-                                                        <p className="text-sm leading-relaxed">
+                                                        <p className="leading-relaxed">
                                                             <span className="text-primary font-bold">{extraeffect.type}: </span>
                                                             {extraeffect.desc}
                                                         </p>
@@ -180,7 +166,7 @@ export default function Modal({ability}) {
 
                                     {/* Add Interrupt */}
                                     {ability.interrupt &&
-                                        <div className="text-sm leading-relaxed mb-2 flex flex-col gap-0">
+                                        <div className="leading-relaxed mb-2 flex flex-col gap-0">
                                             <span className="bg-primary text-white font-bold">{ability.interrupt.name}</span>
                                             <p className="text-primary italic">Interrupt {ability.interrupt.count}</p>
                                             <p><span className="text-primary font-bold">Trigger:</span> {ability.interrupt.trigger}</p>
@@ -207,34 +193,34 @@ export default function Modal({ability}) {
                                     }
                                     
                                 </div>
-                                {/* Talents */}
-                                <div className="text-sm p-4 flex flex-col text-black border-b border-solid ">
+                                {/* talents */}
+                                <div className="p-4 flex flex-col text-black border-b border-solid ">
                                     <p className="font-bold uppercase text-primary mb-2">talents</p>
-                                    <div className="text-sm mb-4 text-black flex-center">
+                                    <div className="mb-4 text-black flex-center">
                                         <TbSquareRoundedNumber1Filled className="text-3xl text-primary w-1/6 text-end"/>
                                         <p className="w-5/6 text-start">{ability.talent1}</p>
                                     </div>
-                                    <div className="text-sm mb-2 text-black flex">
+                                    <div className="mb-2 text-black flex">
                                         <TbSquareRoundedNumber2Filled className="text-3xl text-primary w-1/6 justify-self-end"/>
                                         <p className="w-5/6 text-start">{ability.talent2}</p>
                                     </div>
                                 </div>
-                                {/* Mastery */}
-                                <div className="text-sm p-4 flex flex-col text-black border-b border-solid ">
+                                {/* mastery */}
+                                <div className="p-4 flex flex-col text-black border-b border-solid ">
                                     <p className="font-bold uppercase text-primary mb-2">Mastery</p>
-                                    <div className="text-sm mb-2 text-black flex">
+                                    <div className="mb-2 text-black flex">
                                         <TbHexagonLetterM className="text-4xl text-primary w-1/6 justify-self-end"/>
                                         <p className="w-5/6 text-start">{ability.mastery.name}: {ability.mastery.desc}</p>
                                     </div>
                                 </div>
-                                {/* Tags*/}
+                                {/* tags*/}
                                 <div className="flex-center p-6 rounded-b text-black">
                                    
                                 </div>
                             </div>
                         </div>
+                        <div className="opacity-50 fixed inset-0 z-40 bg-black" onClick={() => setShowModal(false)}></div>
                     </div>
-                    <div className="opacity-50 fixed inset-0 z-40 bg-black"></div>
                 </>
             ) : null}
         </>

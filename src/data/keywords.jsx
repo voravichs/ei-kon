@@ -198,6 +198,12 @@ const statusConditions = {
 }
 
 const rules = {
+    "action": {
+        "name": "Action",
+        "desc": "A character has 2 actions per turn that can be spent to use abilities.",
+        "types": [],
+        "value": 0
+    },
     "effect": {
         "name": "Effect",
         "desc": "A part of an ability that simply happens and is applied to all targets, no roll or save required.",
@@ -267,6 +273,12 @@ const rules = {
     "movement": {
         "name": "Movement",
         "desc": "Movement can only be performed in an orthogonal direction and cannot be split up.",
+        "types": [],
+        "value": 0
+    },
+    "wound": {
+        "name": "Wound",
+        "desc": "Defeated characters gain a wound, which reduces their max HP by 25%. Characters become fallen upon gaining a 4th wound.",
         "types": [],
         "value": 0
     }
@@ -435,6 +447,12 @@ const combatGlossary = {
         "types": ["Condition"],
         "value": "X"
     },
+    "infuse_x": {
+        "name": "Infuse X",
+        "desc": "Many wright abilities have upgraded versions that can only be cast by Infusing them by spending X Aether as part of the ability. Aether is consumed at the start of the action. Only one infusion can be chosen at once, and only one infuse effect can trigger at at time. Infused abilities count as the same ability as the base ability and also benefit from all talents.",
+        "types": [],
+        "value": "X"
+    },
     "mark": {
         "name": "Mark",
         "desc": "Places a mark, an ongoing effect, on a specific character. Each ability can only place one mark at a time, and a character can mark another character with one mark at a time. If you place a new mark on a character with a mark from you, you can choose which to keep or which to discard. Marks end when the character that placed the mark is defeated, or under other listed conditions.",
@@ -524,13 +542,288 @@ const combatGlossary = {
         "desc": "Something that creates or modifies the terrain spaces on the battlefield.",
         "types": ["Environment", "Effect"],
         "value": 0
+    },
+    "aether": {
+        "name": "Aether",
+        "desc": "All Wrights gather Aether during combat, represented by a d6 power die. They passively gain 1 at the start of their turn, starting with 0. Use a d6 to track Aether. Other abilities and Chain Reaction will generate Aether when used. All Aether disperses at the end of combat",
+        "types": [],
+        "value": 0
+    }
+}
+
+const actions = {
+    "prowl": {
+        "name": "Prowl",
+        "actioncost": 1,
+        "desc": "Gain stealth. Becomes a free action if no foes are in range 2.",
+        "tags": [statusConditions.stealth],
+        "value": 0
+    },
+    "bless": {
+        "name": "Bless",
+        "actioncost": 1,
+        "desc": "Grant a blessing token to a character in range 4.",
+        "tags": [combatGlossary.blessing],
+        "value": 0
+    },
+    "diaga": {
+        "name": "Diaga",
+        "actioncost": 1,
+        "desc": "Cure a character in range 4.",
+        "tags": [combatGlossary.cure],
+        "value": 0
+    },
+    "taunt": {
+        "name": "Taunt",
+        "actioncost": 1,
+        "desc": "A foe in range 3 gains hatred of you.",
+        "tags": [statusConditions.hatredOfX],
+        "value": 0
+    },
+    "defy_the_cycle": {
+        "name": "Defy the Cycle",
+        "actioncost": 2,
+        "restriction": "1/expedition",
+        "desc": "You call upon your power to forbid the natural order of life and death from working. Until the start of your next turn, characters cannot be reduced below 1 hp. Divine damage bypasses this ability.",
+        "tags": [statusConditions.divine],
+        "value": 0
+    },
+    "chakravartin": {
+        "name": "Chakravartin",
+        "actioncost": 2,
+        "restriction": "1/expedition",
+        "desc": "An ally in range 6 becomes unstoppable and immune to all damage until the end of their next turn.",
+        "tags": [statusConditions.unstoppable, combatGlossary.immune_to_x],
+        "value": 0
+    },
+    "klingenkunst": {
+        "name": "Klingenkunst",
+        "actioncost": 0,
+        "desc": "This ability can interrupt other abilities or movement on your turn without stopping them.",
+        "tags": [combatGlossary.teleport_X],
+        "value": 0
+    },
+}
+
+const summons = {
+    "bomb": {
+        "name": "Bomb",
+        "desc": "Many fool abilities summon bombs. When a bomb is summoned, it can be summoned in free space in range 2 unless a different range is specified. You can have a maximum of six active bombs.",
+        "range": 2,
+        "max_num": 6,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_effects": [
+            {
+                "desc": "The bomb can be shoved or teleported and can share space with other characters, though it can't share space with other bombs. When any character enters a bomb's space, they can remove it from the battlefield. At the end of their turn, they may place it any any free adjacent space. Characters can only carry one bomb at once.",
+                "tags": [combatGlossary.shove_x, combatGlossary.teleport_X]
+            },
+            {
+                "desc": "Once a round, you may gamble at the end of any other turn than yours, after all bombs have been placed. All bombs explode, dealing damage equal to the gamble result in a small blast area effect centered on them. Characters in the area of multiple explosions are only affected once.",
+                "tags": [combatGlossary.gamble, combatGlossary.area_ability]
+            }
+        ]
+    },
+    "astral_seraph": {
+        "name": "Astral Seraph",
+        "desc": "At the start of combat, you may place your seraph in range 2 from you. This summon persists even if you're defeated.",
+        "range": 2,
+        "max_num": 1,
+        "size": 1,
+        "modifiers": ["intangible", "flying", "skirmisher"],
+        "summon_actions": [
+            {
+                "desc": "The seraph flies 3",
+                "tags": [combatGlossary.fly_X]
+            },
+        ],
+        "summon_effects": [
+            {
+                "desc": "Once a round, when you score a Critical hit, trigger a Finishing Blow, or trigger an Exceed effect, you may cause the seraph to lash out against all foes at exactly range 3 from the seraph, dealing 2 unerring damage to them.",
+                "tags": [combatGlossary.critical_hit, combatGlossary.finishing_blow, combatGlossary.exceed, statusConditions.unerring]
+            }
+        ]
+    },
+    "shadow_cloud": {
+        "name": "Shadow Cloud",
+        "desc": "Many shade abilities create shadow clouds. You can have any number of shadow clouds.",
+        "range": null,
+        "max_num": Infinity,
+        "size": null,
+        "modifiers": ["Terrain effect"],
+        "terrain_effects": [
+            {
+                "desc": "While inside this terrain space, characters are blinded+. You are immune to these effects.",
+                "tags": [statusConditions.blind, combatGlossary.difficult_terrain, combatGlossary.terrain_effect]
+            }
+        ]
+    },
+    "shadow": {
+        "name": "Shadow",
+        "desc": "Many shade abilities summon shadows. Shadows can be summoned in free space in range 2, unless a higher range is specified. You can have a maximum of six active shadows.",
+        "range": 2,
+        "max_num": 6,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_effects": [
+            {
+                "desc": "The shadow can share space other characters, and has different effects on foes and allies: \nIf a foe enters the shadow's space for any reason or starts their turn there, it it consumed, dealing 2 damage to them, disappearing and turning into a shadow cloud. \nIf you or an ally enters the shadow's space, it is consumed. It disappears and grants them stealth.",
+                "tags": [statusConditions.stealth]
+            }
+        ]
+    },
+    "beast": {
+        "name": "Beast",
+        "desc": "Many warden abilities summon beasts. Beasts can be summoned in any free space in range 2 unless a different range is listed. You can have a maximum of six active beasts.",
+        "range": 2,
+        "max_num": 6,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_actions": [
+            {
+                "desc": "All beasts can dash 1 space at the start of your turn.",
+                "tags": [combatGlossary.dash]
+            },
+        ],
+        "summon_effects": [
+            {
+                "desc": "When you or an ally ends any movement adjacent to a beast's space, you may cause the beast to pounce at a foe in range 3. That character takes unerring damage equal to their distance from the beast (1-3). Then remove the beast.",
+                "tags": [statusConditions.unerring]
+            }
+        ]
+    },
+    "great_beast": {
+        "name": "Great Beast",
+        "desc": "At the start of every combat, summon a great beast in range 2, a trained animal companion. This summon persists even if you're defeated.",
+        "range": 2,
+        "max_num": 1,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_actions": [
+            {
+                "desc": "Once during your turn, your beast can dash up to 2 spaces, then may deal 2 damage to an adjacent foe and shove 1. \nCharge: Repeat the action.",
+                "tags": [combatGlossary.dash, combatGlossary.shove_X, combatGlossary.charge]
+            }
+        ]
+    },
+    "thrall": {
+        "name": "Thrall",
+        "desc": "Many harvester abilities summon thralls. When a thrall is created, it can be summoned in any free space in range 2 unless a different range is listed. You can have a maximum of six active thralls.",
+        "range": 2,
+        "max_num": 6,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_actions": [
+            {
+                "desc": "At the start of your turn, all your thralls may dash 2 spaces, ignoring difficult terrain, then dealing 1 piercing damage to an adjacent foe. Then, remove each thrall and replace it with a plant.",
+                "tags": [combatGlossary.dash, statusConditions.pierce, combatGlossary.terrain_effect]
+            }
+        ]
+    },
+    "plant": {
+        "name": "Plant",
+        "desc": "Many harvester abilities create plants. When a plant is created, it can be summoned in any free space in range 2 unless a different range is listed. You can have any number of plants.",
+        "range": 2,
+        "max_num": Infinity,
+        "size": null,
+        "modifiers": ["Terrain effect"],
+        "terrain_effects": [
+            {
+                "desc": "A plant space is dangerous terrain that only affects foes, and has a blessing token on it, which can be picked up if yourself or an ally enters its space. When the blessing is removed, remove the plant.",
+                "tags": [combatGlossary.dangerous_terrain, combatGlossary.blessing, combatGlossary.terrain_effect]
+            }
+        ]
+    },
+    "severed_soul": {
+        "name": "Severed Soul",
+        "desc": "You slash an adjacent foe with your weapon, knocking their soul out of their body. Draw a line 4 area effect from your foe facing directly away from you and summon the soul in the last available space.",
+        "range": null,
+        "max_num": 1,
+        "size": 1,
+        "modifiers": ["intangible", "immobile"],
+        "summon_effects": [
+            {
+                "desc": "While they have their soul knocked out, foes can act normally. However, the soul can be targeted as if it was the body, transferring all damage or effects it would take to the body, no matter the distance or line of sight. Damage becomes divine. Abilities that are able to target both the body and soul of the foe (such as AoEs) can hit both.",
+                "tags": [combatGlossary.divine]
+            }
+        ]
+    },
+    "wild_card": {
+        "name": "Wild Card",
+        "desc": "Many seer abilities summon a wild card. When a wild card is summoned, it can be summoned in range 2 if no other range is listed.",
+        "range": 2,
+        "max_num": Infinity,
+        "size": 1,
+        "modifiers": ["intangible"],
+        "summon_effects": [
+            {
+                "desc": "The card emits a small blast area effect centered on it, which is normally inactive. When any space of an area ability from you or an ally would touch the area, it can be activated, causing the card to explode, and extending the area effect of that ability to encompass the card's area for the duration. Then, remove the card. \nWild cards can be triggered by other wild cards. \nWild cards do not extend the persistent effects of any area abilities, such as creating terrain effects in their space, but only the effects that last for the duration of the ability.",
+                "tags": [combatGlossary.blast_area_effect, combatGlossary.explode, combatGlossary.area_ability, combatGlossary.triggered_ability]
+            }
+        ]
+    },
+    "aethershard": {
+        "name": "Aethershard",
+        "desc": "Sacrifice 3 and summon an Aethershard in a free space in range 6.",
+        "range": 6,
+        "max_num": Infinity,
+        "size": 1,
+        "modifiers": [],
+        "summon_effects": [
+            {
+                "desc": "When you include the Aethershard in the area effect of any ability, the ability resonates with the shards, dealing 2 piercing damage as an area effect, once, to all characters in the area for every one of your Aethershards caught in the same ability. Then destroy all Aethershards activated this way and gain 1 Aether.",
+                "tags": [statusConditions.pierce, combatGlossary.area_ability]
+            }
+        ]
+    },
+    "selkie": {
+        "name": "Selkie",
+        "desc": "You have a bound elemental. At the start of any combat, summon it in range 3.",
+        "range": 3,
+        "max_num": 1,
+        "size": 1,
+        "modifiers": ["intangible", "flying"],
+        "summon_effects": [
+            {
+                "desc": "Your Selkie can share space with characters, and is also considered a terrain effect.",
+                "tags": [combatGlossary.terrain_effect]
+            }
+        ],
+        "summon_actions": [
+            {
+                "desc": "The Selkie may fly 3 at the end of your turn. Any character standing in the Selfie's space when it moves is removed from the battlefield, then placed back in its space, or adjacent to it if that space is occupied.",
+                "tags": [statusConditions.flying]
+            }
+        ]
+    },
+    "salt_sprite": {
+        "name": "Salt Sprite",
+        "desc": "Many stormbender abilities summon a Salt Sprite. When a Salt Sprite is summoned, it can be summoned in range 2 unless a different range is specified. You can have a maximum of six active Salt Sprites.",
+        "range": 2,
+        "max_num": 6,
+        "size": 1,
+        "modifiers": ["intangible", "immobile"],
+        "summon_effects": [
+            {
+                "desc": "The Sprite is both a summon and terrain effect. It can share spare with other characters, and its area counts as difficult terrain.",
+                "tags": [combatGlossary.terrain_effect]
+            }
+        ],
+        "effects": [
+            {
+                "desc": "When a character is shoved into the sprite's area, it triggers collide effects and awakens it. Allies shoved into its space can fly 2. Foes are shoved 2 in any direction. Then, remove the sprite.",
+                "tags": [combatGlossary.shove_x, combatGlossary.shove_x, statusConditions.flying]
+            }
+        ]
     }
 }
 
 const keywordData = {
     statusConditions,
     rules,
-    combatGlossary
+    combatGlossary,
+    actions,
+    summons
 }
 
 export default keywordData;

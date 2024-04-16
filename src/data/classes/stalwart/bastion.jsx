@@ -105,7 +105,6 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "The land itself is your castle, and you will never let its walls be breached. No matter where your allies step, your shield will be there.",
         "type": ["stance", "adds interrupt"],
-        "stance_info": "When you enter this stance, or when it refreshes, choose an ally in range 4. That ally gains aura 1 until the start of your next turn. The aura deactivates if your ally is out of range. While the aura is active, you can use the Heroic Intervention interrupt.",
         "interrupt": {
             "name": "Heroic Intervention",
             "count": 1,
@@ -114,10 +113,17 @@ const ch1Abilities = [
             "effects": [
                 "You soar into the air, removing yourself from the battlefield, then return in any space in the aura. Adjacent foes take 2 damage."
             ],
-            "tags": [aura_x]
+            "tags": [aura_x, interrupt]
         },
-        "stance_refresh_info": "Refresh this stance at the start of your turn",
         "extra_effects": [
+            {
+                "type": "Stance",
+                "desc": "When you enter this stance, or when it refreshes, choose an ally in range 4. That ally gains aura 1 until the start of your next turn. The aura deactivates if your ally is out of range. While the aura is active, you can use the Heroic Intervention interrupt."
+            },
+            {
+                "type": "Refresh",
+                "desc": "Refresh this stance at the start of your turn."
+            },
             {
                 "type": "Heroic",
                 "desc": "Immediately activate the interrupt effect."
@@ -129,7 +135,7 @@ const ch1Abilities = [
             "name": "Perfect Battlement",
             "desc": "At round 4 or higher, Endless Battlement has no maximum range, deals 4 damage instead of 2, and becomes interrupt 2."
         },
-        "tags": [stance, aura_x, interrupt, heroic, curse, counter]
+        "tags": [stance, aura_x, heroic, curse, counter]
     },
     {
         "name": "Catapult",
@@ -198,7 +204,10 @@ const bastion = {
         "resolve": 2,
         "action": 1,
         "desc": "Your shield becomes the sun: a discus of light and motion, shattering enemy ranks and spurring allies forth.",
-        "effect": "You hurl your shield, and every character on the battlefield is shoved 1 space in a direction of your choice. You may shove in any order, and may choose different directions for each character. Bloodied foes are weakened. Foes at 25% hp or lower are stunned",
+        "effects": [
+            "You hurl your shield, and every character on the battlefield is shoved 1 space in a direction of your choice. You may shove in any order, and may choose different directions for each character.",
+            "Bloodied foes are weakened. Foes at 25% hp or lower are stunned",
+        ],
         "ultimate": {
             "name": "Perfect Helion",
             "desc": "You can repeat this effect once on either allies or enemies."
