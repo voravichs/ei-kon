@@ -205,6 +205,11 @@ const demonslayer = {
             "tags": []
         }
     ],
+    "startbattle": {
+        "conditions": [
+            "sturdy"
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Split Heaven And Hell",

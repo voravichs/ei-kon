@@ -221,6 +221,10 @@ const knave = {
             "tags": [defeated, cure, unstoppable]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Mock",

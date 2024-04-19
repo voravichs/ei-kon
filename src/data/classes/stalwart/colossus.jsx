@@ -162,7 +162,7 @@ const colossus = {
     "traits": [
         {
             "name": "Furious Berserk",
-            "desc": "You go into a furious blood rage as you take damage, giving you the following benefits: You start combat with defiance. You have regeneration, and regain regeneration if defeated and rescued. While you're bloodied, you are sturdy, and gain vigilance +1 at the end of your turn.",
+            "desc": "You go into a furious blood rage as you take damage, giving you the following benefits: \nYou start combat with defiance. \nYou have regeneration, and regain regeneration if defeated and rescued.\nWhile you're bloodied, you are sturdy, and gain vigilance +1 at the end of your turn.",
             "chapter": 1,
             "tags": [defiance, regeneration, defeated, rescue, bloodied, sturdy, vigilance_x]
         },
@@ -191,6 +191,12 @@ const colossus = {
             "tags": [defeated, rescue, rush_x]
         }
     ],
+    "startbattle": {
+        "conditions": [
+            "defiance",
+            "regeneration"
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Gigantas Crusher",

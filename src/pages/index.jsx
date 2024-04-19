@@ -10,7 +10,8 @@ import ArchiveFront from "./Archive/ArchiveFront"
 import ArchiveKeywords from "./Archive/ArchiveKeywords"
 import ArchiveClasses from "./Archive/ArchiveClasses"
 import About from "./About"
-
+import CharacterSheetA from "./CharacterSheetA"
+import CharacterSheetB from "./CharacterSheetB"
 
 export {
     Home,
@@ -25,4 +26,6 @@ export {
     ArchiveKeywords,
     ArchiveClasses,
     About,
+    CharacterSheetA,
+    CharacterSheetB
 }

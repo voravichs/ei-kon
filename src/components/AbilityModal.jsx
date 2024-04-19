@@ -3,13 +3,12 @@ import { TbHexagonFilled, TbHexagon1Filled, TbHexagon2Filled, TbSquareRoundedNum
 import { IoIosCloseCircle } from "react-icons/io";
 
 import { useState } from "react";
-import PropTypes from 'prop-types';
 import { motion } from "framer-motion"
 
 /**
  * Modal
  */
-export default function Modal({ability}) {
+export default function AbilityModal({ability}) {
     const [showModal, setShowModal] = useState(false);
 
     const tooltip = {
@@ -226,7 +225,3 @@ export default function Modal({ability}) {
         </>
     )
 }
-
-Modal.propTypes = {
-    ability: PropTypes.object
-};

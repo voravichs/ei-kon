@@ -1,14 +1,29 @@
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
 /**
  * Naming and finalizing Page
  */
 export default function Finalize() {
     const location = useLocation();
     const { job, classSelected, abilities} = location.state;
+
+    const [name, setName] = useState("");
     
     const colorSwapBorder = `${classSelected.class === 'stalwart' ? "border-red-600" : "border-primary"}`;
     const colorSwapAccent = `${classSelected.class === 'stalwart' ? "border-red-400" : "border-primary"}`;
     const colorSwapBg = `${classSelected.class === 'stalwart' ? "bg-red-600" : "border-primary"}`;
+
+    function handleSubmit() {
+        const charData = {
+            "name": name,
+            "class": classSelected,
+            "job": job,
+            "abilities": abilities,
+            "level": 0,
+            "chapter": 1
+        }
+        localStorage.setItem(name, JSON.stringify(charData));
+    }
 
     return (
         <>
@@ -25,7 +40,9 @@ export default function Finalize() {
                         </div>
                         <div className="flex items-center gap-4 text-2xl">
                             <p className="font-bona-nova font-bold">Name:</p>
-                            <input className="border rounded text-xl py-2 px-4 drop-shadow font-noto-sans " placeholder={"enter name"} />    
+                            <input 
+                                onChange={(e) => setName(e.target.value)}
+                                className="border rounded text-xl py-2 px-4 drop-shadow font-noto-sans " placeholder={"enter name"} />    
                         </div>
                         <div className="text-2xl flex gap-4">
                             <span className="font-bona-nova font-bold">Class: </span>
@@ -48,7 +65,11 @@ export default function Finalize() {
                             </div>
                         </div>
                         <div className="flex-center items-end h-full">
-                            <button className={`w-1/2 text-white p-4 rounded-lg text-2xl font-noto-sans ${colorSwapBg}`}> REGISTER</button>
+                            <button 
+                                onClick={() => handleSubmit()}
+                                className={`w-1/2 text-white p-4 rounded-lg text-2xl font-noto-sans ${colorSwapBg}`}> 
+                                    REGISTER
+                            </button>
                         </div>
                     </div>
                 </div>

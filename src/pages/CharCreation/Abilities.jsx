@@ -1,8 +1,9 @@
+import AbilityModal from "../../components/AbilityModal"
+
 import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
 import { FaArrowCircleRight } from "react-icons/fa";
 
 import { useLocation, Link } from "react-router-dom";
-import Modal from "../../components/Modal"
 import { useState } from "react";
 import { motion } from "framer-motion"
 
@@ -21,11 +22,8 @@ export default function Abilities() {
     const [atMax, setAtMax] = useState(false);
 
     function handleAddAbility(ability) {
-        console.log("pog")
         if (selectedAbilities.length <= 1) {
-            console.log("pog")
             if (!selectedAbilities.includes(ability)) {
-                console.log("pog")
                 setSelectedAbilities([...selectedAbilities, ability]);
                 if (selectedAbilities.length > 0) {
                     setAtMax(true)
@@ -55,7 +53,7 @@ export default function Abilities() {
                                 return (
                                     <div key={ability.name} className={`border border-b-[24px] bg-red-600 rounded-lg flex-center flex-col text-white text-xl text-center ${colorSwapAccent} relative`}>
                                         <p>{ability.name}</p>
-                                        <Modal ability={ability}/>
+                                        <AbilityModal ability={ability}/>
                                         <IoIosAddCircle onClick={() => handleAddAbility(ability)} className="absolute bottom-2 left-2 text-3xl hover:animate-bounce cursor-pointer "/>
                                     </div>
                                 )

@@ -169,7 +169,6 @@ export default function Jobs() {
                                             }}>
                                                 <FaArrowCircleRight className="text-6xl text-red-600 cursor-pointer" />
                                         </Link>
-
                                     </motion.div>
                                 </div>
                             </div>

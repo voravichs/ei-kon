@@ -198,6 +198,10 @@ const bastion = {
             "tags": [interrupt, rush_x]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Helion",
