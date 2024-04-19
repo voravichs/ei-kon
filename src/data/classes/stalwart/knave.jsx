@@ -229,7 +229,7 @@ const knave = {
     "limitbreak": {
         "name": "Mock",
         "resolve": 2,
-        "action": 1,
+        "actions": 1,
         "desc": "There is no weapon greater than a well-timed and well-aimed insult.",
         "effects": [
             "A foe in range 3 becomes slashed+, weakened+, cannot gain or benefit from evasion, dodge, or stealth, and gains hatred+ of you. These effects continue until the end of their next turn.",

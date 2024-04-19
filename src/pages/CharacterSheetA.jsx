@@ -2,7 +2,8 @@ import keywords from "../data/keywords";
 import DiceModal from '../components/DiceModal';
 import CharSheetAbilityModal from "../components/CharSheetAbilityModal"
 import LimitBreakModal from "../components/LimitBreakModal";
-import ActionModal from "../components/ActionModal";
+import OneActionModal from "../components/OneActionModal";
+import TwoActionModal from "../components/TwoActionModal";
 
 import Icon from '@mdi/react';
 import { mdiDiceD10, mdiDiceD8, mdiDiceD6 } from '@mdi/js';
@@ -35,8 +36,8 @@ export default function CharacterSheetA() {
         return array;
     });
     const [actionsMenuActive, setActionsMenuActive] = useState(false);
-    const [moveMenuActive, setMoveMenuActive] = useState(false);
-
+    const [moveMenuActive, setMoveMenuActive] = useState(false); 
+    
     function handleHP(action) {
         switch (action) {
             case("plus"): 
@@ -403,10 +404,10 @@ export default function CharacterSheetA() {
                                         <div className="text-lg text-black"> ACTIONS </div>
                                         <div className="flex">
                                             <div className="text-6xl text-primary cursor-pointer"> 
-                                                <ActionModal charData={charData} actions={1} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
+                                                <OneActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
                                             </div>
                                             <div className="text-6xl text-primary cursor-pointer"> 
-                                                <ActionModal charData={charData} actions={2} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
+                                                <TwoActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
                                             </div>
                                         </div>  
                                         <IoIosCloseCircle onClick={() => setActionsMenuActive(false)}

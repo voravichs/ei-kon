@@ -18,11 +18,6 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
         animate: { scale: 1, opacity: 1 },
     }
 
-    const diceHover = {
-        initial: { scale: 1},
-        animate: { scale: 1.1 },
-    }
-
     const diceRoll = {
         hover: { x: [null, 3, -3, 0], y: [null, 3, -3, 0], transition: { duration: 0.25 }},
         tap: { rotate: 360, transition: { duration: 0.25 } },

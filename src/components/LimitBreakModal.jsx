@@ -30,7 +30,7 @@ export default function LimitBreakModal({limitbreak}) {
                                 <div className="p-4 border-b border-solid rounded-t text-black">
                                     <div className="grid grid-cols-6 items-center mb-2"> 
                                         {/* Actions */}
-                                        {limitbreak.action == 1 ? 
+                                        {limitbreak.actions == 1 ? 
                                             <motion.div
                                                 initial="initial"
                                                 animate="initial"
@@ -46,7 +46,7 @@ export default function LimitBreakModal({limitbreak}) {
                                                 </motion.span>
                                             </motion.div>
                                             
-                                            : limitbreak.action == 2 ?
+                                            : limitbreak.actions == 2 ?
                                             <motion.div
                                                 initial="initial"
                                                 animate="initial"

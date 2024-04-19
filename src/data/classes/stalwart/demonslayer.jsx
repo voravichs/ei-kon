@@ -214,7 +214,7 @@ const demonslayer = {
     "limitbreak": {
         "name": "Split Heaven And Hell",
         "resolve": 3,
-        "action": 1,
+        "actions": 1,
         "desc": "Sever Divinity and cut through the threads of possibility. Pour all your rage into one blow and topple the Gods.",
         "effects": [
             "End your turn, and start charging up a God Cutting Blow. Delay: Your next turn must be slow. At the start of that turn, you may take one of the following options: \n Sever Divine Thread: Swing your weapon in a line 5 area effect drawn from your position. This counts as using an attack this turn. Characters in the line take damage depending on their distance on the line from you. 1 space: 100% of max hp, 2-4 spaces: 50% of max hp, 5+ spaces: 25% of max hp. \n Divine Cancel: You may cancel this ability, refunding the resolve cost, and rush 1. You can limit break again this combat, but not this turn. \n Divine Delay: You continue to hold this ability. Your next turn must be slow and repeat this delay effect. Each time you do this, increase the width of the line by 1 space, to a maximum of 3 width, and its length by 3 spaces. You cannot attack while holding Divine Delay. \n Legend characters always take 25% of max hp from this ability instead of other effects.",
