@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
 import img from "../../../assets/images/colossus.PNG"
+import { GiWingfoot } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -12,14 +13,20 @@ const ch1Abilities = [
         "name": "Valkyrie",
         "actions": 1,
         "desc": "Soaring through the air like a vengeful spirit, you crash into your enemy.",
-        "type": ["attack"],
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
+        "type": ["attack", "true strike"],
         "effects": [
-            "You may fly 1",
-            "On hit: [D] + fray. Miss: fray.",
-            "Attack target is weakened."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "You may fly 1"
+            },
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray."
+            },
+            {
+                "type": "Effect",
+                "desc": "Attack target is weakened."
+            },
             {
                 "type": "Exceed or Heroic",
                 "desc": "Create a pit under your target."
@@ -39,7 +46,7 @@ const ch1Abilities = [
         "range": 3,
         "desc": "The disciples of the wolf titan exhibit such legendary strength that they can rip up the earth itself with their bare hands.",
         "type": [],
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Terrain Effect",
                 "desc": "Smash the battlefield, creating a height 1 boulder object in free space in range. Adjacent characters are shoved 1 away from the terrain when it appears."
@@ -61,12 +68,16 @@ const ch1Abilities = [
         "name": "Dropkick",
         "actions": 1,
         "desc": "Throwing caution to the wind, you crash your whole body into your foe, sending you both flying.",
-        "type": [],
+        "type": ["sacrifice"],
         "effects": [
-            "Fly 1.",
-            "Sacrifice 6. An adjacent foe takes [D] + fray damage."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "Fly 1.",
+            },
+            {
+                "type": "Effect",
+                "desc": "Sacrifice 6. An adjacent foe takes [D] + fray damage."
+            },
             {
                 "type": "Heroic",
                 "desc": "You may rush 2 before or after using this ability."
@@ -84,11 +95,12 @@ const ch1Abilities = [
         "name": "Massive Overhead",
         "actions": 1,
         "desc": "",
-        "type": [],
+        "type": ["end turn"],
         "effects": [
-            "End your turn. Your next attack strikes with such force that it deals bonus damage and creates a pit under its target after it resolves.",
-        ],
-        "extra_effects": [
+            {
+                "type": "End your turn",
+                "desc": "Your next attack strikes with such force that it deals bonus damage and creates a pit under its target after it resolves.",
+            },
             {
                 "type": "Special Effect",
                 "desc": "If your target was already in a pit before the triggering attack, it also activates all exceed effects."
@@ -96,7 +108,7 @@ const ch1Abilities = [
             {
                 "type": "Comeback or Heroic",
                 "desc": "Attack may also create a small blast area effect on its target, dealing 2 damage to all characters inside."
-            }
+            }  
         ],
         "talent1": "Attack gains Exceed: Also create a height 1 boulder object adjacent to your foe.",
         "talent2": "Attack gains Exceed: The pit also becomes dangerous terrain.",
@@ -111,11 +123,15 @@ const ch1Abilities = [
         "actions": 2,
         "desc": "You deliver a mighty blow with wild abandon, so strong that you yourself are left reeling.",
         "type": ["attack"],
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
         "effects": [
-            "Both you and your foe are stunned. You may sacrifice 4 to avoid this stun."
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray."
+            },
+            {
+                "type": "Effect",
+                "desc": "Both you and your foe are stunned. You may sacrifice 4 to avoid this stun."
+            },
             {
                 "type": "Exceed or Heroic",
                 "desc": "Gains true strike and creates a pit under your target."
@@ -135,10 +151,14 @@ const ch1Abilities = [
         "desc": "Wrapping your arms around your foe, you fling the two of you backwards with a force that liquifies rock.",
         "type": [],
         "effects": [
-            "You pick up an adjacent foe, removing them from the battlefield.",
-            "Sacrifice up to 6, then fly half that many spaces. Place your foe in a free adjacent space. They take [D] + fray damage and are slashed. slashed characters are stunned. If you can't place the foe in a valid space this action can't be taken."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "You pick up an adjacent foe, removing them from the battlefield.",
+            },
+            {
+                "type": "Effect",
+                "desc": "Sacrifice up to 6, then fly half that many spaces. Place your foe in a free adjacent space. They take [D] + fray damage and are slashed. slashed characters are stunned. If you can't place the foe in a valid space this action can't be taken."
+            },
             {
                 "type": "Heroic",
                 "desc": "Sacrifice cost costs 0 hp but counts as sacrificing 6."
@@ -158,7 +178,8 @@ const colossus = {
     "jobName": "Colossus",
     "title": "High Flying Grappler",
     "img": img,
-    "desc": "Ferocious followers of Arenheir, the Wolf Titan, the Colossi are a martial order of berserkers, pankrationists, and warriors that reaches across all of Arden Eld. They travel throughout the land seeking powerful foes, and taking trophies to return to their great lodges to offer in tribute to Arenheir in fierce hope of resurrecting their god. At their lodges they feast and drink to their deeds, companions, and boasts Colossi seek glory and challenge through battle, and will often go for only the absolute strongest warriors and monsters, heedless of their own safety. They fight with wild abandon and unconventional techniques that would make even the dirtiest Knave raise an eyebrow.",
+    "icon": <GiWingfoot/>,
+    "desc": "<p>Ferocious followers of Arenheir, the Wolf Titan, the Colossi are a martial order of berserkers, pankrationists, and warriors that reaches across all of Arden Eld. They travel throughout the land seeking powerful foes, and taking trophies to return to their great lodges to offer in tribute to Arenheir in fierce hope of resurrecting their god. At their lodges they feast and drink to their deeds, companions, and boasts.</p><p>Colossi seek glory and challenge through battle, and will often go for only the absolute strongest warriors and monsters, heedless of their own safety. They fight with wild abandon and unconventional techniques that would make even the dirtiest Knave raise an eyebrow.</p>",
     "traits": [
         {
             "name": "Furious Berserk",

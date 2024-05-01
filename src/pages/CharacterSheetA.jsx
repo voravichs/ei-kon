@@ -1,7 +1,7 @@
 import keywords from "../data/keywords";
 import DiceModal from '../components/DiceModal';
 import CharSheetAbilityModal from "../components/CharSheetAbilityModal"
-import LimitBreakModal from "../components/LimitBreakModal";
+import LimitBreakModal from "../components/modals/LimitBreakModal";
 import OneActionModal from "../components/OneActionModal";
 import TwoActionModal from "../components/TwoActionModal";
 
@@ -36,17 +36,17 @@ export default function CharacterSheetA() {
         return array;
     });
     const [actionsMenuActive, setActionsMenuActive] = useState(false);
-    const [moveMenuActive, setMoveMenuActive] = useState(false); 
-    
+    const [moveMenuActive, setMoveMenuActive] = useState(false);
+
     function handleHP(action) {
         switch (action) {
-            case("plus"): 
-                if ((currentHP/charData.class.hp) < 1) {
+            case ("plus"):
+                if ((currentHP / charData.class.hp) < 1) {
                     setCurrentHP(currentHP + 1)
                 }
                 break;
-            case("minus"):
-                if ((currentHP/charData.class.hp) > 0) {
+            case ("minus"):
+                if ((currentHP / charData.class.hp) > 0) {
                     setCurrentHP(currentHP - 1)
                 }
                 break;
@@ -57,13 +57,13 @@ export default function CharacterSheetA() {
 
     function handleVigor(action) {
         switch (action) {
-            case("plus"): 
-                if ((vigor/(charData.class.hp/4)) < 1) {
+            case ("plus"):
+                if ((vigor / (charData.class.hp / 4)) < 1) {
                     setVigor(vigor + 1)
                 }
                 break;
-            case("minus"):
-                if ((vigor/(charData.class.hp/4)) > 0) {
+            case ("minus"):
+                if ((vigor / (charData.class.hp / 4)) > 0) {
                     setVigor(vigor - 1)
                 }
                 break;
@@ -74,14 +74,14 @@ export default function CharacterSheetA() {
 
     function handleWounds(action, remove) {
         switch (action) {
-            case("plus"): 
+            case ("plus"):
                 if ((wounds.length) < 4) {
                     setWounds([...wounds, "wound" + wounds.length])
                 }
                 break;
-            case("minus"):
+            case ("minus"):
                 if ((wounds.length) > 0) {
-                    setWounds(wounds.filter(a => 
+                    setWounds(wounds.filter(a =>
                         a !== remove
                     ))
                 }
@@ -110,16 +110,16 @@ export default function CharacterSheetA() {
         const found = conditions.find((el) => el.name === "Bloodied");
         if (currentHP <= charData.class.hp / 2 && !found) {
             setConditions([...conditions, statusConditions["bloodied"]])
-        }    
+        }
     }, [currentHP]);
 
     useEffect(() => {
         const found = conditions.find((el) => el.name === "Bloodied");
         if (currentHP > charData.class.hp / 2 && found) {
-            setConditions(conditions.filter(a => 
+            setConditions(conditions.filter(a =>
                 a.name !== "Bloodied"
             ))
-        }    
+        }
     }, [currentHP]);
 
     const tooltip = {
@@ -128,16 +128,16 @@ export default function CharacterSheetA() {
     }
 
     const diceHover = {
-        initial: { scale: 1},
-        animate: { x: [null, 3, -3, 0], y: [null, 3, -3, 0], transition: { duration: 0.25 }},
+        initial: { scale: 1 },
+        animate: { x: [null, 3, -3, 0], y: [null, 3, -3, 0], transition: { duration: 0.25 } },
     }
 
     const hpBar = {
-        width: `${(currentHP/charData.class.hp)*100}%`
+        width: `${(currentHP / charData.class.hp) * 100}%`
     };
 
     const vigorBar = {
-        width: `${(vigor/(charData.class.hp/4))*100}%`
+        width: `${(vigor / (charData.class.hp / 4)) * 100}%`
     };
 
     return (
@@ -146,7 +146,7 @@ export default function CharacterSheetA() {
                 {/* Header */}
                 <div className='h-72 pt-20 px-8 bg-primary flex items-center gap-12 font-noto-sans text-white relative z-10 border-b-2 border-white'>
                     {/* Image */}
-                    <img src={charData.job.img} className="h-96 rounded-b-2xl outline-primary outline outline-offset-0 outline-2 p-2 bg-white self-start"/>
+                    <img src={charData.job.img} className="h-96 rounded-b-2xl outline-primary outline outline-offset-0 outline-2 p-2 bg-white self-start" />
                     {/* Chapter & Level */}
                     <div className='pt-4 flex flex-col gap-1'>
                         <p className='text-4xl'>{charData.name}</p>
@@ -170,28 +170,28 @@ export default function CharacterSheetA() {
                             </div>
                             {/* HP Controls */}
                             <div className='flex items-center gap-2 text-xl'>
-                                <FaMinusCircle className="cursor-pointer" onClick={() => handleHP("minus")}/>
+                                <FaMinusCircle className="cursor-pointer" onClick={() => handleHP("minus")} />
                                 <div className="flex gap-1">
-                                    {currentHP} 
+                                    {currentHP}
                                     <p>/ {charData.class.hp - (wounds.length * 10)}</p>
                                 </div>
-                                <FaPlusCircle className="cursor-pointer" onClick={() => handleHP("plus")}/>
+                                <FaPlusCircle className="cursor-pointer" onClick={() => handleHP("plus")} />
                             </div>
                             {/* Vigor Controls */}
                             <div className='flex items-center gap-2 text-xl text-secondary'>
-                                <FaMinusCircle className="cursor-pointer" onClick={() => handleVigor("minus")}/>
-                                <p>{vigor} / {(charData.class.hp/4)}</p>
-                                <FaPlusCircle className="cursor-pointer" onClick={() => handleVigor("plus")}/>
+                                <FaMinusCircle className="cursor-pointer" onClick={() => handleVigor("minus")} />
+                                <p>{vigor} / {(charData.class.hp / 4)}</p>
+                                <FaPlusCircle className="cursor-pointer" onClick={() => handleVigor("plus")} />
                             </div>
                             {/* Wounds */}
                             <div className='flex items-center gap-2 text-xl text-secondary'>
                                 <div className="text-red-700">Wounds</div>
                                 <div className="flex items-center text-red-700 text-2xl gap-1">
                                     {wounds.map(wound =>
-                                        <GiOpenWound key={wound}/>
+                                        <GiOpenWound key={wound} />
                                     )}
-                                    <FaMinusCircle className="text-lg cursor-pointer" onClick={() => handleWounds("minus", "wound" + (wounds.length - 1))}/>
-                                    <FaPlusCircle className="text-lg cursor-pointer" onClick={() => handleWounds("plus")}/>
+                                    <FaMinusCircle className="text-lg cursor-pointer" onClick={() => handleWounds("minus", "wound" + (wounds.length - 1))} />
+                                    <FaPlusCircle className="text-lg cursor-pointer" onClick={() => handleWounds("plus")} />
                                 </div>
                             </div>
                         </div>
@@ -199,55 +199,55 @@ export default function CharacterSheetA() {
                     {/* Dice */}
                     <div className={`h-44 w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
                         <p className='text-xl'>Damage</p>
-                        <motion.div 
+                        <motion.div
                             initial="initial"
                             animate="initial"
                             whileHover="animate"
                             className="text-4xl">
-                                <motion.div >
-                                    <motion.div variants={diceHover}>
-                                        {charData.class.damagedice === 6 ? <Icon path={mdiDiceD6} size={3} onClick={() => setShowDiceModal(true)}/>
-                                        :charData.class.damagedice === 8 ? <Icon path={mdiDiceD8} size={3} onClick={() => setShowDiceModal(true)}/>
-                                        :<Icon path={mdiDiceD10} size={3} onClick={() => setShowDiceModal(true)}/>}
-                                    </motion.div>
-                                    <DiceModal 
-                                        title={"Basic Attack"} 
-                                        dice={charData.class.damagedice} 
-                                        fray={charData.class.fray}
-                                        actions={1}
-                                        showModal={showDiceModal}
-                                        setShowModal={setShowDiceModal}/>
+                            <motion.div >
+                                <motion.div variants={diceHover}>
+                                    {charData.class.damagedice === 6 ? <Icon path={mdiDiceD6} size={3} onClick={() => setShowDiceModal(true)} />
+                                        : charData.class.damagedice === 8 ? <Icon path={mdiDiceD8} size={3} onClick={() => setShowDiceModal(true)} />
+                                            : <Icon path={mdiDiceD10} size={3} onClick={() => setShowDiceModal(true)} />}
                                 </motion.div>
-                                <motion.span
-                                    variants={tooltip}
-                                    transition={{ duration: 0.1, ease: "easeIn" }}
-                                    className="absolute z-10 w-32 -bottom-0 left-2 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white">
-                                    <p className="font-bold text-center"> Click to roll</p>
-                                </motion.span>
+                                <DiceModal
+                                    title={"Basic Attack"}
+                                    dice={charData.class.damagedice}
+                                    fray={charData.class.fray}
+                                    actions={1}
+                                    showModal={showDiceModal}
+                                    setShowModal={setShowDiceModal} />
+                            </motion.div>
+                            <motion.span
+                                variants={tooltip}
+                                transition={{ duration: 0.1, ease: "easeIn" }}
+                                className="absolute z-10 w-32 -bottom-0 left-2 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white">
+                                <p className="font-bold text-center"> Click to roll</p>
+                            </motion.span>
                         </motion.div>
                     </div>
                     {/* Defense */}
                     <div className={`h-44 w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
                         <p className='text-xl'>Defense</p>
-                        <motion.div 
+                        <motion.div
                             initial="initial"
                             animate="initial"
                             whileHover="animate"
                             className="h-[65px] w-[60px] text-4xl bg-primary text-white rounded-b-full relative p-4">
-                                <div className='text-center'>
-                                    {charData.class.defense}
-                                </div>
-                                <motion.span
-                                    variants={tooltip}
-                                    transition={{ duration: 0.1, ease: "easeIn" }}
-                                    className="absolute z-10 w-60 -bottom-24 -left-24 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white">
-                                    <p className="font-bold text-center">{rules.defense.name}</p>
-                                    <p className="font-normal"> {rules.defense.desc}</p>
-                                </motion.span>
+                            <div className='text-center'>
+                                {charData.class.defense}
+                            </div>
+                            <motion.span
+                                variants={tooltip}
+                                transition={{ duration: 0.1, ease: "easeIn" }}
+                                className="absolute z-10 w-60 -bottom-24 -left-24 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white">
+                                <p className="font-bold text-center">{rules.defense.name}</p>
+                                <p className="font-normal"> {rules.defense.desc}</p>
+                            </motion.span>
                         </motion.div>
                     </div>
                     {/* Right Side Buttons */}
-                        <div className="absolute bottom-12 right-12 h-44 font-bold flex justify-center flex-col gap-2 p-4 rounded-lg">
+                    <div className="absolute bottom-12 right-12 h-44 font-bold flex justify-center flex-col gap-2 p-4 rounded-lg">
                         <button className="text-white px-8 py-2 bg-secondary text-2xl slick-card border-0">
                             Character Details
                         </button>
@@ -289,16 +289,16 @@ export default function CharacterSheetA() {
                                                             {item.name}
                                                         </div>
                                                         <p>{item.desc}</p>
-                                                    </motion.span> 
+                                                    </motion.span>
                                                 </motion.div>
                                             );
-                                        })} 
-                                    </div>   
+                                        })}
+                                    </div>
                                     <div className="absolute top-2 right-2">
-                                        <FaPlusCircle className="text-secondary text-2xl bg-white rounded-full cursor-pointer"/>
+                                        <FaPlusCircle className="text-secondary text-2xl bg-white rounded-full cursor-pointer" />
                                     </div>
                                 </div>
-                                 
+
                             </div>
                             {/* Traits */}
                             <div className="h-3/5 flex flex-col">
@@ -320,12 +320,12 @@ export default function CharacterSheetA() {
                                                 <p className="font-bold">{item.name}{item.chapter}</p>
                                                 <p>{item.desc}</p>
                                             </motion.span>
-                                            
+
                                         </motion.div>
-                                    )} 
+                                    )}
                                     {charData.job.traits.map(item => (
                                         item.chapter === 1
-                                        ?  <motion.div
+                                            ? <motion.div
                                                 initial="initial"
                                                 animate="initial"
                                                 whileHover="animate"
@@ -341,8 +341,8 @@ export default function CharacterSheetA() {
                                                     <p>{parse(item.desc)}</p>
                                                 </motion.span>
                                             </motion.div>
-                                        : null
-                                    ))} 
+                                            : null
+                                    ))}
                                 </div>
                             </div>
                         </div>
@@ -358,10 +358,10 @@ export default function CharacterSheetA() {
                                         return (
                                             <div key={ability.name} className="border border-b-[24px] bg-white rounded-lg flex-center flex-col text-primary text-xl text-center border-card-accent relative">
                                                 <p className="text-2xl font-bold">{ability.name}</p>
-                                                <CharSheetAbilityModal ability={ability}/>
+                                                <CharSheetAbilityModal ability={ability} />
                                             </div>
                                         )
-                                    })}    
+                                    })}
                                 </div>
                             </div>
                         </div>
@@ -370,7 +370,7 @@ export default function CharacterSheetA() {
                             <div className="bg-primary w-1/2 p-8 pb-24">
                                 <div className="flex flex-col h-full">
                                     <h1 className="text-white text-3xl font-bold font-noto-sans mb-2">Special</h1>
-                                    
+
                                 </div>
                             </div>
                             <div className="bg-primary w-1/2 p-8 pb-24">
@@ -378,12 +378,12 @@ export default function CharacterSheetA() {
                                     <h1 className="text-white text-3xl font-bold font-noto-sans mb-2">Limit Break</h1>
                                     <div className="border border-b-[24px] bg-white rounded-lg flex-center flex-col text-primary text-xl text-center border-card-accent relative h-full">
                                         <p className="text-2xl font-bold">{charData.job.limitbreak.name}</p>
-                                        <LimitBreakModal limitbreak={charData.job.limitbreak}/>
+                                        <LimitBreakModal limitbreak={charData.job.limitbreak} />
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </div>
@@ -391,10 +391,10 @@ export default function CharacterSheetA() {
                 <div className="absolute w-full h-16 inset-x-0 bottom-0 flex-center font-noto-sans z-10">
                     <div className="bg-secondary w-full h-full border-t-2 border-white flex-center gap-8 py-1 px-16 relative">
                         {/* Actions */}
-                        <button onClick={() => setActionsMenuActive(!actionsMenuActive)} 
+                        <button onClick={() => setActionsMenuActive(!actionsMenuActive)}
                             className="bg-primary text-white font-bold rounded-lg w-36 h-4/5 text-xl">
                             <div className="flex flex-center gap-2">
-                                Actions <TbHexagonFilled className="text-3xl"/>
+                                Actions <TbHexagonFilled className="text-3xl" />
                             </div>
                         </button>
                         {actionsMenuActive ? (
@@ -403,24 +403,24 @@ export default function CharacterSheetA() {
                                     <div className="w-full h-full flex-center flex-col gap-1 relative">
                                         <div className="text-lg text-black"> ACTIONS </div>
                                         <div className="flex">
-                                            <div className="text-6xl text-primary cursor-pointer"> 
-                                                <OneActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
+                                            <div className="text-6xl text-primary cursor-pointer">
+                                                <OneActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal} />
                                             </div>
-                                            <div className="text-6xl text-primary cursor-pointer"> 
-                                                <TwoActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal}/>
+                                            <div className="text-6xl text-primary cursor-pointer">
+                                                <TwoActionModal charData={charData} showDiceModal={showDiceModal} setShowDiceModal={setShowDiceModal} />
                                             </div>
-                                        </div>  
+                                        </div>
                                         <IoIosCloseCircle onClick={() => setActionsMenuActive(false)}
-                                            className="absolute top-1 right-1 text-red-500 text-2xl justify-self-end cursor-pointer"/>
+                                            className="absolute top-1 right-1 text-red-500 text-2xl justify-self-end cursor-pointer" />
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         ) : null}
                         {/* Movement */}
                         <button onClick={() => setMoveMenuActive(!moveMenuActive)}
                             className="bg-primary text-white font-bold rounded-lg w-44 h-4/5 text-xl">
                             <div className="flex flex-center gap-2">
-                                Movement <FaArrowAltCircleRight className="text-3xl"/>
+                                Movement <FaArrowAltCircleRight className="text-3xl" />
                             </div>
                         </button>
                         {moveMenuActive ? (
@@ -429,22 +429,22 @@ export default function CharacterSheetA() {
                                     <div className="w-full h-full flex-center flex-col gap-1 relative">
                                         <div className="text-lg mr-2"> MOVE </div>
                                         <div className="flex">
-                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight/> </div>
-                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight/> </div>
-                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight/> </div>
-                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight/> </div>    
+                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight /> </div>
+                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight /> </div>
+                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight /> </div>
+                                            <div className="text-4xl text-primary"> <FaArrowAltCircleRight /> </div>
                                         </div>
                                         <IoIosCloseCircle onClick={() => setMoveMenuActive(false)}
-                                            className="absolute top-1 right-1 text-red-500 text-2xl justify-self-end cursor-pointer"/>
+                                            className="absolute top-1 right-1 text-red-500 text-2xl justify-self-end cursor-pointer" />
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         ) : null}
                         {/* End Turn */}
                         <button className="bg-primary text-white font-bold rounded-lg w-36 h-4/5 text-xl">
                             End Turn
                         </button>
-                        
+
                     </div>
                 </div>
             </div>

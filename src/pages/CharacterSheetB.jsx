@@ -1,7 +1,7 @@
 import keywords from "../data/keywords";
 import DiceModal from '../components/DiceModal';
 import CharSheetAbilityModal from "../components/CharSheetAbilityModal"
-import LimitBreakModal from "../components/LimitBreakModal";
+import LimitBreakModal from "../components/modals/LimitBreakModal";
 import OneActionModal from "../components/OneActionModal";
 import TwoActionModal from "../components/TwoActionModal";
 

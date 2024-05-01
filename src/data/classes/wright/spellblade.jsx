@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
-// import img from "../../../assets/images/bastion.PNG"
+import img from "../../../assets/images/spellblade.PNG"
+import { GiWindHole } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -14,8 +15,9 @@ const ch1Abilities = [
 const spellblade = {
     "jobName": "Spellblade",
     "title": "Swordmaster, Wind Dancer",
-    "img": "",
-    "desc": "Spellblades are a martial order of highly trained wrights. Many of them come from the Guild Academies in the great cities of Arden Eld, where they often take prestigious posts in the local militias and city watch. Other wrights tend to view Spellblades as stiff, unfeeling military types, but spell blades themselves know they are consummate professionals and unparalleled masters of their art.\nThe lightning Aether that the spellblades wield is highly volatile, and requires intense training and focus to control. Once a spell blade has learned their craft, however, the speed, power, and precision at which they can act is intoxicating, crossing great spans of space in an instant, riding the Aetherial currents with a flash of gleaming steel.",
+    "img": img,
+    "icon": <GiWindHole/>,
+    "desc": "<p>Spellblades are a martial order of highly trained wrights. Many of them come from the Guild Academies in the great cities of Arden Eld, where they often take prestigious posts in the local militias and city watch. Other wrights tend to view Spellblades as stiff, unfeeling military types, but spell blades themselves know they are consummate professionals and unparalleled masters of their art.</p><p>The lightning Aether that the spellblades wield is highly volatile, and requires intense training and focus to control. Once a spell blade has learned their craft, however, the speed, power, and precision at which they can act is intoxicating, crossing great spans of space in an instant, riding the Aetherial currents with a flash of gleaming steel.</p>",
     "traits": [
         {
             "name": "Aether Deflection",

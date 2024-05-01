@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
-// import img from "../../../assets/images/bastion.PNG"
+import img from "../../../assets/images/seer.PNG"
+import { TbCardsFilled } from "react-icons/tb";
 
 const { statusConditions, rules, combatGlossary, actions} = keywordData;
 
@@ -65,8 +66,9 @@ const cards = {
 const seer = {
     "jobName": "Seer",
     "title": "Fortune Teller and Master of Fate",
-    "img": "",
-    "desc": "The Seers are made up of all the orders of hedge witches, stargazers, corner prophets, folk healers, shamans, and all manner of individuals that find themselves attracted to reading the Great Arcana, the esoteric practice of reading destiny itself, the Great Wheel of Arden Eld that determines the final fate of all things.\nThrough ritual, ceremony, and unrelenting practice, Seers gain the ability to predict and even defy a person's fate, using their Aether infused card decks to influence the turning of the Great Wheel and empower their allies with foresight, precision, and uncanny accuracy.",
+    "img": img,
+    "icon": <TbCardsFilled/>,
+    "desc": "</p><p>The Seers are made up of all the orders of hedge witches, stargazers, corner prophets, folk healers, shamans, and all manner of individuals that find themselves attracted to reading the Great Arcana, the esoteric practice of reading destiny itself, the Great Wheel of Arden Eld that determines the final fate of all things.</p><p>Through ritual, ceremony, and unrelenting practice, Seers gain the ability to predict and even defy a person's fate, using their Aether infused card decks to influence the turning of the Great Wheel and empower their allies with foresight, precision, and uncanny accuracy.</p>",
     "traits": [
         {
             "name": "The Wheel of Fate",

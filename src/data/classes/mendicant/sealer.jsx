@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
-// import img from "../../../assets/images/bastion.PNG"
+import img from "../../../assets/images/sealer.PNG"
+import { GiPrayerBeads } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -14,8 +15,9 @@ const ch1Abilities = [
 const sealer = {
     "jobName": "Sealer",
     "title": "Holy Judge and Purger of Evil",
-    "img": "",
-    "desc": "Traveling priests, monks, judges, and doctors, the Sealers roam the world from village to village, performing necessary rituals, marriages, ceremonies, and yearly festivals. They are a welcome sight in most villages, and most perform the important function of traveling judge and medium, acting as an impartial party translating for the will of the local spirits. They often travel with many blessed relics of the deities of the land or even portable shrines on their back.\nIn their other role, Sealers are legendary monster hunters and exorcists of unbelievable prowess and unshakeable faith. Whenever an especially bad blight or an arch demon appears, the Sealers are usually there to drive it back with ancient sealing magic, blessed brands, and flaming weapons.",
+    "img": img,
+    "icon": <GiPrayerBeads/>,
+    "desc": "<p>Traveling priests, monks, judges, and doctors, the Sealers roam the world from village to village, performing necessary rituals, marriages, ceremonies, and yearly festivals. They are a welcome sight in most villages, and most perform the important function of traveling judge and medium, acting as an impartial party translating for the will of the local spirits. They often travel with many blessed relics of the deities of the land or even portable shrines on their back.</p><p>In their other role, Sealers are legendary monster hunters and exorcists of unbelievable prowess and unshakeable faith. Whenever an especially bad blight or an arch demon appears, the Sealers are usually there to drive it back with ancient sealing magic, blessed brands, and flaming weapons.</p>",
     "traits": [
         {
             "name": "Blessing of War",

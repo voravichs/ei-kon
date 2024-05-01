@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
-// import img from "../../../assets/images/bastion.PNG"
+import img from "../../../assets/images/geomancer.PNG"
+import { GiStoneBlock } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -14,8 +15,9 @@ const ch1Abilities = [
 const geomancer = {
     "jobName": "Geomancer",
     "title": "Guardian of the Pure Earth",
-    "img": "",
-    "desc": "Geomancers belong to an old order of mystics, doctors, alchemists, and esoteric martial artists called the Keepers of the Elden Gate. These scholarly wrights are concerned with health and the flow of energy, not just through the body, but through the very earth itself. They consider themselves physicians of the highest order - their patient being the eternal land of Arden Eld.\nThese studious wrights attune themselves to earth Aether, aligning the energy channels of their body to crystalline perfection with vigorous exercise and sometimes bizarre health regimes. In battle, the land itself is their ally, spitting forth poisonous gases, cavernous upheavals of earth, and great spires of rock to crush their foes.\nNone are more concerned with the Churn than the geomancers, who view it as the greatest sickness known to Kin, and will take any opportunity to fight or study it with exuberance.",
+    "img": img,
+    "icon": <GiStoneBlock/>,
+    "desc": "<p>Geomancers belong to an old order of mystics, doctors, alchemists, and esoteric martial artists called the Keepers of the Elden Gate. These scholarly wrights are concerned with health and the flow of energy, not just through the body, but through the very earth itself. They consider themselves physicians of the highest order - their patient being the eternal land of Arden Eld.</p><p>These studious wrights attune themselves to earth Aether, aligning the energy channels of their body to crystalline perfection with vigorous exercise and sometimes bizarre health regimes. In battle, the land itself is their ally, spitting forth poisonous gases, cavernous upheavals of earth, and great spires of rock to crush their foes.</p><p>None are more concerned with the Churn than the geomancers, who view it as the greatest sickness known to Kin, and will take any opportunity to fight or study it with exuberance.</p>",
     "traits": [
         {
             "name": "Aftershock",

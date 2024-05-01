@@ -1,182 +1,88 @@
-import classes from "../../data/classes/baseClass";
-
-import { GiEvilEyes, GiRosaShield, GiRustySword, GiWingfoot } from "react-icons/gi";
-import { FaArrowCircleRight } from "react-icons/fa";
-
-import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion"
+import { useOutletContext } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react";
+import JobCard from "../../components/JobCard";
 
 /**
  * Job Selection Page
  */
 export default function Jobs() {
-    // Destrucure classes
-    const { stalwart, vagabond, mendicant, wright } = classes;
-    let bastion, demonslayer, colossus, knave;
-    [bastion, demonslayer, colossus, knave] = stalwart.jobs;
+    // Contexts
+    const {characterContext, jobContext, setJobContext, colorSwap} = useOutletContext();
 
-    const location = useLocation();
-    const { classSelected } = location.state;
-
-    const [jobSelected, setJobSelected] = useState("");
+    // States
     const [selected, setSelected] = useState(false);
 
-    const tooltip = {
-        initial: { scale: 0.5, opacity: 0 },
-        animate: { scale: 1, opacity: 1 },
+    function handleSetJob(job) {
+        const newChar = {
+            "name": " ",
+            "class": characterContext,
+            "job": job,
+            "abilities": [],
+            "level": 0,
+            "chapter": 1
+        }
+        localStorage.setItem("newChar", JSON.stringify(newChar));
+        setJobContext(job)
+        setSelected(true)
     }
 
     return (
         <>
             <div className="absolute top-0 left-4 w-20 h-3/5 bg-primary" />
-            {classSelected.class === "stalwart" &&
-                <div className="flex h-dvh pt-32 px-8 pb-8">
-                    <div className="w-1/5 h-full flex flex-col gap-2 font-bona-nova text-3xl">
-                        <motion.div
-                            whileHover={{ x: 25 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 30
-                            }}
-                            onClick={() => {
-                                setJobSelected(bastion)
-                                setSelected(true)
-                            }}
-                            className="slick-card py-2 px-8 z-10 border-l-[24px] border-red-600 bg-rose-600 flex-center gap-4 drop-shadow cursor-pointer">
-                            <GiRosaShield className="text-white text-7xl" />
-                            <p className="uppercase text-white font-bold">Bastion</p>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ x: 20 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 30
-                            }}
-                            onClick={() => {
-                                setJobSelected(demonslayer)
-                                setSelected(true)
-                            }}
-                            className="slick-card py-2 px-8 z-10 border-l-[24px] border-red-600 bg-rose-700 flex-center gap-4 drop-shadow cursor-pointer">
-                            <GiRustySword className="text-white text-7xl" />
-                            <p className="uppercase text-white font-bold">Demon Slayer</p>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ x: 20 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 30
-                            }}
-                            onClick={() => {
-                                setJobSelected(colossus)
-                                setSelected(true)
-                            }}
-                            className="slick-card py-2 px-8 z-10 border-l-[24px] border-red-600 bg-rose-800 flex-center gap-4 drop-shadow cursor-pointer">
-                            <GiWingfoot className="text-white text-7xl" />
-                            <p className="uppercase text-white font-bold">Colossus</p>
-                        </motion.div>
-                        <motion.div
-                            whileHover={{ x: 20 }}
-                            transition={{
-                                type: "spring",
-                                stiffness: 700,
-                                damping: 30
-                            }}
-                            onClick={() => {
-                                setJobSelected(knave)
-                                setSelected(true)
-                            }}
-                            className="slick-card py-2 px-8 z-10 border-l-[24px] border-red-600 bg-rose-900 flex-center gap-4 drop-shadow cursor-pointer">
-                            <GiEvilEyes className="text-white text-7xl" />
-                            <p className="uppercase text-white font-bold">Knave</p>
-                        </motion.div>
-                    </div>
-                    <motion.div
-                        className="w-2/5">
-                        {selected &&
-                            <div className="flex flex-col gap-8">
-                                <div className="font-bona-nova flex-center flex-col slick-card border-red-400 bg-red-600 border-b-[12px] mx-auto p-2 px-24 text-white">
-                                    <p className="text-4xl font-bold uppercase">{jobSelected.jobName}</p>
-                                    <p className="text-2xl italic">{jobSelected.title}</p>
+            <div className="flex h-dvh pt-32 px-8 pb-24">
+                {/* Job Selection */}
+                <div className="w-1/4 h-full flex flex-col gap-2 font-bona-nova text-3xl">
+                    {characterContext.jobs.map((job) => {
+                        return (
+                            <motion.div
+                                key={job.jobName}
+                                whileHover={{ x: 25 }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 700,
+                                    damping: 30
+                                }}
+                                onClick={() => {
+                                    handleSetJob(job)
+                                    setSelected(true)
+                                }}
+                                className={`slick-card py-4 px-8 z-10 border-l-[24px] ${colorSwap.bg(characterContext)} ${colorSwap.borderAccent(characterContext)} flex-center gap-4 drop-shadow cursor-pointer`}
+                            >
+                                <div className="text-white text-6xl">
+                                    {job.icon}
                                 </div>
-                                <motion.div
-                                    initial={{ opacity: 0, x: -100 }}
-                                    animate={{ opacity: 1, x: 0 }}
-                                    transition={{ duration: 0.25, ease: "easeOut" }}
-                                    className="w-full flex-center">
-                                    <motion.img
-                                        animate={{ scale: [1, 1.02, 1] }}
-                                        transition={{
-                                            ease: "linear",
-                                            duration: 2,
-                                            times: [0, 0.5, 1],
-                                            repeat: Infinity
-                                        }}
-                                        src={jobSelected.img} className="w-3/5" />
-                                </motion.div>
-                            </div>
-                        }
-                    </motion.div>
-                    <div className="w-2/5 h-full">
-                        {selected &&
-                            <div className="h-full flex flex-col gap-8 font-noto-sans relative">
-                                <div className="italic">
-                                    {jobSelected.desc}
-                                </div>
-                                <p className="text-3xl font-bold text-red-600 text-center">Class Traits</p>
-                                <div className="flex flex-col gap-2">
-                                    {jobSelected.traits.map(trait => {
-                                        return (
-                                            <div key={trait.name}>
-                                                {trait.chapter == 1 &&
-                                                    <motion.div
-                                                        initial="initial"
-                                                        animate="initial"
-                                                        whileHover="animate"
-                                                        className="bg-red-600 text-white slick-card p-4 relative cursor-pointer">
-                                                        <p className="font-bold text-2xl flex-center gap-4">{trait.name}</p>
-                                                        <motion.span
-                                                            variants={tooltip}
-                                                            transition={{ duration: 0.1, ease: "easeIn" }}
-                                                            className="absolute z-10 w-96 bottom-16 -left-6 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white">
-                                                            <p className="font-bold">{trait.name}</p>
-                                                            <p>{trait.desc}</p>
-                                                        </motion.span>
-                                                    </motion.div>
-                                                }
-                                            </div>
-                                        );
-                                    })}
-                                </div>
-                                <div className="absolute bottom-0 right-0 bg-white rounded-full flex flex-col items-center">
-                                    <p className="opacity-50 uppercase">select abilities</p>
-                                    <motion.div
-                                        animate={{ x: [-5, 10, -5] }}
-                                        transition={{
-                                            ease: "linear",
-                                            duration: 1,
-                                            times: [0, 0.5, 1],
-                                            repeat: Infinity
-                                        }}>
-                                        <Link 
-                                            to={'/charcreate/abilities'}
-                                            state={{
-                                                job: JSON.parse(JSON.stringify(jobSelected)),
-                                                classSelected: classSelected
-                                            }}>
-                                                <FaArrowCircleRight className="text-6xl text-red-600 cursor-pointer" />
-                                        </Link>
-                                    </motion.div>
-                                </div>
-                            </div>
-                        }
-
-                    </div>
+                                <p className="uppercase text-white font-bold">{job.jobName  }</p>
+                            </motion.div>
+                        )
+                    })}
                 </div>
-            }
+                {/* Selected Job */}
+                <div className="w-3/4 flex-center">
+                    <AnimatePresence mode="wait" initial={true}>
+                        {/* Not Selected */}
+                        {!selected &&
+                            <motion.div
+                                key="waiting"
+                                animate={{ opacity: [0.25, 0.75, 0.25] }}
+                                transition={{
+                                    ease: "linear",
+                                    duration: 2,
+                                    times: [0, 0.5, 1],
+                                    repeat: Infinity
+                                }}
+                                className="h-1/4 font-bona-nova uppercase text-6xl text-center"
+                            >
+                                <p>Select a Job</p>
+                            </motion.div>
+                        }
+                        {/* Selected */}
+                        {selected &&
+                            <JobCard selectedJob={jobContext}/>
+                        }    
+                    </AnimatePresence>
+                </div>
+            </div>
         </>
     )
 }

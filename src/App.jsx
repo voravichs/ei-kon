@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheetA, CharacterSheetB } from './pages'
+import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheetA, CharacterSheetB, CCLayout} from './pages'
 
 function App() {
   return (
@@ -10,8 +10,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/" element={<Layout />}>
-            <Route path="charcreate" element={<CharCreate />} />
-            <Route path="charcreate">
+            <Route path="charcreate" element={<CCLayout />}>
+              <Route path="" element={<CharCreate/>} />
               <Route path="jobs" element={<Jobs/>} />
               <Route path="abilities" element={<Abilities/>} />
               <Route path="finalize" element={<Finalize />} />

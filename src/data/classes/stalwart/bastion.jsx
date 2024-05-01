@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
 import img from "../../../assets/images/bastion.PNG"
+import { GiRosaShield } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -13,13 +14,20 @@ const ch1Abilities = [
         "actions": 1,
         "range": 3,
         "desc": "Hurl your shield or weapon as a discus with irrepressible force.",
-        "type": ["attack"],
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
+        "type": ["attack", "true strike"],
         "effects": [
-            "Attack target is weakened and shoved 1.",
-            "A different foe in range 3 from your target is shoved 1 away from your main target."
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray."
+            },
+            {
+                "type": "Effect",
+                "desc": "Attack target is weakened and shoved 1.",
+            },
+            {
+                "type": "Effect",
+                "desc": "A different foe in range 3 from your target is shoved 1 away from your main target."
+            },
             {
                 "type": "Collide or Heroic",
                 "desc": "Repeat the above effect"
@@ -39,9 +47,10 @@ const ch1Abilities = [
         "desc": "Use your shield, weapon, or armored fist and send your target flying.",
         "type": [],
         "effects": [
-            "An adjacent character is shoved 2 spaces"
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "An adjacent character is shoved 2 spaces"
+            },
             {
                 "type": "Collide or Heroic",
                 "desc": "Foe is slashed, and refund the action cost of this ability."
@@ -61,12 +70,19 @@ const ch1Abilities = [
         "desc": "Crash your greatshield or weapon into the earth, sending up devastating shockwaves.",
         "type": ["aoe", "attack"],
         "area": "Burst 1",
-        "attackroll": "On hit: 2[D] + fray. Miss: fray.",
         "effects": [
-            "Shove all characters in the area except you 1 space away from your attack target, then, shove your target 1.",
-            "Area effect: Fray"
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: 2[D] + fray. Miss: fray."
+            },
+            {
+                "type": "Area effect",
+                "desc": "Fray"
+            },
+            {
+                "type": "Effect",
+                "desc": "Shove all characters in the area except you 1 space away from your attack target, then, shove your target 1."
+            },
             {
                 "type": "Heroic",
                 "desc": "Gains True Strike and becomes Burst 2 (target)"
@@ -85,8 +101,11 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "Stride forth, with your shield held before you, battering aside foes.",
         "type": [],
-        "effects": ["Rush 1, then rush 1. After each rush, shove all adjacent characters 1."],
-        "extra_effects": [
+        "effects": [
+            {
+                "type": "Effect",
+                "desc": "Rush 1, then rush 1. After each rush, shove all adjacent characters 1."
+            },
             {
                 "type": "Collide or Heroic",
                 "desc": "Rush 1 again, then shove all adjacent characters 1."
@@ -104,7 +123,7 @@ const ch1Abilities = [
         "name": "Endless Battlement",
         "actions": 1,
         "desc": "The land itself is your castle, and you will never let its walls be breached. No matter where your allies step, your shield will be there.",
-        "type": ["stance", "adds interrupt"],
+        "type": ["stance", "aura"],
         "interrupt": {
             "name": "Heroic Intervention",
             "count": 1,
@@ -115,7 +134,7 @@ const ch1Abilities = [
             ],
             "tags": [aura_x, interrupt]
         },
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Stance",
                 "desc": "When you enter this stance, or when it refreshes, choose an ally in range 4. That ally gains aura 1 until the start of your next turn. The aura deactivates if your ally is out of range. While the aura is active, you can use the Heroic Intervention interrupt."
@@ -143,8 +162,11 @@ const ch1Abilities = [
         "count": 1,
         "type": ["interrupt"],
         "trigger": "An ally ends a movement in an adjacent space",
-        "effects": ["Shove that ally 2 in any direction."],
-        "extra_effects": [
+        "effects": [
+            {
+                "type": "Effect",
+                "desc": "Shove that ally 2 in any direction."
+            },
             {
                 "type": "Collide or Heroic",
                 "desc": "That ally gains 2 vigor and may rush 1."
@@ -165,7 +187,8 @@ const bastion = {
     "jobName": "Bastion",
     "title": "Unbreakable Knight",
     "img": img,
-    "desc": "The Bastions are the shield lords of Arden Eld, larger than life figures that tread the ancient imperial roads with their heads held high and armor gleaming. From town to town they act as errant knights and mercenaries, protecting the weak and vulnerable, and driving back the Blights with hammer-like blows from their greatshields, which they throw like a discus with incredible force. The imperious and mighty presence of a Bastion in town is a stabilizing force and can become aevent for a whole village. All Bastions follow an ancient and long-forgotten hero's code, an old oath to stand against chaos in all its forms.",
+    "icon": <GiRosaShield/>,
+    "desc": "The Bastions are the shield lords of Arden Eld, larger than life figures that tread the ancient imperial roads with their heads held high and armor gleaming. From town to town they act as errant knights and mercenaries, protecting the weak and vulnerable, and driving back the Blights with hammer-like blows from their greatshields, which they throw like a discus with incredible force. The imperious and mighty presence of a Bastion in town is a stabilizing force and can become an event for a whole village. All Bastions follow an ancient and long-forgotten hero's code, an old oath to stand against chaos in all its forms.",
     "traits": [
         {
             "name": "Strive",

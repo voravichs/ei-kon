@@ -30,6 +30,24 @@ code {
   .ticket {
     @apply rounded-r-3xl border border-l-[24px];
   }
+  .tooltip-sm-b {
+    @apply flex-center flex-col w-60 h-20 -bottom-20 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
+  .tooltip-sm-t {
+    @apply flex-center flex-col w-60 h-20 -top-20 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
+  .tooltip-lg-t {
+    @apply flex-center flex-col w-60 h-28 -top-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
+  .tooltip-xl-t {
+    @apply flex-center flex-col w-96 h-28 -top-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
+  .tooltip-2xl-t {
+    @apply flex-center flex-col w-[500px] h-28 -top-28 scale-0 rounded bg-gray-700 p-4 text-sm font-noto-sans text-white;
+  }
+  .tooltip-full-w-t {
+    @apply flex-center flex-col w-full h-32 -top-32 left-0 scale-0 rounded bg-gray-700 p-2 px-4 text-sm font-noto-sans text-white;
+  }
 }
 
 /* Bona Nova */

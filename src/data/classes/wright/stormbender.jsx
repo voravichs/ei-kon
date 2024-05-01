@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
-// import img from "../../../assets/images/bastion.PNG"
+import img from "../../../assets/images/stormbender.PNG"
+import { GiBigWave } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, summons } = keywordData;
 
@@ -14,8 +15,9 @@ const ch1Abilities = [
 const stormbender = {
     "jobName": "Stormbender",
     "title": "Dire Navigator, Master of the Waves",
-    "img": "",
-    "desc": "The seas of Arden Eld are its most treacherous terrain. Boiling over with monsters, and wracked with unnatural and freakish weather, most folk prefer to give them wide berth. However, there are still those brave and hardy souls that live on the islands around Arden Eld, and the merchants, sailors, and travelers that rely on the sea for fast passage and the movement of cargo, the lifeblood of the continent's great cities.\nThe storm benders are the great masters of the sea, the supreme navigators that make sailing even possible around Arden Eld. Water-attuned wrights, they are most at home on a deck, or clambering the rigging. Each of them are sailors of the highest caliber, coming from all over - old trade guilds, islander clans, and nautical churner enclaves.\nBending the essence of the sea to their beck and call, the storm benders can clear the skies with a swipe of their hands, feel the currents ahead for aquatic monsters, turn weather away from the hull of the ship, and blow wind into its sails. It doesn't matter that many of them dabble in a little light piracy on the side - they are the undisputed masters of their element, and they wouldn't have it any other way.",
+    "img": img,
+    "icon": <GiBigWave/>,
+    "desc": "<p className='text-sm'>The seas of Arden Eld are its most treacherous terrain. Boiling over with monsters, and wracked with unnatural and freakish weather, most folk prefer to give them wide berth. However, there are still those brave and hardy souls that live on the islands around Arden Eld, and the merchants, sailors, and travelers that rely on the sea for fast passage and the movement of cargo, the lifeblood of the continent's great cities.</p><p className='text-sm'>The storm benders are the great masters of the sea, the supreme navigators that make sailing even possible around Arden Eld. Water-attuned wrights, they are most at home on a deck, or clambering the rigging. Each of them are sailors of the highest caliber, coming from all over - old trade guilds, islander clans, and nautical churner enclaves.</p><p className='text-sm'>Bending the essence of the sea to their beck and call, the storm benders can clear the skies with a swipe of their hands, feel the currents ahead for aquatic monsters, turn weather away from the hull of the ship, and blow wind into its sails. It doesn't matter that many of them dabble in a little light piracy on the side - they are the undisputed masters of their element, and they wouldn't have it any other way.</p>",
     "traits": [
         {
             "name": "Selkie",

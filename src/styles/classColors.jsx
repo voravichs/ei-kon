@@ -43,26 +43,68 @@ function text(classSelected) {
     }
 }
 
-function bg(classSelected) {
+function textAlt(classSelected) {
     switch(classSelected.class) {
         case "stalwart":
-            return "bg-red-600";
+            return "text-red-600";
         case "vagabond":
-            return "bg-yellow-500";
+            return "text-yellow-500";
         case "mendicant":
-            return "bg-lime-500";
+            return "text-lime-500";
         case "wright":
-            return "bg-cyan-500";
+            return "text-cyan-500";
         default:
-            return "bg-primary";
+            return "text-white";
     }
 }
+
+function bg(classSelected) {
+    if (classSelected) {
+        switch(classSelected.class) {
+            case "stalwart":
+                return "bg-red-600";
+            case "vagabond":
+                return "bg-yellow-500";
+            case "mendicant":
+                return "bg-lime-500";
+            case "wright":
+                return "bg-cyan-500";
+            default:
+                return "bg-secondary";
+        }
+    } else {
+        return "bg-primary";
+    }
+}
+
+function bgAlt(classSelected) {
+    if (classSelected) {
+        switch(classSelected.class) {
+            case "stalwart":
+                return "bg-red-600";
+            case "vagabond":
+                return "bg-yellow-500";
+            case "mendicant":
+                return "bg-lime-500";
+            case "wright":
+                return "bg-cyan-500";
+            default:
+                return "bg-secondary";
+        }
+    } else {
+        return "bg-secondary";
+    }
+    
+}
+
 
 const colorSwap = {
     border,
     borderAccent,
     text,
-    bg
+    textAlt,
+    bg,
+    bgAlt
 }
 
 export default colorSwap;

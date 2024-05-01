@@ -12,6 +12,7 @@ import ArchiveClasses from "./Archive/ArchiveClasses"
 import About from "./About"
 import CharacterSheetA from "./CharacterSheetA"
 import CharacterSheetB from "./CharacterSheetB"
+import CCLayout from "./CharCreation/CCLayout"
 
 export {
     Home,
@@ -27,5 +28,6 @@ export {
     ArchiveClasses,
     About,
     CharacterSheetA,
-    CharacterSheetB
+    CharacterSheetB,
+    CCLayout
 }

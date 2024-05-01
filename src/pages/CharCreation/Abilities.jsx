@@ -3,7 +3,7 @@ import AbilityModal from "../../components/AbilityModal"
 import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
 import { FaArrowCircleRight } from "react-icons/fa";
 
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useOutletContext} from "react-router-dom";
 import { useState } from "react";
 import { motion } from "framer-motion"
 
@@ -11,12 +11,9 @@ import { motion } from "framer-motion"
  * Abilities Page
  */
 export default function Abilities() {
-    const location = useLocation();
-    const { job, classSelected } = location.state;
-    const ch1Abilities = job.abilities.ch1Abilities;
-
-    const colorSwap = `${classSelected.class === 'stalwart' ? "border-red-600" : "border-primary"}`;
-    const colorSwapAccent = `${classSelected.class === 'stalwart' ? "border-red-400" : "border-primary"}`;
+    // Contexts
+    const {characterContext, jobContext, colorSwap} = useOutletContext();
+    const ch1Abilities = jobContext.abilities.ch1Abilities;
 
     const [selectedAbilities, setSelectedAbilities] = useState([]);
     const [atMax, setAtMax] = useState(false);
@@ -44,14 +41,14 @@ export default function Abilities() {
     
     return (
         <>
-            <div className="flex h-dvh pt-32 px-8 pb-8 relative">
+            <div className="flex h-dvh pt-32 px-8 pb-24 relative">
                 <div className="flex flex-col gap-8 w-full">
-                    <div className={`h-1/2 p-8 flex flex-col items-center slick-card bg-card-accent border-l-[48px] ${colorSwap}`}>
+                    <div className={`h-1/2 p-8 flex flex-col items-center slick-card bg-card-accent border-l-[48px] ${colorSwap.border(characterContext)}`}>
                         <div className=" font-bona-nova font-bold uppercase text-3xl mb-8">Select your Abilities (2)</div>
                         <div className="grid grid-cols-6 w-full h-full gap-4 font-noto-sans">
                             {ch1Abilities.map(ability => {
                                 return (
-                                    <div key={ability.name} className={`border border-b-[24px] bg-red-600 rounded-lg flex-center flex-col text-white text-xl text-center ${colorSwapAccent} relative`}>
+                                    <div key={ability.name} className={`border border-b-[24px] bg-red-600 rounded-lg flex-center flex-col text-white text-xl text-center ${colorSwap.borderAccent(characterContext)} relative`}>
                                         <p>{ability.name}</p>
                                         <AbilityModal ability={ability}/>
                                         <IoIosAddCircle onClick={() => handleAddAbility(ability)} className="absolute bottom-2 left-2 text-3xl hover:animate-bounce cursor-pointer "/>
@@ -62,7 +59,7 @@ export default function Abilities() {
                         
                     </div>
                     <div className="h-1/2 flex-center">
-                        <div className={`h-full w-2/3 slick-card bg-card-accent border-4 ${colorSwap} border-opacity-50 p-8 flex flex-col relative`}>
+                        <div className={`h-full w-2/3 slick-card bg-card-accent border-4 ${colorSwap.border(characterContext)} border-opacity-50 p-8 flex flex-col relative`}>
                             <div className=" font-bona-nova font-bold uppercase text-3xl mb-8 flex">
                                 <p>Selected Abilities</p>
                             </div>
@@ -83,7 +80,7 @@ export default function Abilities() {
                             <div className="h-full flex justify-center gap-4">
                                 {selectedAbilities.map(ability => {
                                     return (
-                                        <div key={ability} className={`w-1/3 border border-b-[24px] bg-red-600 rounded-lg flex-center text-white text-3xl text-center ${colorSwapAccent} relative`}>
+                                        <div key={ability} className={`w-1/3 border border-b-[24px] bg-red-600 rounded-lg flex-center text-white text-3xl text-center ${colorSwap.borderAccent(characterContext)} relative`}>
                                             <p>{ability.name}</p>
                                             <IoIosCloseCircle 
                                             onClick={() => handleRemoveAbility(ability)} className="absolute top-2 right-2 text-3xl cursor-pointer"/>
@@ -105,7 +102,7 @@ export default function Abilities() {
                                 times: [0, 0.5, 1],
                                 repeat: Infinity
                             }}>
-                            <Link 
+                            {/* <Link 
                                 to={'/charcreate/finalize'}
                                 state={{
                                     job: job,
@@ -113,7 +110,7 @@ export default function Abilities() {
                                     abilities: selectedAbilities
                                 }}>
                                     <FaArrowCircleRight className="text-6xl text-red-600 cursor-pointer" />
-                            </Link>
+                            </Link> */}
 
                         </motion.div>
                     </div>

@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
 import img from "../../../assets/images/demonslayer.PNG"
+import {  GiRustySword } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
@@ -12,14 +13,21 @@ const ch1Abilities = [
         "name": "Demon Cutter",
         "actions": 1,
         "desc": "You slash your weapon in a deadly swing sending cutting shockwaves out that rip through enemy defenses.",
-        "type": ["aoe", "attack"],
+        "type": ["aoe", "attack", "true strike"],
         "area": "Line 1",
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
         "effects": [
-            "Attack target is slashed.",
-            "Area effect: Fray"
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray.",
+            },
+            {
+                "type": "Effect",
+                "desc": "Attack target is slashed.",
+            },
+            {
+                "type": "Area Effect",
+                "desc": "Fray",
+            },
             {
                 "type": "Charge or Heroic",
                 "desc": "Gains range 2, and repeat the area effect in a new line 3 area in range. The areas cannot overlap."
@@ -41,19 +49,23 @@ const ch1Abilities = [
         "type": ["aoe", "object"],
         "area": "Medium Blast",
         "effects": [
-            "After throwing your weapon, it becomes an object placed in the center space of the area, or as close as possible.",
-            "Area effect: 2 damage"
-        ],
-        "object_info": {
-            "height": 1,
-            "desc": "Space adjacent to it have rampart. While this object is active, you cannot attack. You can pick your weapon up if you enter or exit any space adjacent to it or start your turn there, ending this effect and removing the object. You also pick it up if it's removed for any other reason."
-        },
-        "extra_effects": [
+            {
+                "type": "Area Effect",
+                "desc": "2 damage",
+            },
+            {
+                "type": "Effect",
+                "desc": "After throwing your weapon, it becomes an object placed in the center space of the area, or as close as possible.",
+            },
             {
                 "type": "Charge or Heroic",
                 "desc": "Rush 3 after throwing your weapon."
             }
         ],
+        "object_info": {
+            "height": 1,
+            "desc": "Space adjacent to it have rampart. While this object is active, you cannot attack. You can pick your weapon up if you enter or exit any space adjacent to it or start your turn there, ending this effect and removing the object. You also pick it up if it's removed for any other reason."
+        },
         "talent1": "If you end your turn adjacent to your thrown weapon, gain vigilance +1",
         "talent2": "Yourself and allies that end their turn adjacent to your weapon gain 2 vigor.",
         "mastery": {
@@ -69,12 +81,19 @@ const ch1Abilities = [
         "desc": "Fill the air with the flurry of blades.",
         "type": ["aoe", "attack"],
         "area": "Small Blast",
-        "attackroll": "On hit: 2[D] + fray. Miss: fray.",
         "effects": [
-            "Area effect: Fray",
-            "You may rush 1, then target another small blast area in range 3 with area effect: fray damage. The areas cannot overlap."
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: 2[D] + fray. Miss: fray.",
+            },
+            {
+                "type": "Area Effect",
+                "desc": "Fray",
+            },
+            {
+                "type": "Effect",
+                "desc": "You may rush 1, then target another small blast area in range 3 with area effect: fray damage. The areas cannot overlap."
+            },
             {
                 "type": "Charge or Heroic",
                 "desc": "Gains true strike, and may repeat the effect."
@@ -96,9 +115,10 @@ const ch1Abilities = [
         "type": ["interrupt"],
         "trigger": "A foe uses an ability that targets an ally in range, and damage to your ally has been determined on the foe's end but not applied yet.",
         "effects": [
-            "Apply the damage to both you and your ally, but both of you gain resistance to it, and are sturdy against its effects."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "Apply the damage to both you and your ally, but both of you gain resistance to it, and are sturdy against its effects."
+            },
             {
                 "type": "Heroic",
                 "desc": "Gain vigor 4 after this ability resolves."
@@ -116,11 +136,12 @@ const ch1Abilities = [
         "name": "Demon Claw",
         "actions": 1,
         "desc": "Even unarmed, a Demon Slayer can employ ferocious strength and unleash blows with their bare hands that can crumple steel.",
-        "type": [],
+        "type": ["true strike"],
         "effects": [
-            "Rush 1, then rush 1. Each time, you may deal 2 damage to an adjacent foe. Foes can only be damaged once per use of this ability.",
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "Rush 1, then rush 1. Each time, you may deal 2 damage to an adjacent foe. Foes can only be damaged once per use of this ability.",
+            },
             {
                 "type": "Special",
                 "desc": "If you didn't attack on your turn before using this ability, it deals damage to all adjacent foes."
@@ -144,10 +165,14 @@ const ch1Abilities = [
         "desc": "You move so quickly that even your afterimages are capable of deflecting blows.",
         "type": [],
         "effects": [
-            "Rush 2",
-            "Gain +1 vigilance. Until the start of your next turn, you gain counter, and may rush 2 after activating vigilance. This effect can trigger any number of times a round, but only once a turn."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "Rush 2",
+            },
+            {
+                "type": "Effect",
+                "desc": "Gain +1 vigilance. Until the start of your next turn, you gain counter, and may rush 2 after activating vigilance. This effect can trigger any number of times a round, but only once a turn."
+            },
             {
                 "type": "Heroic",
                 "desc": "Gain +2 vigilance instead."
@@ -160,7 +185,7 @@ const ch1Abilities = [
             "desc": "After Gates of Hell resolves, you create an afterimage terrain effect in a free adjacent space. The afterimage is dangerous terrain, but only for foes. You also gain the ability Flash Step.",
             "extra_ability": {
                 "name": "Flash Step",
-                "type": ["freeaction"],
+                "type": ["free action"],
                 "desc": "Remove an afterimage that has no characters occupying it, then remove yourself and place yourself in its space."
             }
         },
@@ -172,6 +197,7 @@ const demonslayer = {
     "jobName": "Demon Slayer",
     "title": "Master of the Forbidden Arts",
     "img": img,
+    "icon": <GiRustySword/>,
     "desc": "Warriors of impossible strength and insane bravado, demon slayers are warriors that specialize in fighting the largest and most dangerous monsters to crawl out of the pits that riddle the land. They relish in fighting against impossible odds, training themselves in forbidden techniques, arcane arts, and oversized weaponry that normal Kin would quake at wielding. They organize themselves into loose orders and train and hunt together, sharing tales and trophies of the colossal horrors they have slain. Some say in order to fight their quarries, the slayers must ingest demon blood to gain their strength, giving them dark and forbidden power that makes other Kin fear and respect them in equal measure.",
     "traits": [
         {

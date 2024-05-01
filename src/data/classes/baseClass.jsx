@@ -1,3 +1,5 @@
+import { GiAxeSword, GiBandit, GiHealingShield, GiCrescentStaff } from "react-icons/gi";
+
 import keywordData from "../keywords";
 import { bastion, demonslayer, colossus, knave } from "./stalwart"
 import { fool, freelancer, shade, warden } from "./vagabond"
@@ -13,6 +15,7 @@ const { heroic, armor_x, rush_x, bonus_damage, cure ,blessing, resistance, aethe
 const classes = {
     "stalwart": {
         "class": "stalwart",
+        "icon": <GiAxeSword/>,
         "desc": "Weapon master and unparalleled soldier",
         "longdesc": "<p> Stalwarts are <strong>tough and vigorous warriors</strong>, with heavy armor and abilities that let them stand their ground, protect their allies, and control space. They largely eschew the use of ranged attacks but are mythic soldiers and gods of the battlefield, able to perform incredible feats of physical prowess and resilience. </p><p>Stalwarts boast <strong>Slashed</strong> and <strong>Weakened</strong>, which allow them to slow down speedy foes and lower their damage, and have access to <strong>Rampart</strong> and <strong>Vigilance</strong>, which makes it much more risky for characters to move around them. They also easily gain <strong>Sturdy</strong>, making them resistant to being moved, and can in turn <strong>Shove</strong> their foes, knocking them around the battlefield.</p>",
         "vit": 10,
@@ -50,6 +53,7 @@ const classes = {
 
     "vagabond": {
         "class": "vagabond",
+        "icon": <GiBandit/>,
         "desc": "Rogue, Scoundrel, and Blade for Hire",
         "longdesc": "<p> Vagabonds are the mercenaries and wanderers of Arden Eld. They know how to aim a crossbow bolt through the helmet slit of a knight or the weak spot of a monster, how to move quietly and quickly, and how to fling a knife with deadly precision. </p> <p>Vagabonds boast high damage and even higher mobility. <strong>Skirmisher</strong> lets them move faster and further than other classes, while <strong>Dodge</strong> lets them avoid damage unless targeted directly. They make use of numerous tools such as <strong>Stealth</strong>, <strong>Evasion</strong>, and <strong>Finishing Blow</strong> to crush weak, isolated, or ranged enemies and avoid their counterattacks.</p>",
         "vit": 7,
@@ -88,6 +92,7 @@ const classes = {
 
     "mendicant": {
         "class": "mendicant",
+        "icon": <GiHealingShield/>,
         "desc": "Wandering Healer and Storyteller",
         "longdesc": "<p> Mendicants are the itinerant priests, exorcists, and healers of Arden Eld. They travel from town to town, healing sicknesses of the body and soul, cleansing the damage dealt by the ruins, consulting with local spirits, and setting up wards against evil. Many mendicants are highly learned scholars, but others come from folk practices, temple monks, green witch circles, or town priesthoods. They are a highly diverse lot, and attuned to the land and the people that they care for. </p><p> Mendicants are the only class that can consistently grant <strong>vigor</strong> and lift statuses with the potent <strong>cure</strong> effect. They protect allies and guide their attacks with the <strong>Sealed</strong> and <strong>Pacified</strong> statuses, while making use of powerful <strong>combos</strong>, <strong>auras</strong>, and <strong>marks</strong> to stack negative effects on foes while empowering allies.</p>",
         "vit": 10,
@@ -122,6 +127,7 @@ const classes = {
 
     "wright": {
         "class": "wright",
+        "icon": <GiCrescentStaff/>,
         "desc": "Mage, thaumaturge, and master of the arcane arts",
         "longdesc": "<p> Wrights are mages who have mastered the manipulation of the raw power of creation: Aether. All souls are connected to Aether, and everyone is able to connect to it and feel it to some degree. Those with training, potential, and ability can learn to form and shape Aether as natural as they move their own flesh and blood. Wrights wield terrifying power - and they know it. </p><p> Wrights become stronger the longer fights go on by the power of <strong>Aether</strong>, which they can use to <strong>Infuse</strong> their abilities to unleash some of the most spectacular attacks in the game. Wrights focus heavily on <strong>blights</strong>, <strong>piercing</strong> damage, the <strong>shattered</strong> and <strong>vulnerable</strong> statuses, and <strong>Area of Effect</strong> abilities to punish foes that group up or rely on nearby allies.</p>",
         "vit": 8,

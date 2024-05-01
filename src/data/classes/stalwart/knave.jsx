@@ -1,5 +1,6 @@
 import keywordData from "../../keywords";
 import img from "../../../assets/images/knave.PNG"
+import { GiEvilEyes } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, actions } = keywordData;
 
@@ -12,17 +13,24 @@ const ch1Abilities = [
         "name": "Low Blow",
         "actions": 1,
         "desc": "Hit them right in the gronch.",
-        "type": ["attack", "combo"],
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
+        "type": ["attack", "combo", "true strike"],
         "effects": [
-            "You may rush 1",
-            "Foe is slashed. If they are already slashed, they gain hatred of you."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "You may rush 1."
+            },
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray."
+            },
+            {
+                "type": "Effect",
+                "desc": "Foe is slashed. If they are already slashed, they gain hatred of you."
+            },
             {
                 "type": "Slay or Heroic",
                 "desc": "You may cure yourself."
-            },
+            }
         ],
         "combo_action": {
             "name": "Combo: The Hook",
@@ -42,9 +50,10 @@ const ch1Abilities = [
         "desc": "You drop your guard, and wait for foes to take the bait.",
         "type": [],
         "effects": [
-            "You may Rush 1, then each adjacent foe deals 1 piercing damage to you, as if damaging you with an ability. You then deal 2 damage, once, for each foe that damaged you this way to all adjacent foes, to a maximum of three times."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "You may Rush 1, then each adjacent foe deals 1 piercing damage to you, as if damaging you with an ability. You then deal 2 damage, once, for each foe that damaged you this way to all adjacent foes, to a maximum of three times."
+            },
             {
                 "type": "Heroic",
                 "desc": "Affects all foes in range 2."
@@ -52,7 +61,7 @@ const ch1Abilities = [
             {
                 "type": "Slay",
                 "desc": "Then, you may shove all affected foes 1 towards or away from you."
-            }
+            }  
         ],
         "talent1": "If this ability only affects one foe, they gain hatred of you.",
         "talent2": "You can sacrifice 2 after this ability resolves to deal 2 damage again to all adjacent foes.",
@@ -65,18 +74,22 @@ const ch1Abilities = [
     {
         "name": "Revenge",
         "actions": 2,
-
         "desc": "No matter how hard pressed, your hands, feet, and armor are ready to retaliate.",
         "type": ["attack", "combo"],
-        "attackroll": "On hit: [D] + fray. Miss: fray.",
         "effects": [
-            "Gain unstoppable and counter until the end of your next turn."
-        ],
-        "extra_effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray. Miss: fray."
+            },
+            {
+                "type": "Effect",
+                "desc": "Gain unstoppable and counter until the end of your next turn."
+            },
             {
                 "type": "Slay or Heroic",
                 "desc": "While this ability's effect is active, you can rush 1 as an effect if you are damaged by a foe's ability, but no more than once a turn."
             },
+            
         ],
         "combo_action": {
             "name": "Combo: Indignation",
@@ -94,7 +107,7 @@ const ch1Abilities = [
         "name": "Riposte",
         "actions": 1,
         "desc": "When you come at a knave, you best not miss.",
-        "type": ["stance", "adds interrupt"],
+        "type": ["stance", "gamble"],
         "interrupt": {
             "name": "Dire Parry",
             "count": 1,
@@ -105,7 +118,7 @@ const ch1Abilities = [
             ],
             "tags": [gamble, slashed, shove_x, vigilance_x, interrupt]
         },
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Stance",
                 "desc": "When you enter this stance or when it refreshes, gain the Dire Parry interrupt until the start of your next turn."
@@ -132,7 +145,7 @@ const ch1Abilities = [
         "actions": 1,
         "desc": "You give into the heat of battle, becoming a creature of violence and instinct.",
         "type": ["stance"],
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Stance",
                 "desc": "While in this stance:\nYou gain hatred+ of the closet foe to you at the start of your turn or when you enter this stance. If multiple foes are equidistant, you may choose.\nYou are sturdy.\nYou gain vigilance +1 at the end of your turn."
@@ -160,10 +173,14 @@ const ch1Abilities = [
         "desc": "Grappling is a common and brutal strategy among the knaves, who will happily hurl their foes into trees, rocks, or their own allies.",
         "type": [],
         "effects": [
-            "Shove an adjacent foe in a full circle either clockwise or counter clockwise through each space around you, phasing through characters. Stop and collide if your foe would hit an obstruction.",
-            "Your foe takes 2 damage once for each foe or ally they pass through, to a maximum of 3 times, and those characters are shoved 1. Then, shove your foe 1."
-        ],
-        "extra_effects": [
+            {
+                "type": "Effect",
+                "desc": "Shove an adjacent foe in a full circle either clockwise or counter clockwise through each space around you, phasing through characters. Stop and collide if your foe would hit an obstruction."
+            },
+            {
+                "type": "Effect",
+                "desc": "Your foe takes 2 damage once for each foe or ally they pass through, to a maximum of 3 times, and those characters are shoved 1. Then, shove your foe 1."
+            },
             {
                 "type": "Collide",
                 "desc": "Foes are weakened."
@@ -187,7 +204,8 @@ const knave = {
     "jobName": "Knave",
     "title": "Absolute Bastard",
     "img": img,
-    "desc": "The advent of the Churning Age has coincided with the rise of a certain class of person with heavy pockets and a long list of 'problems' to solve. The Knaves are the solution. Hedge knights, rogue warriors, duelists, deserters, and veterans, they roam the land offering their services to whoever has the dust to spare. Though some of them are altruistically minded, they tend to go where the work, food, and fighting is thickest, and never stay for long in one location.Knaves operate under a loose moral code and an even looser no-holds-barred fighting style, using hilts, head butts, and gauntleted fists to inflict pain, punishment, and humiliation on their opponents in equal measure. These braggadocios warriors spare no effort in flexing their incredible strength - if the price is right. For a freshly roasted chicken, a pocket full of dust, and a polish of their boots, they'll do just about anything.",
+    "icon": <GiEvilEyes/>,
+    "desc": "<p>The advent of the Churning Age has coincided with the rise of a certain class of person with heavy pockets and a long list of 'problems' to solve. The Knaves are the solution. Hedge knights, rogue warriors, duelists, deserters, and veterans, they roam the land offering their services to whoever has the dust to spare. Though some of them are altruistically minded, they tend to go where the work, food, and fighting is thickest, and never stay for long in one location.</p><p>Knaves operate under a loose moral code and an even looser no-holds-barred fighting style, using hilts, head butts, and gauntleted fists to inflict pain, punishment, and humiliation on their opponents in equal measure. These braggadocios warriors spare no effort in flexing their incredible strength - if the price is right. For a freshly roasted chicken, a pocket full of dust, and a polish of their boots, they'll do just about anything.</p>",
     "traits": [
         {
             "name": "Martial Master",
