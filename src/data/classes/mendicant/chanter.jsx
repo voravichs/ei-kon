@@ -280,7 +280,7 @@ const chanter = {
         "resolve": 2,
         "action": 1,
         "desc": "You sing of the deeds of the first heroes, from the Doom. The Great Chant weaves around your allies and transforms them into echoes of those mighty heroes.",
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Stance",
                 "desc": "You begin weaving an epic song, a saga of legendary heroes. When you take this action, and when this stance refreshes, you may invest an ally in range 5 with the power of one of the great saints. Each saint must be chosen at least once before it can be chosen again. The effect takes place immediately and lasts until the end of their next turn."
@@ -288,9 +288,12 @@ const chanter = {
             {
                 "type": "Refresh",
                 "desc": "This stance refreshes automatically at the start of your turns."
-            }
+            },
+            {
+                "type": "Great Saints",
+                "desc": "<p> - <b>Parzival: </b> An allied character gains flying and cover from all directions.</p><p> - <b>Leon: </b>An allied character gains dodge and the ability to move diagonally..</p><p> - <b>Angrboda: </b>An allied character gains sturdy, and their attacks gain true strike and shove 1. .</p><p> - <b>Farnese: </b>An ally gains 1 blessing and +1 boon on all attacks and saves.</p>"
+            },
         ],
-        "effect": "Great Saints: \n<em>Parzival: </em> An allied character gains flying and cover from all directions. \n<em>Leon: </em>An allied character gains dodge and the ability to move diagonally. \n<em>Angrboda: </em>An allied character gains sturdy, and their attacks gain true strike and shove 1. \n<em>Farnese: </em>An ally gains 1 blessing and +1 boon on all attacks and saves.",
         "ultimate": {
             "name": "Divine Investment",
             "desc": "You also gain the benefit of any chosen saint, lasting until the end of your next turn."

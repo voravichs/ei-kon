@@ -229,7 +229,10 @@ const warden = {
         "action": 1,
         "desc": "You muster up the primal magic of the Deep Green. The power of fang, tooth scale, fur, and claw pours into you, granting you massively increased speed and power.",
         "effects": [
-            "You become a beast hybrid of primal fury. You gain a greatly enhanced dash, with benefits: \nDash always becomes a free action. \nAll dashes granted as part of any of your abilities, summons, or actions (including this one!) may be increased by +1, and grant phasing while moving. \nWhen you take the dash action, all allies and allied summons can dash 1. Then, any foe adjacent to one or more characters that dashed this way takes 2 damage.",
+            {
+                "type": "Effect",
+                "desc": "<p>You become a beast hybrid of primal fury. You gain a greatly enhanced dash, with benefits:</p><p> - Dash always becomes a free action.</p><p> - All dashes granted as part of any of your abilities, summons, or actions (including this one!) may be increased by +1, and grant phasing while moving. </p><p> - When you take the dash action, all allies and allied summons can dash 1. Then, any foe adjacent to one or more characters that dashed this way takes 2 damage.</p>",
+            },
         ],
         "ultimate": {
             "name": "Ultima Lycanthropy",

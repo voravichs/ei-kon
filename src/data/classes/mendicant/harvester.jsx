@@ -247,7 +247,10 @@ const harvester = {
         "action": 0,
         "desc": "A flash of the scythe, and the line between life and death is blurred.",
         "effects": [
-            "You slash an adjacent foe with your weapon, knocking their soul out of their body. Draw a line 4 area effect from your foe facing directly away from you and summon the Severed Soul summon in the last available space.",
+            {
+                "type": "Summon",
+                "desc": "You slash an adjacent foe with your weapon, knocking their soul out of their body. Draw a line 4 area effect from your foe facing directly away from you and summon the Severed Soul summon in the last available space. The soul lasts until the end of your next turn, or until the affected character is defeated.",
+            }
         ],
         "ultimate": {
             "name": "Soul Bloom",

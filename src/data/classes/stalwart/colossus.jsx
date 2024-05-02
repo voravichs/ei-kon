@@ -225,7 +225,15 @@ const colossus = {
         "actions": 2,
         "desc": "Wrestle with the gods themselves.",
         "effects": [
-            "You grab an adjacent character. That character must save. Even if that character saves successfully, you grab them, and you both soar into the air. Remove both of you from the battlefield. At the start of that character's turn, you come spinning back to earth, slamming that character into the battlefield in unoccupied space in range 3 of your original location. You sacrifice 25% of your hp. Your foe takes 50% of their max hp as divine damage, or 25% as divine damage on a successful save. Then place both of you back in or adjacent to that space. \n This ability can be used against Legends, but they may always save, taking divine fray damage and refunding this ability's resolve cost on a successful save, and only 25% hp as divine damage on a failed save.",
+            {
+                "type": "Effect",
+                "desc": "You grab an adjacent character. That character must save. Even if that character saves successfully, you grab them, and you both soar into the air. Remove both of you from the battlefield. At the start of that character's turn, you come spinning back to earth, slamming that character into the battlefield in unoccupied space in range 3 of your original location. You sacrifice 25% of your hp. Your foe takes 50% of their max hp as divine damage, or 25% as divine damage on a successful save. Then place both of you back in or adjacent to that space.",
+            },
+            {
+                "type": "Special",
+                "desc": "This ability can be used against Legends, but they may always save, taking divine fray damage and refunding this ability's resolve cost on a successful save, and only 25% hp as divine damage on a failed save.",
+            },
+            
         ],
         "ultimate": {
             "name": "Atomos Crusher",

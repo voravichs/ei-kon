@@ -1,4 +1,4 @@
-import AbilityModal from "../../components/AbilityModal"
+import AbilityModal from "../../components/modals/AbilityModal"
 
 import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
 import { FaArrowCircleRight } from "react-icons/fa";

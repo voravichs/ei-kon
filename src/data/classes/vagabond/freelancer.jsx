@@ -217,14 +217,15 @@ const freelancer = {
         "resolve": 3,
         "action": 1,
         "desc": "You summon the spirit of your weapon, drawing out the residual soul aether of every single one of its previous users. Ghostly doubles of dozens of your predecessors match your movements, and create an aura of untold power.",
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Aura",
                 "desc": "You gain an aura of supernatural accuracy, charging your weapons and the weapons of your allies with aether."
             },
-        ],
-        "effects": [
-            "You gain Aura 2 until the end of your next turn. While standing in Paradiso, abilities used by you or allies against foes outside of Paradiso trigger all the following triggered effects: charge, collide, comeback, chain reaction, exceed, finishing blow, slay.",
+            {
+                "type": "Effect",
+                "desc": "You gain Aura 2 until the end of your next turn. While standing in Paradiso, abilities used by you or allies against foes outside of Paradiso trigger all the following triggered effects: charge, collide, comeback, chain reaction, exceed, finishing blow, slay.",
+            },
         ],
         "ultimate": {
             "name": "Ultima Paradiso",

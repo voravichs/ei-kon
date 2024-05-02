@@ -181,7 +181,10 @@ const ch1Abilities = [
                 "type": ["interrupt"],
                 "trigger": "You take damage from a foe",
                 "effects": [
-                    "End this stance, consume and remove all shadows in range 2 of you, and immediately gain defiance against the incoming damage. Deal 2 damage, once, to the triggering foe for each shadow consumed this way. You cannot take this stance again for the rest of combat."
+                    {
+                        "type": "Effect",
+                        "desc": "End this stance, consume and remove all shadows in range 2 of you, and immediately gain defiance against the incoming damage. Deal 2 damage, once, to the triggering foe for each shadow consumed this way. You cannot take this stance again for the rest of combat."
+                    },
                 ],
                 "tags": [interrupt, defiance]
             }
@@ -235,7 +238,10 @@ const shade = {
         "action": 1,
         "desc": "A prayer and a drop of blood, and soothing darkness cloaks the battlefield.",
         "effects": [
-            "Yourself, all allies, and allied summons gain stealth, and all foes are blinded."
+            {
+                "type": "Effect",
+                "desc": "Yourself, all allies, and allied summons gain stealth, and all foes are blinded."
+            },
         ],
         "ultimate": {
             "name": "Ultima Ecstasy",

@@ -250,8 +250,14 @@ const knave = {
         "actions": 1,
         "desc": "There is no weapon greater than a well-timed and well-aimed insult.",
         "effects": [
-            "A foe in range 3 becomes slashed+, weakened+, cannot gain or benefit from evasion, dodge, or stealth, and gains hatred+ of you. These effects continue until the end of their next turn.",
-            "<b>Special: </b>On elite and legend foes, this ability lasts two turns instead."
+            {
+                "type": "Effect",
+                "desc": "A foe in range 3 becomes slashed+, weakened+, cannot gain or benefit from evasion, dodge, or stealth, and gains hatred+ of you. These effects continue until the end of their next turn.",
+            },
+            {
+                "type": "Special",
+                "desc":  "On elite and legend foes, this ability lasts two turns instead."
+            },
         ],
         "ultimate": {
             "name": "Dread Mock",

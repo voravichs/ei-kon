@@ -215,7 +215,11 @@ const fool = {
         "action": 2,
         "desc": "Bring out the fireworks. Fire up the elden magic. Time for a showstopper.",
         "effects": [
-            "Gamble, then draw a line area effect of that many spaces +2. Soar into the air, removing yourself from the battlefield, then place yourself adjacent to the first foe in that line, delivering a massive blow. This ability has different effects depending on their position on the line. If there are no valid targets after rolling, the resolve cost of this ability is refunded. \nRoll [D] + fray damage once, then apply it the number of times listed. \n3-5 spaces: x2, \n6-7 spaces: x3, \n8 spaces: x4 and character is stunned.",
+            {
+                "type": "Effect",
+                "desc": "<b>Gamble</b>, then draw a line area effect of that many spaces +2. Soar into the air, removing yourself from the battlefield, then place yourself adjacent to the first foe in that line, delivering a massive blow. This ability has different effects depending on their position on the line. If there are no valid targets after rolling, the resolve cost of this ability is refunded. \nRoll [D] + fray damage once, then apply it the number of times listed. \n3-5 spaces: x2, \n6-7 spaces: x3, \n8 spaces: x4 and character is stunned.",
+            }
+            
         ],
         "ultimate": {
             "name": "Ultima Curtain Call",

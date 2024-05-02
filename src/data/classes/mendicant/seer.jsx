@@ -2,14 +2,211 @@ import keywordData from "../../keywords";
 import img from "../../../assets/images/seer.PNG"
 import { TbCardsFilled } from "react-icons/tb";
 
-const { statusConditions, rules, combatGlossary, actions} = keywordData;
+const { statusConditions, rules, combatGlossary, actions, summons} = keywordData;
 
-const { vigor, unstoppable, } = statusConditions
-const { boon, curse} = rules;
-const { blessing, gamble, immune_to_x, area_ability, aura_x} = combatGlossary
+const { vigor, unstoppable, pacified, divine, sealed, stunned, bloodied} = statusConditions
+const { boon, curse, summon, pit} = rules;
+const { blessing, gamble, immune_to_x, aura_x, area_ability, charge, power_die, teleport_X, difficult_terrain, combo, bonus_damage, terrain_effect, mark, cure, stance} = combatGlossary
 
 const ch1Abilities = [
-
+    {
+        "name": "Sleight of Hand",
+        "actions": 1,
+        "range": 5,
+        "desc": "A flash of bright color, and a card is stuck to your foe, bursting into arcane fire in a flash.",
+        "type": ["attack", "aoe","summon"],
+        "area": "Small Blast",
+        "effects": [
+            {
+                "type": "Attack",
+                "desc": "Auto-hit: fray damage"
+            },
+            {
+                "type": "Effect",
+                "desc": "Your foe is pacified."
+            },
+            {
+                "type": "Area Effect",
+                "desc": "Fray damage."
+            },
+            {
+                "type": "Effect",
+                "desc": "Summon a wild card in range 2 of your foe."
+            }
+        ],
+        "talent1": "This ability does not break the pacified condition and deals 2 damage again to any pacified foes in the area.",
+        "talent2": "After this ability resolves, roll 1 more d6 the next time you gamble this turn. Charge: 2 more d6s",
+        "mastery": {
+            "name": "King of Swords",
+            "desc": "After using this ability, you gain six spectral blades that hover behind you, using a d6 power die starting at 6 to track them. At the end of your turn, gamble. If you roll under the number of blades remaining, a blade flies out and deals 2 divine damage to a foe in range 6. Using this ability again with blades active restocks them."
+        },
+        "tags": [pacified, summon, summons.wild_card, area_ability, divine, charge, power_die, gamble]
+    },
+    {
+        "name": "Chaos Tarot",
+        "actions": 1,
+        "range": 5,
+        "desc": "You flick a beautifully illustrated ethereal card onto the battlefield, laden with the threads of potential.",
+        "type": ["summon", "aoe"],
+        "area": "Small Blast",
+        "effects": [
+            {
+                "type": "Area Effect",
+                "desc": "Gamble, then apply the listed effect in the area.",
+                "details": [
+                    "1: Card explodes for fray damage.",
+                    "2: All characters in the area are teleported 2.",
+                    "3: Create two spaces of difficult terrain in the area.",
+                    "4: Bless up to two characters in the area.",
+                    "5: Seal up to two characters in the area.",
+                    "6: Choose two",
+                ]
+            },
+            {
+                "type": "Summon",
+                "desc": "Then, summon a wild card in the area."
+            }
+        ],
+        "talent1": "You can consume any number of blessings on character in Chaos Tarot's area before gambling to roll 1 extra d6 per blessing consumed.",
+        "talent2": "You can move Chaos Tarot's area up to 2 spaces in any direction before applying the gamble effect. Charge: Move 4 spaces.",
+        "mastery": {
+            "name": "Royalty Gold",
+            "desc": "Instead of summoning a wild card with this ability, you can instead end your turn and summon a Master Card. You can only have one Master Card active at once. The Master Card acts as a wild card, but also gains the gamble effect of Chaos Tarot, which it grants to any area ability that triggers it. It is consumed as normal after being activated."
+        },
+        "tags": [summon, gamble, teleport_X, difficult_terrain, blessing, sealed, summons.wild_card, charge]
+    },
+    {
+        "name": "Astra",
+        "actions": 2,
+        "type": ["attack", "aoe", "combo"],
+        "range": "Line 5",
+        "desc": "You call down the heavens themselves on your foes.",
+        "effects": [
+            {
+                "type": "Attack",
+                "desc": "On hit: [D] + fray damage. Miss: fray."
+            },
+            {
+                "type": "Area effect",
+                "desc": "Fray"
+            },
+            {
+                "type": "Effect",
+                "desc": "Foe explodes in a medium blast area effect, centered on them. Gamble, then deal that much damage again to all characters in the area. On a 4+, create two spaces of difficult terrain in the area. On a 6, a meteor also lands, creating a height 1 meteor object in any part of the area and dealing 2 damage to adjacent characters when it lands."
+            },
+            {
+                "type": "Effect",
+                "desc": "You can remove any number of blessings from allies in the area to roll 1 extra d6 per blessing removed when gambling."
+            }
+        ],
+        "combo_action": {
+            "name": "Combo: Fortuna",
+            "range": 5,
+            "desc": "Medium Blast",
+            "effects": [
+                {
+                    "type": "Attack",
+                    "desc": "Auto hit: [D]+fray"
+                },
+                {
+                    "type": "Area Effect",
+                    "desc": "Foes take fray damage. Allies gain 3 vigor and are blessed."
+                },
+                {
+                    "type": "Summon",
+                    "desc": "Summon a wild card in the area"
+                }
+            ]
+        },
+        "talent1": "Any version of this ability explodes with meteor showers when used, creating two spaces of difficult terrain in the area. Charge: Also create a height 1 meteor object in any part of the area, dealing 2 damage to adjacent foes when it lands.",
+        "talent2": "If two or more allies are caught in the area of this ability, increase all medium blasts to large blasts, and this ability deals bonus damage.",
+        "mastery": {
+            "name": "The Chalice",
+            "desc": "After you use any version of this ability, deal 2 divine damage, once, to a foe in the area for each blessed ally in the area, up to a maximum of three times. Foes can be damaged more than once by this effect."
+        },
+        "tags": [combo, gamble, difficult_terrain, blessing, vigor, divine, bonus_damage, charge]
+    },
+    {
+        "name": "Polaris",
+        "actions": 1,
+        "range": 5,
+        "desc": "A distant glint in the heavens, portents of the devastation to come.",
+        "effects": [
+            {
+                "type": "Terrain Effect",
+                "desc": "Choose a space on the battlefield in range 5. While you have at least one Polaris space active, you may gamble at the end of any turn after yours with the following effects:"
+            },
+            {
+                "type": "Gamble",
+                "desc": "A meteor lands in every space chosen by Polaris, exploding. The effects of each space vary depending on how many spaces are active. Each effect other than the blast size stacks:",
+                "details": [
+                    "1: Small blast area effect, deals damage equal to the gamble result.",
+                    "2: Medium Blast, deals +2 damage.",
+                    "3: Large Blast, deals +2 damage, and characters in center spaces are stunned. Then, remove all spaces.",
+                ]
+            }
+        ],
+        "talent1": "You can cause one of your Polaris to follow a character as a mark instead of a space.",
+        "talent2": "Create a space of difficult terrain under the center space of each Polaris space after it resolves. On a gamble result of 4+, create either a height 1 meteor object or a pit instead.",
+        "mastery": {
+            "name": "Moon Silver Princess",
+            "desc": "At round 4+, Polaris becomes a free action."
+        },
+        "tags": [terrain_effect, gamble, stunned, difficult_terrain, pit]
+    },
+    {
+        "name": "Sisyphus",
+        "actions": 1,
+        "range": 5,
+        "desc": "You bend a character's fate, reversing causality so that the very ground warps under their feet.",
+        "type": ["mark"],
+        "effects": [
+            {
+                "type": "Mark",
+                "desc": "Mark a character in range. While marked, note their starting position at the start of their turn. If they're in range 3 of their starting position at the end of their turn, you may remove them from the battlefield and return them to their starting position, or as close as possible if it's occupied. Then, a foe can save, ending this mark on a success."
+            }
+        ],
+        "talent1": "If they're bloodied, foes gain +1 curse on the save, and are also pacified after being returned to their starting location.",
+        "talent2": "Allies are blessed after being moved with Sisyphus and gain 2 vigor. If they're at 25% hp or lower, they can also be cured.",
+        "mastery": {
+            "name": "Black Knight Grave",
+            "desc": "Sisyphus triggers no matter how far away a character is from their starting position at the end of their turn."
+        },
+        "tags": [mark, bloodied, curse, pacified, blessing, vigor, cure]
+    },
+    {
+        "name": "Gran Reversa",
+        "actions": 1,
+        "desc": "Causality unmakes itself around you, as wounds heal instantly.",
+        "type": ["stance", "aura", "interrupt", "power die"],
+        "effects": [
+            {
+                "type": "Stance",
+                "desc": "Gain aura 2, and a d4 power die, starting at 4. While in this stance, gain the Reverse Fate interrupt.",
+            },
+            {
+                "type": "Refresh",
+                "desc": "You may exit or refresh this stance at the start of your turn. When you refresh this stance, tick the die up by 1."
+            }
+        ],
+        "interrupt": {
+            "name": "Reverse Fate",
+            "count": 1,
+            "type": ["interrupt"],
+            "trigger": "An ally in the aura is targeted by a foe's ability.",
+            "effects": [
+                "Tick down your power die by any amount. Gamble with a number of d6s equal to the number of ticks you spent, then that ally gains vigor equal to double the gamble result. However, at the end of the current turn, your ally loses all vigor."
+            ],
+            "tags": [power_die, gamble, vigor]
+        },
+        "talent1": "Your power die from this ability starts at d6, with 6 charges.",
+        "talent2": "If your ally was bloodied, instantly regain a tick on this die after this ability resolves.",
+        "mastery": {
+            "name": "Misericordia",
+            "desc": "Vigor granted by Gran Reversa can increase a character's total vigor over their maximum."
+        },
+        "tags": [stance, aura_x, power_die, gamble, vigor, bloodied]
+    }
 ]
 
 const cards = {

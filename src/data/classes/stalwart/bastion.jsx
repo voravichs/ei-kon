@@ -232,8 +232,14 @@ const bastion = {
         "actions": 1,
         "desc": "Your shield becomes the sun: a discus of light and motion, shattering enemy ranks and spurring allies forth.",
         "effects": [
-            "You hurl your shield, and every character on the battlefield is shoved 1 space in a direction of your choice. You may shove in any order, and may choose different directions for each character.",
-            "Bloodied foes are weakened. Foes at 25% hp or lower are stunned",
+            {
+                "type": "Effect",
+                "desc": "You hurl your shield, and every character on the battlefield is shoved 1 space in a direction of your choice. You may shove in any order, and may choose different directions for each character.",
+            },
+            {
+                "type": "Effect",
+                "desc": "Bloodied foes are weakened. Foes at 25% hp or lower are stunned",
+            },
         ],
         "ultimate": {
             "name": "Perfect Helion",
