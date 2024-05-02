@@ -130,7 +130,10 @@ const ch1Abilities = [
             "type": ["interrupt"],
             "trigger": "A foe targets your ally with an ability",
             "effects": [
-                "You soar into the air, removing yourself from the battlefield, then return in any space in the aura. Adjacent foes take 2 damage."
+                {
+                    "type": "Effect",
+                    "desc": "You soar into the air, removing yourself from the battlefield, then return in any space in the aura. Adjacent foes take 2 damage."
+                }
             ],
             "tags": [aura_x, interrupt]
         },

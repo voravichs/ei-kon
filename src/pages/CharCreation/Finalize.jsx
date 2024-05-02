@@ -1,26 +1,54 @@
-import { useLocation } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import Select from 'react-select'
+
+const kinOptions = [
+    { value: 'Thyrnn', label: 'Thyrnn' },
+    { value: 'Trogg', label: 'Trogg' },
+    { value: 'Beastfolk', label: 'Beastfolk' },
+    { value: 'Xixo', label: 'Xixo' }
+]
+
+const cultureOptions = [
+    { value: 'Yeokin', label: 'Yeokin' },
+    { value: 'Islander', label: 'Islander' },
+    { value: 'Leggio', label: 'Leggio' },
+    { value: 'Churner', label: 'Churner' },
+    { value: 'Chronicler', label: 'Chronicler' },
+    { value: 'Guilder', label: 'Guilder' }
+]
+
 /**
  * Naming and finalizing Page
  */
 export default function Finalize() {
-    const location = useLocation();
-    const { job, classSelected, abilities} = location.state;
+    // Contexts
+    const {characterContext, jobContext, abilitiesContext, setFinalActive, colorSwap} = useOutletContext();
+    
+    setFinalActive(true)
+    const navigate = useNavigate();
 
     const [name, setName] = useState("");
-    
-    const colorSwapBorder = `${classSelected.class === 'stalwart' ? "border-red-600" : "border-primary"}`;
-    const colorSwapAccent = `${classSelected.class === 'stalwart' ? "border-red-400" : "border-primary"}`;
-    const colorSwapBg = `${classSelected.class === 'stalwart' ? "bg-red-600" : "border-primary"}`;
+    const [kin, setKin] = useState("");
+    const [culture, setCulture] = useState("");
 
     function handleSubmit() {
         const charData = {
             "name": name,
-            "class": classSelected,
-            "job": job,
-            "abilities": abilities,
+            "kin": kin.value,
+            "culture:": culture.value,
+            "class": characterContext,
+            "job": jobContext,
+            "abilities": abilitiesContext,
             "level": 0,
-            "chapter": 1
+            "chapter": 1,
+            "current": {
+                "hp": characterContext.hp,
+                "actions": 2,
+                "move": characterContext.speed,
+                "wounds": 0
+            }
         }
         localStorage.setItem(name, JSON.stringify(charData));
     }
@@ -28,36 +56,69 @@ export default function Finalize() {
     return (
         <>
             <div className="h-dvh pt-32 px-32 pb-32">
-                <div className={`slick-card bg-card-accent w-full h-full border-l-[48px] flex ont-bona-nova ${colorSwapBorder}`}>
+                <div className={`slick-card bg-card-accent w-full h-full border-l-[48px] flex font-bona-nova ${colorSwap.border(characterContext)}`}>
+                    {/*  Img */}
                     <div className="w-2/5 h-full">
                         <div className="w-full h-full flex-center">
-                            <img src={job.img} className={`w-2/3 border ${colorSwapBorder}`} />
+                            <img src={jobContext.img} className={`w-2/3`} />
                         </div>
                     </div>
+                    {/* Content */}
                     <div className="w-3/5 p-16 flex flex-col gap-8 text-xl">
-                        <div className="font-bona-nova text-4xl font-bold flex-center">
+                        {/* Title */}
+                        <div className={`font-bona-nova text-5xl ${colorSwap.text(characterContext)} font-bold flex-center`}>
                             Guild Registration Card
                         </div>
-                        <div className="flex items-center gap-4 text-2xl">
+                        {/* Name Input */}
+                        <div className="flex-center gap-4 text-2xl">
                             <p className="font-bona-nova font-bold">Name:</p>
                             <input 
                                 onChange={(e) => setName(e.target.value)}
-                                className="border rounded text-xl py-2 px-4 drop-shadow font-noto-sans " placeholder={"enter name"} />    
+                                className="border rounded text-xl py-2 px-4 drop-shadow font-bona-nova " placeholder={"enter name"} 
+                            />    
                         </div>
-                        <div className="text-2xl flex gap-4">
-                            <span className="font-bona-nova font-bold">Class: </span>
-                            <p className="first-letter:uppercase font-bona-nova">{classSelected.class} </p>
+
+                        {/* kin & culture */}
+                        <div className="text-2xl flex justify-around">
+                            <div className="flex gap-2 items-center">
+                                <div className="font-bona-nova font-bold">Kin: </div>
+                                <Select 
+                                    options={kinOptions} 
+                                    defaultValue={kin}
+                                    onChange={setKin}
+                                    className="drop-shadow font-bona-nova z-50"
+                                /> 
+                            </div>
+                            <div className="text-2xl flex gap-4 items-center">
+                                <div className="font-bona-nova font-bold">Culture: </div>
+                                <Select 
+                                    options={cultureOptions} 
+                                    defaultValue={culture}
+                                    onChange={setCulture}
+                                    className="drop-shadow font-bona-nova z-50"
+                                />  
+                            </div>
                         </div>
-                        <div className="text-2xl flex gap-4">
-                            <span className="font-bona-nova font-bold">Job: </span>
-                            <p className="first-letter:uppercase font-bona-nova ">{job.jobName} </p>
+
+                        {/* class & job */}
+                        <div className="text-2xl flex justify-around">
+                            <div className="flex gap-2">
+                                <div className="font-bona-nova font-bold">Class: </div>
+                                <div className="first-letter:uppercase font-bona-nova">{characterContext.class} </div>
+                            </div>
+                            <div className="text-2xl flex gap-4">
+                                <div className="font-bona-nova font-bold">Job: </div>
+                                <div className="first-letter:uppercase font-bona-nova ">{jobContext.jobName} </div>
+                            </div>
                         </div>
+                        
+                        {/* Abilities */}
                         <div className="text-2xl flex gap-4 flex-col">
-                            <span className="font-bona-nova font-bold">Selected Abilities: </span>
+                            <div className="font-bona-nova font-bold flex-center">Selected Abilities: </div>
                             <div className="h-24 flex justify-center gap-4">
-                                {abilities.map(ability => {
+                                {abilitiesContext.map((ability, index) => {
                                     return (
-                                        <div key={ability} className={`w-1/3 border border-b-[12px] bg-red-600 rounded-lg flex-center text-white text-2xl text-center ${colorSwapAccent} relative`}>
+                                        <div key={ability + index} className={`w-1/3 border border-b-[12px] ${colorSwap.bg(characterContext)} rounded-lg flex-center text-white text-2xl text-center ${colorSwap.borderAccent(characterContext)} relative font-bona-nova`}>
                                             <p>{ability.name}</p>
                                         </div>    
                                     )
@@ -66,8 +127,11 @@ export default function Finalize() {
                         </div>
                         <div className="flex-center items-end h-full">
                             <button 
-                                onClick={() => handleSubmit()}
-                                className={`w-1/2 text-white p-4 rounded-lg text-2xl font-noto-sans ${colorSwapBg}`}> 
+                                onClick={() => {
+                                    handleSubmit()
+                                    navigate("/")
+                                }}
+                                className={`w-1/2 text-white p-4 rounded-lg text-2xl font-bona-nova ${colorSwap.bg(characterContext)}`}> 
                                     REGISTER
                             </button>
                         </div>

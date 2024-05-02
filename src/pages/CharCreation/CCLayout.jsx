@@ -19,9 +19,8 @@ export default function CCLayout() {
     // Stored Character Creation
     const [characterContext, setCharacterContext] = useState();
     const [jobContext, setJobContext] = useState();
-    const [abilitiesContext, setAbilitiesContext] = useState();
-    const [abilitiesActive, setAbilitiesActive] = useState("inactive");
-    const [finalActive, setFinalActive] = useState("inactive");
+    const [abilitiesContext, setAbilitiesContext] = useState([]);
+    const [finalActive, setFinalActive] = useState(false);
 
     const navigate = useNavigate();
 
@@ -31,8 +30,7 @@ export default function CCLayout() {
                 characterContext, setCharacterContext,  
                 jobContext, setJobContext,
                 abilitiesContext, setAbilitiesContext, 
-                classes, keywords, colorSwap, 
-                abilitiesActive, setAbilitiesActive, 
+                classes, keywords, colorSwap,
                 finalActive, setFinalActive}}
             />    
             <div className={`absolute z-30 bottom-0 left-0 w-full ${colorSwap.bgAlt(characterContext)} h-16 flex-center gap-4 text-2xl text-white ring ring-white`}>
@@ -66,10 +64,13 @@ export default function CCLayout() {
                     </div>
                 }
                 <FaArrowCircleRight className="text-3xl"/>
-                {abilitiesContext
+                {abilitiesContext.length !== 0
                     ?
-                    <div className={`rounded-full ${colorSwap.textAlt(characterContext)} bg-white py-2 px-8 text-center font-bold first-letter:uppercase cursor-pointer`}>
-                        {characterContext.class}
+                    <div 
+                        onClick={() => navigate('/charcreate/abilities')}
+                        className={`rounded-full ${colorSwap.textAlt(characterContext)} bg-white py-2 px-8 text-center font-bold first-letter:uppercase cursor-pointer`}
+                    >
+                        Abilities: {abilitiesContext.length}
                     </div>
                     : 
                     <div className={`rounded-full text-white py-2 px-8 text-center`}>
@@ -77,10 +78,13 @@ export default function CCLayout() {
                     </div>
                 }
                 <FaArrowCircleRight className="text-3xl"/>
-                {abilitiesContext
+                {finalActive
                     ?
-                    <div className={`rounded-full ${colorSwap.textAlt(characterContext)} bg-white py-2 px-8 text-center font-bold first-letter:uppercase cursor-pointer`}>
-                        {characterContext.class}
+                    <div 
+                        onClick={() => navigate('/charcreate/finalize')}
+                        className={`rounded-full ${colorSwap.textAlt(characterContext)} bg-white py-2 px-8 text-center font-bold first-letter:uppercase cursor-pointer`}
+                    >
+                        Guild Card
                     </div>
                     : 
                     <div className={`rounded-full text-white py-2 px-8 text-center`}>

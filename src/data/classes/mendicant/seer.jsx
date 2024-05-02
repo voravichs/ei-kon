@@ -5,8 +5,8 @@ import { TbCardsFilled } from "react-icons/tb";
 const { statusConditions, rules, combatGlossary, actions, summons} = keywordData;
 
 const { vigor, unstoppable, pacified, divine, sealed, stunned, bloodied} = statusConditions
-const { boon, curse, summon, pit} = rules;
-const { blessing, gamble, immune_to_x, aura_x, area_ability, charge, power_die, teleport_X, difficult_terrain, combo, bonus_damage, terrain_effect, mark, cure, stance} = combatGlossary
+const { boon, curse, pit} = rules;
+const { blessing, gamble, immune_to_x, aura_x, area_ability, charge, power_die, teleport_X, difficult_terrain, combo, bonus_damage, terrain_effect, mark, cure, stance, summon} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -130,6 +130,7 @@ const ch1Abilities = [
         "name": "Polaris",
         "actions": 1,
         "range": 5,
+        "type": [],
         "desc": "A distant glint in the heavens, portents of the devastation to come.",
         "effects": [
             {
@@ -195,7 +196,10 @@ const ch1Abilities = [
             "type": ["interrupt"],
             "trigger": "An ally in the aura is targeted by a foe's ability.",
             "effects": [
-                "Tick down your power die by any amount. Gamble with a number of d6s equal to the number of ticks you spent, then that ally gains vigor equal to double the gamble result. However, at the end of the current turn, your ally loses all vigor."
+                {
+                    "type": "Effect",
+                    "desc":  "Tick down your power die by any amount. Gamble with a number of d6s equal to the number of ticks you spent, then that ally gains vigor equal to double the gamble result. However, at the end of the current turn, your ally loses all vigor."
+                },
             ],
             "tags": [power_die, gamble, vigor]
         },
@@ -304,13 +308,17 @@ const seer = {
             "tags": [unstoppable, immune_to_x, actions.chakravartin]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "High Prophecy",
         "resolve": 3,
-        "action": 0,
+        "actions": 0,
         "desc": "A burning third eye of pure etheric energy appears on your forehead. Possibilities unfurl before you, laid out like infinite gleaming threads.",
-        "extra_effects": [
+        "effects": [
             {
                 "type": "Aura",
                 "desc": "Until the start of your next turn, you gain aura 2. Every d6 any character in the aura rolls for boons, curses, or gambling is either a 6 or a 1 (you choose)."

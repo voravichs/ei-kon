@@ -14,22 +14,13 @@ export default function Jobs() {
     const [selected, setSelected] = useState(false);
 
     function handleSetJob(job) {
-        const newChar = {
-            "name": " ",
-            "class": characterContext,
-            "job": job,
-            "abilities": [],
-            "level": 0,
-            "chapter": 1
-        }
-        localStorage.setItem("newChar", JSON.stringify(newChar));
         setJobContext(job)
         setSelected(true)
     }
 
     return (
         <>
-            <div className="absolute top-0 left-4 w-20 h-3/5 bg-primary" />
+            <div className={`absolute top-0 left-4 w-20 h-3/5 ${colorSwap.bg(characterContext)}`} />
             <div className="flex h-dvh pt-32 px-8 pb-24">
                 {/* Job Selection */}
                 <div className="w-1/4 h-full flex flex-col gap-2 font-bona-nova text-3xl">

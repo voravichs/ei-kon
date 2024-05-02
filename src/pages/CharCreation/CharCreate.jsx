@@ -26,7 +26,6 @@ export default function CharCreate() {
             "level": 0,
             "chapter": 1
         }
-        localStorage.setItem("newChar", JSON.stringify(newChar));
         setCharacterContext(newChar.class)
         setSelected(true)
     }

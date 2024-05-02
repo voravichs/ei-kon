@@ -5,8 +5,8 @@ import { GiFire } from "react-icons/gi";
 const { statusConditions, rules, combatGlossary } = keywordData;
 
 const { regeneration, defiance, divine, unerring, trueStrike, pierce, shattered, vulnerable, phasing} = statusConditions
-const { rescue, wound, defeated, pit, curse} = rules;
-const { infuse_x, aether, gamble, comeback, exceed, area_ability, shove_x, terrain_effect, sacrifice_x, teleport_X, cover, bonus_damage, stance, collide, mark, interrupt} = combatGlossary
+const { rescue, wound, defeated, pit, curse, interrupt} = rules;
+const { infuse_x, aether, gamble, comeback, exceed, area_ability, shove_x, terrain_effect, sacrifice_x, teleport_X, cover, bonus_damage, stance, collide, mark} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -29,52 +29,48 @@ const ch1Abilities = [
                 "desc": "After the ability resolves, the area explodes again, dealing 2 piercing damage to all characters."
             },
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Pyrotic",
-                "desc": "Increase range to 10 and blast size to Large Blast. Create a pit under the attack target after this ability resolves."
-            },
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Pyrotic",
+            "desc": "Increase range to 10 and blast size to Large Blast. Create a pit under the attack target after this ability resolves."
+        },
         "talent1": "Comeback: Allies are immune to damage from this ability.",
         "talent2": "Exceed: You may shove all characters in the area 2 spaces.",
         "mastery": {
             "name": "Magnapyre",
             "desc": "Magnapyre benefits from Pyre talents.",
-            "infuse_effects": [
-                {
-                    "text": "Infuse 6",
-                    "num": 6,
-                    "name": "Magnaflare",
-                    "actions": 2,
-                    "range": 12,
-                    "area": "Large Blast",
-                    "effects": [
-                        {
-                            "type": "Attack",
-                            "desc": "On hit: 2[D] + fray. On miss: [D]+fray."
-                        },
-                        {
-                            "type": "Area effect",
-                            "desc": "[D]+fray"
-                        },
-                        {
-                            "type": "Effect",
-                            "desc": "Create a pit under your attack target"
-                        },
-                        {
-                            "type": "Effect",
-                            "desc": "After the ability resolves, the area explodes again, inflicting 2 piercing damage to all characters."
-                        },
-                        {
-                            "type": "Comeback or Exceed",
-                            "desc": "The area explodes again, dealing 2 piercing damage to all characters."
-                        }
-                    ],
-                    "tags": [area_ability, comeback, exceed, pit]
-                },
-            ],
+            "infuse_effect": {
+                "text": "Infuse 6",
+                "num": 6,
+                "name": "Magnaflare",
+                "actions": 2,
+                "range": 12,
+                "area": "Large Blast",
+                "effects": [
+                    {
+                        "type": "Attack",
+                        "desc": "On hit: 2[D] + fray. On miss: [D]+fray."
+                    },
+                    {
+                        "type": "Area effect",
+                        "desc": "[D]+fray"
+                    },
+                    {
+                        "type": "Effect",
+                        "desc": "Create a pit under your attack target"
+                    },
+                    {
+                        "type": "Effect",
+                        "desc": "After the ability resolves, the area explodes again, inflicting 2 piercing damage to all characters."
+                    },
+                    {
+                        "type": "Comeback or Exceed",
+                        "desc": "The area explodes again, dealing 2 piercing damage to all characters."
+                    }
+                ],
+                "tags": [area_ability, comeback, exceed, pit]
+            },
         },
         "tags": [pierce, comeback, exceed, pit, shove_x, infuse_x]
     },
@@ -95,14 +91,12 @@ const ch1Abilities = [
         ],
         "talent1": "You can teleport up to 3 spaces into an Elden Rune space as a free action.",
         "talent2": "While standing in an Elden Rune, the infuse costs of your spells are reduced by 1, to a minimum of 1",
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Great Rune",
-                "desc": "Grant the following effect to your rune: your attacks also shatter their main target while standing in this rune."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Great Rune",
+            "desc": "Grant the following effect to your rune: your attacks also shatter their main target while standing in this rune."
+        },
         "mastery": {
             "name": "Arkenrune",
             "desc": "You can put an Arkenrune down instead of a regular Elden Rune, but only one at a time, replacing the last Arkenrune you placed. Arkenrunes can't be scrubbed out, extend to a small blast area, and their benefits also extend to allies."
@@ -137,20 +131,18 @@ const ch1Abilities = [
                 "desc": "Also deals bonus damage for every unique object it passed through."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Volvaga",
-                "desc": "Gains width +1 and may melt any objects of your choice in its path, removing them."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Volvaga",
+            "desc": "Gains width +1 and may melt any objects of your choice in its path, removing them."
+        },
         "talent1": "When this ability passes through an object, it releases a soul ember, dealing 1 piercing damage to a character in range 3 of that object. Each character can only be struck by one ember by a single use of this ability.",
         "talent2": "If you are at 1 hp or lower, this ability deals maximum base damage (before critical hits).",
         "mastery": {
             "name": "Great Spirit Lance",
             "desc": "Great Spirit Lance benefits from Lance talents.",
-            "infuse_effects": {
+            "infuse_effect": {
                 "text": "Infuse 6",
                 "num": 6,
                 "name": "Great Spirit Lance",
@@ -194,13 +186,12 @@ const ch1Abilities = [
                 ]
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 4: Incandius",
-                "num": 4,
-                "desc":  "When entering this stance, shove all adjacent characters 3 and spark a soul ember at them, dealing 1 piercing damage to them. Collide: Characters are vulnerable."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 4",
+            "num": 4,
+            "name": "Incandius",
+            "desc":  "When entering this stance, shove all adjacent characters 3 and spark a soul ember at them, dealing 1 piercing damage to them. Collide: Characters are vulnerable."
+        },
         "talent1": "If a foe is struck by two or more soul embers from this ability in the same turn, they become vulnerable.",
         "talent2": "Foes that end their turn adjacent to you while Soul Burn is active take 1 piercing damage and are shoved 1.",
         "mastery": {
@@ -315,11 +306,15 @@ const enochian = {
             "tags": [defeated, aether, area_ability]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Gigaflare",
         "resolve": 4,
-        "action": 2,
+        "actions": 2,
         "desc": "<p>I, who stand at the apex of things,</p><p>Thou, who are in the deepest pits of despair,</p><p>Let thy very bones become ash!</p><p>O Flame, let the air become death!</p><p>Ignite, and be banished to Hell!</p>",
         "effects": [
             {
@@ -327,25 +322,21 @@ const enochian = {
                 "desc": "You summon the eldflame, the primeval force of creation, dealing [D]+fray divine damage to every character on the battlefield, ignoring line of sight. Characters in range 2 of you are exempt from this ability.",
             },
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 6",
-                "num": 6,
-                "name": "Tetraflare",
-                "desc": "Deal [D] + fray twice instead."
-            },
-        ],
+        "infuse_effect": {
+            "text": "Infuse 6",
+            "num": 6,
+            "name": "Tetraflare",
+            "desc": "Deal [D] + fray twice instead."
+        },
         "ultimate": {
             "name": "Meteor",
             "resolve": 6,
-            "infuse_effects": [
-                {
-                    "text": "Infuse 8",
-                    "num": 8,
-                    "name": "Meteor",
-                    "desc": "Deal [D]+fray four times instead."
-                },
-            ],
+            "infuse_effect": {
+                "text": "Infuse 8",
+                "num": 8,
+                "name": "Meteor",
+                "desc": "Deal [D]+fray four times instead."
+            },
             "desc": "<em>Special effect</em>: You can pay the resolve, aether, and action cost of this spell with your entire life force, dying after this action resolves, obliterating your body, and scattering your soul. If you do, it deals 999 divine damage instead."
         },
         "tags": [divine, unerring, trueStrike]

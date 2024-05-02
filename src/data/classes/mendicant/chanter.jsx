@@ -274,11 +274,15 @@ const chanter = {
             "tags": [cure, rescue]
         },
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "March of the Saints",
         "resolve": 2,
-        "action": 1,
+        "actions": 1,
         "desc": "You sing of the deeds of the first heroes, from the Doom. The Great Chant weaves around your allies and transforms them into echoes of those mighty heroes.",
         "effects": [
             {
@@ -291,7 +295,13 @@ const chanter = {
             },
             {
                 "type": "Great Saints",
-                "desc": "<p> - <b>Parzival: </b> An allied character gains flying and cover from all directions.</p><p> - <b>Leon: </b>An allied character gains dodge and the ability to move diagonally..</p><p> - <b>Angrboda: </b>An allied character gains sturdy, and their attacks gain true strike and shove 1. .</p><p> - <b>Farnese: </b>An ally gains 1 blessing and +1 boon on all attacks and saves.</p>"
+                "desc": "",
+                "details": [
+                    "<b>Parzival: </b> An allied character gains flying and cover from all directions.",
+                    "<b>Leon: </b>An allied character gains dodge and the ability to move diagonally.",
+                    "<b>Angrboda: </b>An allied character gains sturdy, and their attacks gain true strike and shove 1.",
+                    "<b>Farnese: </b>An ally gains 1 blessing and +1 boon on all attacks and saves."
+                ]
             },
         ],
         "ultimate": {

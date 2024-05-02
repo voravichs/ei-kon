@@ -61,13 +61,13 @@ export default function JobCard({ selectedJob }) {
             </div>
 
             {/* Info */}
-            <div className="w-1/2 flex flex-col gap-6">
+            <div className="w-1/2 flex flex-col justify-between gap-6">
                 {/* Description */}
-                <div className="h-1/2 font-light flex-center flex-col gap-4">
+                <div className="font-light flex-center flex-col gap-4 text-lg">
                     {parse(selectedJob.desc)}
                 </div>
                 {/* Traits & LB */}
-                <div className="h-1/2 flex gap-4">
+                <div className="flex gap-4">
                     <div className="w-1/2">
                         <p className={`text-3xl font-bold ${colorSwap.text(characterContext)} text-center mb-2`}>
                             Class Traits
@@ -81,7 +81,7 @@ export default function JobCard({ selectedJob }) {
                                                 initial="initial"
                                                 animate="initial"
                                                 whileHover="animate"
-                                                className={`${colorSwap.bg(characterContext)} text-white slick-card p-4 relative cursor-pointer flex-center`}
+                                                className={`${colorSwap.bg(characterContext)} text-white slick-card px-4 py-2 relative cursor-pointer flex-center`}
                                             >
                                                 <p className="font-bold text-2xl flex-center gap-4">{trait.name}</p>
                                                 <motion.span

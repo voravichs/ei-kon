@@ -138,6 +138,7 @@ const ch1Abilities = [
     {
         "name": "Spirit Shrine",
         "actions": 1,
+        "type": ["object"],
         "desc": "Many sealers carry portable shrines to the local spirits, adding on talismans, images, icons, or offerings to whichever small god holds dominion over the areas they travel through. In a pinch, they can set these shrines down and beseech the spirits for aid.",
         "effects": [
             {
@@ -175,6 +176,7 @@ const ch1Abilities = [
         "name": "Sanctify",
         "actions": 2,
         "range": 2,
+        "type": [],
         "desc": "You throw out a handful of glittering salt, scorching the spiritually impure.",
         "effects": [
             {
@@ -198,6 +200,7 @@ const ch1Abilities = [
         "name": "Grand Banishment",
         "actions": 1,
         "range": 4,
+        "type": [],
         "desc": "With a word and a quickly drawn talisman, you stomp your foot and forbid your foe from taking another step towards you.",
         "effects": [
             {
@@ -263,12 +266,16 @@ const sealer = {
             "tags": [blessing, vigor, bloodied]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Passage to the Afterlife",
         "resolve": 5,
-        "action": 2,
-        "bonus_boon": 1,
+        "actions": 2,
+        "boon": 1,
         "desc": "You unleash the supreme Sealer war art, inflicting ten thousand blows and shattering the connections of your foe's vital energy to their body, hurrying on the transmigration of immortal souls.",
         "effects": [
             {
@@ -288,7 +295,7 @@ const sealer = {
             "name": "Reach Heaven Through Violence",
             "desc": "The teleport effect has the range of the battlefield for both allied characters and yourself. If your target is at or under 25% hp, they take 2 divine damage twice for each adjacent ally instead."
         },
-        "tags": [divine, exceed, teleport_X]
+        "tags": [boon, divine, exceed, teleport_X]
     }
 }
 

@@ -4,9 +4,9 @@ import {  GiRustySword } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
-const { sturdy, trueStrike, vigilance_x, divine, slashed, vigor, rampart, resistance, weakened, counter } = statusConditions
+const { sturdy, trueStrike, vigilance_x, divine, slashed, vigor, rampart, weakened, counter } = statusConditions
 const { boon, interrupt } = rules;
-const { heroic, slow_turn, delay, bonus_damage, rush_x, area_ability, charge, teleport_X, exceed, shove_x } = combatGlossary
+const { heroic, slow_turn, delay, bonus_damage, rush_x, area_ability, charge, teleport_X, exceed, shove_x, resistance } = combatGlossary
 
 const ch1Abilities = [
     {
@@ -246,23 +246,12 @@ const demonslayer = {
         "effects": [
             {
                 "type": "Effect",
-                "desc": "<b>End your turn</b>, and start charging up a God Cutting Blow.",
-            },
-            {
-                "type": "Delay",
-                "desc": "Your next turn must be slow. At the start of that turn, you may take one of the following options:"
-            },
-            {
-                "type": "Sever Divine Thread",
-                "desc": "Swing your weapon in a line 5 area effect drawn from your position. This counts as using an attack this turn. Characters in the line take damage depending on their distance on the line from you. 1 space: 100% of max hp, 2-4 spaces: 50% of max hp, 5+ spaces: 25% of max hp.",
-            },
-            {
-                "type": "Divine Cancel",
-                "desc": "You may cancel this ability, refunding the resolve cost, and rush 1. You can limit break again this combat, but not this turn.",
-            },
-            {
-                "type": "Divine Delay",
-                "desc": "You continue to hold this ability. Your next turn must be slow and repeat this delay effect. Each time you do this, increase the width of the line by 1 space, to a maximum of 3 width, and its length by 3 spaces. You cannot attack while holding Divine Delay.",
+                "desc": "<b>End your turn</b>, and start charging up a God Cutting Blow. <b>Delay:</b> Your next turn must be slow. At the start of that turn, you may take one of the following options:",
+                "details": [
+                    "<p><b>Sever Divine Thread</b>: Swing your weapon in a line 5 area effect drawn from your position. This counts as using an attack this turn. Characters in the line take damage depending on their distance on the line from you.<p/><p> - <b>1 space</b>: 100% of max hp,<p/><p> - <b>2-4 spaces</b>: 50% of max hp,<p/><p> - <b>5+ spaces</b>: 25% of max hp.",
+                    "<b>Divine Cancel</b>: You may cancel this ability, refunding the resolve cost, and rush 1. You can limit break again this combat, but not this turn.",
+                    "<b>Divine Delay</b>: You continue to hold this ability. Your next turn must be slow and repeat this delay effect. Each time you do this, increase the width of the line by 1 space, to a maximum of 3 width, and its length by 3 spaces. You cannot attack while holding Divine Delay."
+                ]
             },
             {
                 "type": "Special",

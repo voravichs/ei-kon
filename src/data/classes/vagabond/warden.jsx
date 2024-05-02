@@ -4,9 +4,9 @@ import { GiWolfHead } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, summons } = keywordData;
 
-const { divine, phasing, dazed, unerring, evasion } = statusConditions
-const { summon, boon } = rules;
-const { stealth, dash, cover, bonus_damage, finishing_blow, charge, terrain_effect, shove_x, mark, collide, stance, aura_x} = combatGlossary
+const { divine, phasing, dazed, unerring, evasion, stealth } = statusConditions
+const { boon } = rules;
+const { dash, cover, bonus_damage, finishing_blow, charge, terrain_effect, shove_x, mark, collide, stance, aura_x, summon} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -108,7 +108,12 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Terrain Effect",
-                "desc": "Create a small blast misty cloud in free space in range, with the following effects: The spaces of the area always cost a maximum of 1 movement for you and allies to move across, and characters have phasing while moving this way. Foes inside are blinded. Clouds created with this ability last until this ability is used again."
+                "desc": "Create a small blast misty cloud in free space in range, with the following effects:",
+                "details": [
+                    "- The spaces of the area always cost a maximum of 1 movement for you and allies to move across, and characters have phasing while moving this way.",
+                    "- Foes inside are blinded.",
+                    "- Clouds created with this ability last until this ability is used again."
+                ]
             },
             {
                 "type": "Charge",
@@ -222,16 +227,25 @@ const warden = {
             "tags": [stealth]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Lycanthropy",
         "resolve": 3,
-        "action": 1,
+        "actions": 1,
         "desc": "You muster up the primal magic of the Deep Green. The power of fang, tooth scale, fur, and claw pours into you, granting you massively increased speed and power.",
         "effects": [
             {
                 "type": "Effect",
-                "desc": "<p>You become a beast hybrid of primal fury. You gain a greatly enhanced dash, with benefits:</p><p> - Dash always becomes a free action.</p><p> - All dashes granted as part of any of your abilities, summons, or actions (including this one!) may be increased by +1, and grant phasing while moving. </p><p> - When you take the dash action, all allies and allied summons can dash 1. Then, any foe adjacent to one or more characters that dashed this way takes 2 damage.</p>",
+                "desc": "You become a beast hybrid of primal fury. You gain a greatly enhanced dash, with benefits:",
+                "details": [
+                    "- Dash always becomes a free action.",
+                    "- All dashes granted as part of any of your abilities, summons, or actions (including this one!) may be increased by +1, and grant phasing while moving.",
+                    "- When you take the dash action, all allies and allied summons can dash 1. Then, any foe adjacent to one or more characters that dashed this way takes 2 damage."
+                ]
             },
         ],
         "ultimate": {

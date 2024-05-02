@@ -33,20 +33,18 @@ const ch1Abilities = [
                 "desc": "Create a space of dangerous terrain in the center space of the area, and under every foe in the area."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Biotic",
-                "desc": "Increase blast size to medium blast, and shatters all characters inside."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Biotic",
+            "desc": "Increase blast size to medium blast, and shatters all characters inside."
+        },
         "talent1": "You may also cause pits, objects you created, and difficult terrain caught in the area to become dangerous terrain.",
         "talent2": "You may cause existing dangerous terrain spaces in the area to boil with poison after this ability resolves. Characters in or adjacent to one or more of those spaces take 2 piercing damage as an area effect.",
         "mastery": {
             "name": "Magnabio",
             "desc": "Magnabio benefits from bio talents.",
-            "infuse_effects": {
+            "infuse_effect": {
                 "text": "Infuse 6",
                 "num": 6,
                 "name": "Magnabio",
@@ -87,14 +85,12 @@ const ch1Abilities = [
                 "desc": "When you explode upwards, you release a burst 1 area effect centered on you, shoving 1 and dealing 2 piercing damage to all characters."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Boulder Kick",
-                "desc": "The area effect released becomes range 3, burst 1 (target). If only one character is caught in the area, they take 2 piercing damage twice instead and are shoved 2."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Boulder Kick",
+            "desc": "The area effect released becomes range 3, burst 1 (target). If only one character is caught in the area, they take 2 piercing damage twice instead and are shoved 2."
+        },
         "talent1": "Gain Collide: Character is vulnerable.",
         "talent2": "You may burst out of the ground and fly 3 after Dragon Dive's delay effect resolves.",
         "mastery": {
@@ -127,20 +123,18 @@ const ch1Abilities = [
                 "desc": "Attack target explodes in a medium blast area effect, dealing 2 piercing damage again to all characters and creating a pit under them."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 4",
-                "num": 4,
-                "name": "Geotic",
-                "desc": "Arc 8. Deals bonus damage to characters standing in difficult terrain, pits, or dangerous terrain, and automatically triggers the charge effect against a foe standing in those spaces."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 4",
+            "num": 4,
+            "name": "Geotic",
+            "desc": "Arc 8. Deals bonus damage to characters standing in difficult terrain, pits, or dangerous terrain, and automatically triggers the charge effect against a foe standing in those spaces."
+        },
         "talent1": "When a boulder or pit is created with this ability, you may shove all adjacent characters 1 away from it. Collide: character has a space of difficult terrain created under them.",
         "talent2": "Boulders can be created under characters, and you may choose to make characters you create boulders under immune to damage from this ability",
         "mastery": {
             "name": "Magnageo",
             "desc": "Magnageo benefits from geo talents.",
-            "infuse_effects": {
+            "infuse_effect": {
                 "text": "Infuse 6",
                 "num": 6,
                 "name": "Magnageo",
@@ -203,6 +197,7 @@ const ch1Abilities = [
         "name": "Terraforming",
         "actions": 2,
         "range": 6,
+        "type": [],
         "desc": "The key of creation is turned, and the land is shaped like clay, as the Titans once did.",
         "effects": [
             {
@@ -221,14 +216,12 @@ const ch1Abilities = [
                 "desc": "Choose four effects."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 2",
-                "num": 2,
-                "name": "Earthblood",
-                "desc": "Sink into the ground, removing yourself from the battlefield and placing yourself in any space in the area after the ability resolves."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 2",
+            "num": 2,
+            "name": "Earthblood",
+            "desc": "Sink into the ground, removing yourself from the battlefield and placing yourself in any space in the area after the ability resolves."
+        },
         "talent1": "Charge: effects can also be placed in any space adjacent to the area.",
         "talent2": "You can also create up to 3 spaces of dangerous terrain in the area as a choosable effect.",
         "mastery": {
@@ -267,7 +260,7 @@ const geomancer = {
     "title": "Guardian of the Pure Earth",
     "img": img,
     "icon": <GiStoneBlock/>,
-    "desc": "<p>Geomancers belong to an old order of mystics, doctors, alchemists, and esoteric martial artists called the Keepers of the Elden Gate. These scholarly wrights are concerned with health and the flow of energy, not just through the body, but through the very earth itself. They consider themselves physicians of the highest order - their patient being the eternal land of Arden Eld.</p><p>These studious wrights attune themselves to earth Aether, aligning the energy channels of their body to crystalline perfection with vigorous exercise and sometimes bizarre health regimes. In battle, the land itself is their ally, spitting forth poisonous gases, cavernous upheavals of earth, and great spires of rock to crush their foes.</p><p>None are more concerned with the Churn than the geomancers, who view it as the greatest sickness known to Kin, and will take any opportunity to fight or study it with exuberance.</p>",
+    "desc": "<p className='text-base'>Geomancers belong to an old order of mystics, doctors, alchemists, and esoteric martial artists called the Keepers of the Elden Gate. These scholarly wrights are concerned with health and the flow of energy, not just through the body, but through the very earth itself. They consider themselves physicians of the highest order - their patient being the eternal land of Arden Eld.</p><p className='text-base'>These studious wrights attune themselves to earth Aether, aligning the energy channels of their body to crystalline perfection with vigorous exercise and sometimes bizarre health regimes. In battle, the land itself is their ally, spitting forth poisonous gases, cavernous upheavals of earth, and great spires of rock to crush their foes.</p><p className='text-base'>None are more concerned with the Churn than the geomancers, who view it as the greatest sickness known to Kin, and will take any opportunity to fight or study it with exuberance.</p>",
     "traits": [
         {
             "name": "Aftershock",
@@ -300,11 +293,15 @@ const geomancer = {
             "tags": [phasing, movement]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Cataclysm",
         "resolve": 3,
-        "action": 1,
+        "actions": 1,
         "desc": "<p>I, protected by the holy trigram,</p><p>Summon the ten thousand molten metal kings.</p><p>Run amok with thy furies, and rend the immortal stone, </p><p>Turn Heaven and Earth!</p>",
         "effects": [
             {
@@ -313,7 +310,7 @@ const geomancer = {
             },
             {
                 "type": "Effect",
-                "desc": "<p>After the first effect resolves, all objects in the area release an explosion for a medium blast area effect centered on them, dealing [D]+fray as an area effect. Characters hit by two or more explosions take 2[D]+fray instead.</p><p>When this ability resolves, place yourself in any unoccupied space in the area.</p>",
+                "desc": "After the first effect resolves, all objects in the area release an explosion for a medium blast area effect centered on them, dealing [D]+fray as an area effect. Characters hit by two or more explosions take 2[D]+fray instead.<p>When this ability resolves, place yourself in any unoccupied space in the area.</p>",
             },
             
         ],

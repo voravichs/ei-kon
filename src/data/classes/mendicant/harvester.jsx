@@ -4,9 +4,9 @@ import { GiScythe } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, actions, summons } = keywordData;
 
-const { pierce, cure, divine, sealed, unerring, vigor, bloodied, pacified, regeneration, defiance, unstoppable} = statusConditions
+const { pierce, divine, sealed, unerring, vigor, bloodied, pacified, regeneration, defiance, unstoppable} = statusConditions
 const { pit, ongoing, curse, rescue } = rules;
-const { bonus_damage, slay, blessing, mark, summon, combo, comeback, terrain_effect, difficult_terrain, stance, aura_x, sacrifice_x, area_ability, dangerous_terrain} = combatGlossary
+const { cure, bonus_damage, slay, blessing, mark, summon, combo, comeback, terrain_effect, difficult_terrain, stance, aura_x, sacrifice_x, area_ability, dangerous_terrain} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -240,11 +240,15 @@ const harvester = {
             "tags": [divine]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Death Sentence",
         "resolve": 3,
-        "action": 0,
+        "actions": 0,
         "desc": "A flash of the scythe, and the line between life and death is blurred.",
         "effects": [
             {

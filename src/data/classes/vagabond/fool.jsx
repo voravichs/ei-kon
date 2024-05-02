@@ -18,7 +18,12 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Effect",
-                "desc": "Dash 3, then dash 1 space to the side of your movement. This movement ignores all movement penalties and has phasing. However: You must move if able. You must move as far as possible. You cannot move diagonally during this movement."
+                "desc": "Dash 3, then dash 1 space to the side of your movement. This movement ignores all movement penalties and has phasing. However:",
+                "details": [
+                    "- You must move if able.",
+                    "- You must move as far as possible.",
+                    "- You cannot move diagonally during this movement."
+                ]
             },
             {
                 "type": "Attack",
@@ -72,7 +77,13 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Effect",
-                "desc": "Gamble, then dash that many spaces +2 in a whirling dance. You must move as far as possible before an obstruction causes you to stop. You must make all movement in the same direction. You cannot move diagonally using this movement. However, you can interrupt Spinning Top with any number of other abilities without causing the movement to end."
+                "desc": "Gamble, then dash that many spaces +2 in a whirling dance.",
+                "details": [
+                    "- You must move as far as possible before an obstruction causes you to stop.",
+                    "- You must make all movement in the same direction.",
+                    "- You cannot move diagonally using this movement.",
+                    "- However, you can interrupt Spinning Top with any number of other abilities without causing the movement to end."
+                ]
             },
             {
                 "type": "Effect",
@@ -126,12 +137,16 @@ const ch1Abilities = [
         "name": "Gallows Humor",
         "actions": 1,
         "desc": "The power of Divine Death flows through you, empowering your strikes.",
-        "type": ["stance", "power_die"],
+        "type": ["stance", "power die"],
         "tags": [stance, power_die, slay, dash],
         "effects": [
             {
                 "type": "Stance",
-                "desc": "Set out a d6 power die, starting at 1. While in this stance: When this stance refreshes, or when you or an ally anywhere misses or is missed by an attack, tick the die up by 1. When the die is at maximum, you may reset it to 1 when you or an ally uses an ability to empower it. The ability deals bonus damage and triggers any slay effects, hit or miss."
+                "desc": "Set out a d6 power die, starting at 1. While in this stance:",
+                "details": [
+                    "- When this stance refreshes, or when you or an ally anywhere misses or is missed by an attack, tick the die up by 1.",
+                    "- When the die is at maximum, you may reset it to 1 when you or an ally uses an ability to empower it. The ability deals bonus damage and triggers any slay effects, hit or miss.",
+                ]
             },
             {
                 "type": "Refresh",
@@ -154,7 +169,12 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Terrain Effect",
-                "desc": "Throw an explosive mine into a free space in range 3. When any character enters the space, the mine explodes with a medium blast area effect centered on it. When activated, gamble to see the effects, which stack. Then, the mine is destroyed, ending the terrain effect. 1-3: Yourself and allies in the area fly 1. Foes take 2 damage. 4-5: Foes are additionally blinded. 6: Yourself and allies also gain stealth."
+                "desc": "Throw an explosive mine into a free space in range 3. When any character enters the space, the mine explodes with a medium blast area effect centered on it. When activated, gamble to see the effects, which stack. Then, the mine is destroyed, ending the terrain effect.",
+                "details": [
+                    "<b>1-3</b>: Yourself and allies in the area fly 1. Foes take 2 damage.",
+                    "<b>4-5</b>: Foes are additionally blinded.",
+                    "<b>6</b>: Yourself and allies also gain stealth."
+                ]
             },
             {
                 "type": "Finishing Blow",
@@ -208,16 +228,25 @@ const fool = {
             "tags": []
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Curtain Call",
         "resolve": 4,
-        "action": 2,
+        "actions": 2,
         "desc": "Bring out the fireworks. Fire up the elden magic. Time for a showstopper.",
         "effects": [
             {
                 "type": "Effect",
-                "desc": "<b>Gamble</b>, then draw a line area effect of that many spaces +2. Soar into the air, removing yourself from the battlefield, then place yourself adjacent to the first foe in that line, delivering a massive blow. This ability has different effects depending on their position on the line. If there are no valid targets after rolling, the resolve cost of this ability is refunded. \nRoll [D] + fray damage once, then apply it the number of times listed. \n3-5 spaces: x2, \n6-7 spaces: x3, \n8 spaces: x4 and character is stunned.",
+                "desc": "<b>Gamble</b>, then draw a line area effect of that many spaces +2. Soar into the air, removing yourself from the battlefield, then place yourself adjacent to the first foe in that line, delivering a massive blow. This ability has different effects depending on their position on the line. If there are no valid targets after rolling, the resolve cost of this ability is refunded.<p>Roll [D] + fray damage once, then apply it the number of times listed.</p>",
+                "details": [
+                    "<b>3-5 spaces</b>: x2",
+                    "<b>6-7 spaces</b>: x3",
+                    "<b>8 spaces</b>: x4 and character is stunned."
+                ]
             }
             
         ],

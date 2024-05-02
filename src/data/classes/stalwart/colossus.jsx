@@ -4,9 +4,9 @@ import { GiWingfoot } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary } = keywordData;
 
-const { sturdy, defiance, regeneration, bloodied, vigilance_x, flying, divine, weakened, unstoppable, stunned, slashed } = statusConditions
+const { sturdy, defiance, regeneration, bloodied, vigilance_x, flying, divine, weakened, unstoppable, stunned, slashed, trueStrike, vigor} = statusConditions
 const { triggered_effect, defeated, rescue, pit } = rules;
-const { heroic, bonus_damage, rush_x, dash, exceed, sacrifice_x, trueStrike, immune_to_x, charge, terrain_effect, shove_x, comeback, difficult_terrain, end_turn, vigor, collide } = combatGlossary
+const { heroic, bonus_damage, rush_x, dash, exceed, sacrifice_x, immune_to_x, charge, terrain_effect, shove_x, comeback, difficult_terrain, end_turn, collide } = combatGlossary
 
 const ch1Abilities = [
     {

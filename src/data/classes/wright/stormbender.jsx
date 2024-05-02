@@ -5,8 +5,8 @@ import { GiBigWave } from "react-icons/gi";
 const { statusConditions, rules, combatGlossary, summons } = keywordData;
 
 const { pierce, flying, phasing, shattered, vulnerable} = statusConditions
-const { pit, curse} = rules;
-const { summon, collide, aether, area_ability, bonus_damage, difficult_terrain, dangerous_terrain, aura_x, cover, resistance, shove_x, infuse_x, terrain_effect, interrupt} = combatGlossary
+const { pit, curse, interrupt} = rules;
+const { summon, collide, aether, area_ability, bonus_damage, difficult_terrain, dangerous_terrain, aura_x, cover, resistance, shove_x, infuse_x, terrain_effect} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -33,26 +33,22 @@ const ch1Abilities = [
                 "desc": "Summon a Salt Sprite."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Dagon",
-                "desc": "This ability gains range 6, and gains collide: creates a watery pit under this character after this ability resolves."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Dagon",
+            "desc": "This ability gains range 6, and gains collide: creates a watery pit under this character after this ability resolves."
+        },
         "talent1": "If the end space of Rime hits a pit or object, the weapon bounces back and deals 1 piercing damage, twice, as an area effect to all affected characters again.",
         "talent2": "If the end space of Rime hits a pit or object, it explodes into a shower of icicles, dealing 1 piercing damage to one or two characters as an area effect in range 3 of that pit or object, and summoning a salt sprite adjacent to each of those characters.",
         "mastery": {
             "name": "Magnarime",
-            "infuse_effects": [
-                {
-                    "text": "Infuse X",
-                    "num": "X",
-                    "name": "Magnarime",
-                    "desc": "Rime can be infused with massive aether, becoming Infuse X. If so: The area gains range 6 and becomes Arc 4, plus one per aether infused. Summon a pit in the area after the ability resolves for every two aether infused. Deal 1 piercing damage to all characters in the area again after the ability resolves for every two aether infused."
-                }
-            ],
+            "infuse_effect": {
+                "text": "Infuse X",
+                "num": "X",
+                "name": "Magnarime",
+                "desc": "Rime can be infused with massive aether, becoming Infuse X. If so: The area gains range 6 and becomes Arc 4, plus one per aether infused. Summon a pit in the area after the ability resolves for every two aether infused. Deal 1 piercing damage to all characters in the area again after the ability resolves for every two aether infused."
+            },
         },
         "tags": [summon, summons.salt_sprite, shove_x, collide, infuse_x, pierce, area_ability, ]
     },
@@ -67,14 +63,12 @@ const ch1Abilities = [
                 "desc": "<p>Create a huge swell of elemental water. The area is a medium blast terrain effect that is difficult and dangerous terrain that you may place anywhere as long as its edge is adjacent to an edge of the map.</p><p>When you use this ability, choose another edge of the map. At the start of your turns, your tsunami moves 4 spaces in a straight line towards that edge. When a space of the tsunami would move off the map, the effect ends.</p><p>Any non-flying characters in Tsunami when it moves are dragged with it, shoving them. If they are blocked by obstructions, they collide which could cause Tsunami to move on without them. <b>Collide</b>: character is shattered.</p><p>All your Tsunamis disappear if you use this ability again, or they reach an edge of the map.</p>"
             },
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 1",
-                "num": 1,
-                "name": "Stormlash",
-                "desc": "Free Action. Choose an edge of the map. Your active tsunamis move 2 spaces in that direction."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 1",
+            "num": 1,
+            "name": "Stormlash",
+            "desc": "Free Action. Choose an edge of the map. Your active tsunamis move 2 spaces in that direction."
+            },
         "talent1": "Tsunami creates a pit in its center space after completing its movement. The pit remains even if Tsunami moves on.",
         "talent2": "Foes inside Tsunami take +1 curse on saves.",
         "mastery": {
@@ -111,51 +105,47 @@ const ch1Abilities = [
                 "desc": "If any character is already shattered, create a pit under them."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Cryotic",
-                "desc": "Change area to Line 8, increase damage to fray damage, and gains effect: summon a salt sprite for every character in the area adjacent to those characters."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Cryotic",
+            "desc": "Change area to Line 8, increase damage to fray damage, and gains effect: summon a salt sprite for every character in the area adjacent to those characters."
+        },
         "talent1": "At round 4 or later, this ability generates +1 Aether when used.",
         "talent2": "At round 4 or later, this ability shatters all characters in its area.",
         "mastery": {
             "name": "Magnacryo",
             "desc": "Magnacryo benefits from all Cryo Talents.",
-            "infuse_effects": [
-                {
-                    "text": "Infuse X",
-                    "num": "X",
-                    "name": "Magnacryo",
-                    "actions": 2,
-                    "range": "Line 4",
-                    "desc": "Pierce",
-                    "effects": [
-                        {
-                            "type": "Special",
-                            "desc": "Increase the line length by 2 and attack deals bonus damage for every two aether spent"
-                        },
-                        {
-                            "type": "Attack",
-                            "desc": "On hit: 2[D] + fray. Miss: [D]+fray."
-                        },
-                        {
-                            "type": "Effect",
-                            "desc": "Attack target is shattered."
-                        },
-                        {
-                            "type": "Area Effect",
-                            "desc": "[D]+fray"
-                        },
-                        {
-                            "type": "Effect",
-                            "desc": "The attack target is impaled with an icy harpoon, then shoved along the line as far as possible towards you, until they collide or are stopped by an obstruction."
-                        }
-                    ]
-                }
-            ]
+            "infuse_effect": {
+                "text": "Infuse X",
+                "num": "X",
+                "name": "Magnacryo",
+                "actions": 2,
+                "range": "Line 4",
+                "desc": "Pierce",
+                "effects": [
+                    {
+                        "type": "Special",
+                        "desc": "Increase the line length by 2 and attack deals bonus damage for every two aether spent"
+                    },
+                    {
+                        "type": "Attack",
+                        "desc": "On hit: 2[D] + fray. Miss: [D]+fray."
+                    },
+                    {
+                        "type": "Effect",
+                        "desc": "Attack target is shattered."
+                    },
+                    {
+                        "type": "Area Effect",
+                        "desc": "[D]+fray"
+                    },
+                    {
+                        "type": "Effect",
+                        "desc": "The attack target is impaled with an icy harpoon, then shoved along the line as far as possible towards you, until they collide or are stopped by an obstruction."
+                    }
+                ]
+            }
         },
         "tags": [pierce, shattered, shove_x, pit, summon, summons.salt_sprite, collide, aether]
     },
@@ -179,14 +169,12 @@ const ch1Abilities = [
             "height": 1,
             "desc": "If any character either starts or ends their turn on a geyser, you can cause it to erupt, removing that character from the battlefield, then placing them one or two spaces away. Then, remove the geyser."
         },
-        "infuse_effects": [
-            {
-                "text": "Infuse 3",
-                "num": 3,
-                "name": "Volcanic Geyser",
-                "desc": "Create a Volcanic Geyser instead. When it erupts, it removes and places all characters in a medium blast area effect centered on it, and creates dangerous terrain under foes."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 3",
+            "num": 3,
+            "name": "Volcanic Geyser",
+            "desc": "Create a Volcanic Geyser instead. When it erupts, it removes and places all characters in a medium blast area effect centered on it, and creates dangerous terrain under foes."
+        },
         "talent1": "Increase the height of all geysers by +1 at the start of your turn. Allies standing on a geyser have cover from all directions.",
         "talent2": "Once a round, when a character collides with a geyser, summon a Salt Sprite in range 2 from them.",
         "mastery": {
@@ -210,14 +198,12 @@ const ch1Abilities = [
                 "desc": "Character releases a wind blast as a burst 1 area effect centered on them, shoving all characters inside 1 space away from them and dealing 2 piercing damage."
             }
         ],
-        "infuse_effects": [
-            {
-                "text": "Infuse 4",
-                "num": 4,
-                "name": "Great Gust",
-                "desc": "Gust can be created over characters, and immediately activates its effect when it is created, as if characters inside had entered its space."
-            }
-        ],
+        "infuse_effect": {
+            "text": "Infuse 4",
+            "num": 4,
+            "name": "Great Gust",
+            "desc": "Gust can be created over characters, and immediately activates its effect when it is created, as if characters inside had entered its space."
+        },
         "talent1": "Gust can be used for cover by allies as if it were height 1 terrain.",
         "talent2": "Yourself and allies that are shoved by gust can fly 2 after stopping instead of being shoved.",
         "mastery": {
@@ -247,14 +233,12 @@ const ch1Abilities = [
         "talent2": "If you don't use this interrupt, stock up another use of it at the start of your turn. You can stock it up to interrupt 3.",
         "mastery": {
             "name": "Tidal Smash",
-            "infuse_effects": [
-                {
-                    "text": "Infuse X",
-                    "num": "X",
-                    "name": "Tidal Smash",
-                    "desc": "The shove spaces become shove X. <b>Collide</b>: foes are shattered."
-                }
-            ],
+            "infuse_effect": {
+                "text": "Infuse X",
+                "num": "X",
+                "name": "Tidal Smash",
+                "desc": "The shove spaces become shove X. Collide: foes are shattered."
+            },
         },
         "tags": [interrupt, shove_x, vulnerable, summon, summons.salt_sprite, pit, shattered]
     }
@@ -292,6 +276,10 @@ const stormbender = {
             "tags": [aura_x, flying, cover, difficult_terrain, dangerous_terrain]
         }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Elemental",
@@ -301,7 +289,12 @@ const stormbender = {
         "effects": [
             {
                 "type": "Effect",
-                "desc": "<p>You take on a fearsome elemental form, gaining the following benefits for the rest of combat:</p><p>While you are an Elemental:</p><p> - You gain flying and phasing.</p><p> - You release aura 2 around you. The area is a terrain effect that moves with you that is difficult and dangerous terrain for foes, and allies gain cover from all directions in the area.</p><p> - You can share space with characters. You have resistance to any character sharing your space, and allies have resistance while sharing your space.",
+                "desc": "You take on a fearsome elemental form, gaining the following benefits for the rest of combat:<p>While you are an Elemental:</p>",
+                "details": [
+                    "- You gain flying and phasing.",
+                    "- You release aura 2 around you. The area is a terrain effect that moves with you that is difficult and dangerous terrain for foes, and allies gain cover from all directions in the area.",
+                    "- You can share space with characters. You have resistance to any character sharing your space, and allies have resistance while sharing your space."
+                ]
             }
             
         ],

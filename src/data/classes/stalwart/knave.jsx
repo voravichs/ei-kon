@@ -4,9 +4,9 @@ import { GiEvilEyes } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, actions } = keywordData;
 
-const { vigilance_x, hatredOfX, unstoppable, slashed, weakened, evasion, dodge, stealth, divine, sturdy, regeneration } = statusConditions
+const { vigilance_x, hatredOfX, unstoppable, slashed, weakened, evasion, dodge, stealth, divine, sturdy, regeneration, trueStrike, vigor, counter} = statusConditions
 const { status, ongoing, defeated, curse, action, interrupt } = rules;
-const { heroic, stance, bonus_damage, cure, trueStrike, combo, rush_x, slay, vigor, shove_x, sacrifice_x, counter, gamble, comeback, aura_x, collide} = combatGlossary
+const { heroic, stance, bonus_damage, cure, combo, rush_x, slay, shove_x, sacrifice_x, gamble, comeback, aura_x, collide} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -114,7 +114,10 @@ const ch1Abilities = [
             "type": ["interrupt"],
             "trigger": "A foe targets an ally in range 2 with an ability",
             "effects": [
-                "Gamble, then deal that much damage to your foe. On a 6, they are also slashed and shoved 1. If you have vigilance, you can spend any number of vigilance charges when gambling to roll one extra d6 per charge spent."
+                {
+                    "type": "Effect",
+                    "desc": "Gamble, then deal that much damage to your foe. On a 6, they are also slashed and shoved 1. If you have vigilance, you can spend any number of vigilance charges when gambling to roll one extra d6 per charge spent."
+                },
             ],
             "tags": [gamble, slashed, shove_x, vigilance_x, interrupt]
         },

@@ -4,9 +4,9 @@ import { GiSharpShuriken } from "react-icons/gi";
 
 const { statusConditions, rules, combatGlossary, summons } = keywordData;
 
-const { phasing, unerring, blind, defiance, bloodied, evasion, dazed} = statusConditions
-const { pit, summon, boon, interrupt} = rules;
-const { immune_to_x , difficult_terrain, dangerous_terrain, bonus_damage, teleport_X, stealth, combo, mark, area_ability, finishing_blow, slay, aura_x, rebound, stance, power_die} = combatGlossary
+const { phasing, unerring, blind, defiance, bloodied, evasion, dazed, stealth} = statusConditions
+const { pit, boon, interrupt} = rules;
+const { immune_to_x , difficult_terrain, dangerous_terrain, bonus_damage, teleport_X, combo, mark, area_ability, finishing_blow, slay, aura_x, rebound, stance, power_die, summon} = combatGlossary
 
 const ch1Abilities = [
     {
@@ -136,6 +136,7 @@ const ch1Abilities = [
         "name": "Shadow Play",
         "actions": 1,
         "range": 2,
+        "type": [],
         "desc": "Using forbidden scroll techniques, you confuse the senses of foes and allies alike.",
         "effects": [
             {
@@ -163,7 +164,11 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Stance",
-                "desc": "You create shadowy copies of yourself, granting a d4 power die, starting at 2. If the die ticks down to 0, end this stance. When you use an ability that targets a foe, you may trigger any finishing blow effects of that ability, then tick the die down by 1. After you tick the die down, you may teleport 1."
+                "desc": "You create shadowy copies of yourself, granting a d4 power die, starting at 2. If the die ticks down to 0, end this stance. While in this stance:",
+                "details": [
+                    "- When you use an ability that targets a foe, you may trigger any finishing blow effects of that ability, then tick the die down by 1.",
+                    "- After you tick the die down, you may teleport 1."
+                ]
             },
             {
                 "type": "Refresh",
@@ -231,11 +236,15 @@ const shade = {
             "tags": [teleport_X, summons.shadow, summons.shadow_cloud]
 }
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Abyssal Ecstasy",
         "resolve": 2,
-        "action": 1,
+        "actions": 1,
         "desc": "A prayer and a drop of blood, and soothing darkness cloaks the battlefield.",
         "effects": [
             {

@@ -55,7 +55,12 @@ const ch1Abilities = [
         "effects": [
             {
                 "type": "Mark",
-                "desc": "Mark a foe in range with the following effects: When you end your turn in range 3 from your foe, or that foe ends their turn in range 3 of you, set out a d4 power die, starting at 1, or tick it up by 1. When you set out the die or tick it up, shoot a projectile at your foe, dealing 2 damage. The projectile remains, hovering in the air, and tracking your foe. At the end of any turn the die is at maximum, every projectile shot flies at your foe, dealing 2 damage once for each charge on the die and ending this effect and mark."
+                "desc": "Mark a foe in range with the following effects:",
+                "details": [
+                    "- When you end your turn in range 3 from your foe, or that foe ends their turn in range 3 of you, set out a d4 power die, starting at 1, or tick it up by 1.",
+                    "- When you set out the die or tick it up, shoot a projectile at your foe, dealing 2 damage. The projectile remains, hovering in the air, and tracking your foe.",
+                    "- At the end of any turn the die is at maximum, every projectile shot flies at your foe, dealing 2 damage once for each charge on the die and ending this effect and mark."
+                ]
             },
             {
                 "type": "Finishing Blow",
@@ -72,6 +77,7 @@ const ch1Abilities = [
     {
         "name": "Trick Shot",
         "actions": 1,
+        "type": [],
         "desc": "Shoot with your heart.",
         "tags": [unerring, boon, rebound, finishing_blow, stealth, teleport_X],
         "effects": [
@@ -137,7 +143,10 @@ const ch1Abilities = [
             "count": 1,
             "trigger": "The end of any turn",
             "effects": [
-                "Teleport 2 towards the target or teleport your target 1 towards you. The teleport must end with both of you closer together. Allies can choose whether to take this teleport."
+                {
+                    "type": "Effect",
+                    "desc": "Teleport 2 towards the target or teleport your target 1 towards you. The teleport must end with both of you closer together. Allies can choose whether to take this teleport."
+                },
             ],
             "tags": [interrupt, teleport_X]
         },
@@ -211,11 +220,15 @@ const freelancer = {
             "tags": [divine]
         },
     ],
+    "startbattle": {
+        "conditions": [
+        ]
+    },
     "abilities": { ch1Abilities },
     "limitbreak": {
         "name": "Paradiso",
         "resolve": 3,
-        "action": 1,
+        "actions": 1,
         "desc": "You summon the spirit of your weapon, drawing out the residual soul aether of every single one of its previous users. Ghostly doubles of dozens of your predecessors match your movements, and create an aura of untold power.",
         "effects": [
             {
