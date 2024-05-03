@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheetA, CharacterSheetB, CCLayout} from './pages'
+import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheet, CCLayout} from './pages'
 
 function App() {
   return (
@@ -18,11 +18,8 @@ function App() {
               <Route path="*" element={<NoPage />} />
             </Route>
             <Route path="load" element={<LoadChar />} />
-            <Route path="charsheetA">
-              <Route path=":charname" element={<CharacterSheetA />} />
-            </Route>
-            <Route path="charsheetB">
-              <Route path=":charname" element={<CharacterSheetB />} />
+            <Route path="charsheet">
+              <Route path=":charname" element={<CharacterSheet />} />
             </Route>
             <Route path="archive" element={<ArchiveFront />} />
             <Route path="archive" >

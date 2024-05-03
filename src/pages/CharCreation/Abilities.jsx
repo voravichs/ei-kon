@@ -1,7 +1,7 @@
 import AbilityModal from "../../components/modals/AbilityModal"
 
 import { IoIosAddCircle, IoIosCloseCircle } from "react-icons/io";
-import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleRight, FaExpandArrowsAlt } from "react-icons/fa";
 
 import { Link, useOutletContext} from "react-router-dom";
 import { useState } from "react";
@@ -16,6 +16,8 @@ export default function Abilities() {
     const ch1Abilities = jobContext.abilities.ch1Abilities;
 
     const [atMax, setAtMax] = useState(false);
+    const [showAbilityModal, setShowAbilityModal] = useState(false);
+    const [currAbilityModal, setCurrAbilityModal] = useState();
 
     function handleAddAbility(ability) {
         if (abilitiesContext.length <= 1) {
@@ -49,7 +51,18 @@ export default function Abilities() {
                                 return (
                                     <div key={ability.name} className={`border border-b-[24px] ${colorSwap.bg(characterContext)} rounded-lg flex-center flex-col text-white text-xl text-center ${colorSwap.borderAccent(characterContext)} relative`}>
                                         <p>{ability.name}</p>
-                                        <AbilityModal ability={ability}/>
+                                        <FaExpandArrowsAlt 
+                                            onClick={() => {
+                                                setCurrAbilityModal(ability)
+                                                setShowAbilityModal(true)
+                                            }} 
+                                            className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"
+                                        />
+                                        <AbilityModal
+                                            ability={currAbilityModal}
+                                            showModal={showAbilityModal}
+                                            setShowModal={setShowAbilityModal}
+                                        />
                                         <IoIosAddCircle onClick={() => handleAddAbility(ability)} className="absolute bottom-2 left-2 text-3xl hover:animate-bounce cursor-pointer "/>
                                     </div>
                                 )
@@ -67,7 +80,7 @@ export default function Abilities() {
                                     animate={{ opacity: [0, 1, 0]}}
                                     transition={{
                                         ease: "linear",
-                                        duration: 3,
+                                        duration: 2,
                                         times: [0, 0.5, 1]
                                     }}
                                     className="absolute top-4 right-4 z-50 outline-none focus:outline-none cursor-default w-1/2">
@@ -108,8 +121,6 @@ export default function Abilities() {
                         </motion.div>
                     </div>
                 }
-                
-                
             </div>
         </>
     )

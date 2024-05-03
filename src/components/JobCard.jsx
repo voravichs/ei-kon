@@ -1,10 +1,11 @@
 import LimitBreakModal from "./modals/LimitBreakModal";
 
-import { FaArrowCircleRight } from "react-icons/fa";
+import { FaArrowCircleRight, FaExpandArrowsAlt } from "react-icons/fa";
 import { GiShinyOmega } from "react-icons/gi";
 
 import { motion } from "framer-motion"
 import parse from 'html-react-parser';
+import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 /**
  * Class card component
@@ -12,6 +13,8 @@ import { Link, useOutletContext } from "react-router-dom";
 export default function JobCard({ selectedJob }) {
     // Contexts
     const { characterContext, colorSwap } = useOutletContext();
+
+    const [showLimitBreak, setShowLimitBreak] = useState(false);
 
     // Styles & Animations
     const tooltip = {
@@ -106,7 +109,17 @@ export default function JobCard({ selectedJob }) {
                         <div className="flex flex-col h-3/5">
                             <div className={`border border-b-[24px] ${colorSwap.bg(characterContext)} ${colorSwap.borderAccent(characterContext)} text-white rounded-lg flex-center flex-col text-xl text-center border-card-accent relative h-full`}>
                                 <p className="text-2xl font-bold">{selectedJob.limitbreak.name}</p>
-                                <LimitBreakModal limitbreak={selectedJob.limitbreak} />
+                                <FaExpandArrowsAlt 
+                                    onClick={() => {
+                                        setShowLimitBreak(true)
+                                    }} 
+                                    className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"
+                                />
+                                <LimitBreakModal 
+                                    limitbreak={selectedJob.limitbreak} 
+                                    showModal={showLimitBreak}
+                                    setShowModal={setShowLimitBreak}
+                                />
                             </div>
                         </div>
                     </div>

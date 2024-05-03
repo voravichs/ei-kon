@@ -30,6 +30,9 @@ code {
   .ticket {
     @apply rounded-r-3xl border border-l-[24px];
   }
+  .tooltip-sm-dice {
+    @apply flex-center flex-col w-36 h-8 bottom-4 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
   .tooltip-xsm-t {
     @apply flex-center flex-col w-48 h-12 -top-12 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
   }
@@ -39,8 +42,14 @@ code {
   .tooltip-sm-t {
     @apply flex-center flex-col w-60 h-20 -top-20 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
   }
+  .tooltip-lg-b {
+    @apply flex-center flex-col w-60 h-28 -bottom-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
   .tooltip-lg-t {
     @apply flex-center flex-col w-60 h-28 -top-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
+  }
+  .tooltip-xl-b {
+    @apply flex-center flex-col w-96 h-28 -bottom-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;
   }
   .tooltip-xl-t {
     @apply flex-center flex-col w-96 h-28 -top-28 scale-0 rounded bg-gray-700 p-2 text-sm font-noto-sans text-white;

@@ -1,47 +1,25 @@
-import { FaExpandArrowsAlt } from "react-icons/fa";
 import { TbHexagonFilled, TbHexagon1Filled, TbHexagon2Filled, TbSquareRoundedNumber1Filled, TbSquareRoundedNumber2Filled, TbHexagonLetterM  } from "react-icons/tb";
 import { IoIosCloseCircle } from "react-icons/io";
 
-import { useState } from "react";
 import { motion } from "framer-motion"
 import parse from 'html-react-parser';
 
 /**
  * Modal
  */
-export default function AbilityModal({ability}) {
-    const [showModal, setShowModal] = useState(false);
-
+export default function AbilityModal({ability, showModal, setShowModal}) {
     const tooltip = {
         initial: { scale: 0, opacity: 0 },
         animate: { scale: 1, opacity: 1 },
     }
 
-    let actionsIcon;
-    let actions;
-    switch (ability.actions) {
-        case 1:
-            actionsIcon = <TbHexagon1Filled className="text-5xl text-primary"/>
-            actions = 1;
-            break;
-        case 2:
-            actionsIcon = <TbHexagon2Filled className="text-5xl text-primary"/>
-            actions = 2;
-            break;
-        default:
-            actionsIcon = <TbHexagonFilled className="text-5xl text-primary"/>
-            actions = "free";
-            break;
-    }
-
     return(
         <>
-            <FaExpandArrowsAlt onClick={() => setShowModal(true)} className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"/>
             {/* Modal */}
             {showModal ? (
                 <>
                     <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default">
-                        <div className="relative w-3/5 z-50 my-6 mx-auto">
+                        <div className="relative w-3/5 z-50 my-6 mx-auto font-noto-sans text-center">
                             {/*content*/}
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full  text-base bg-white outline-none focus:outline-none">
                                 {/* header */}
@@ -54,12 +32,26 @@ export default function AbilityModal({ability}) {
                                             whileHover="animate"
                                             className="relative flex-center"
                                         >
-                                            {actionsIcon}
+                                            {ability.actions == 1
+                                                ? <TbHexagon1Filled className="text-5xl text-primary"/>
+                                            : ability.actions == 2
+                                                ? <TbHexagon2Filled className="text-5xl text-primary"/>
+                                            :
+                                                <TbHexagonFilled className="text-5xl text-primary"/>
+                                            }
                                             <motion.span
                                                 variants={tooltip}
                                                 transition={{ duration: 0.1, ease: "easeIn" }}
                                                 className="absolute z-10 tooltip-xsm-t">
-                                                <p>Requires {actions} action(s)</p>
+                                                
+                                                {ability.actions == 1
+                                                    ? <p>Requires 1 action</p>
+                                                : ability.actions == 2
+                                                    ? <p>Requires 2 actions</p>
+                                                :
+                                                    <p>Free Action/Interrupt</p>
+                                                }
+                                                
                                             </motion.span>
                                         </motion.div>
                                         {/* Name */}
@@ -309,7 +301,7 @@ export default function AbilityModal({ability}) {
 
                             {/* Infuse */}
                             {ability.infuse_effect &&
-                                <div className="absolute -right-72 top-0 w-64 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-80 top-0 w-72 h-1/2 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
                                         <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.infuse_effect.text}: {ability.infuse_effect.name}</span>
                                         <p className="text-black text-base px-4 py-1 mx-auto">{ability.infuse_effect.desc}</p>
@@ -347,10 +339,10 @@ export default function AbilityModal({ability}) {
                             }
 
                             {ability.mastery.infuse_effect &&
-                                <div className="absolute -right-72 -bottom-4 w-64 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-80 -bottom-4 w-72 h-1/2 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
                                         <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.mastery.infuse_effect.text}: {ability.mastery.infuse_effect.name}</span>
-                                        <p className="text-black text-base px-4 py-1 mx-auto">{ability.mastery.infuse_effect.desc}{ability.mastery.infuse_effect.actions} actions, {ability.mastery.infuse_effect.area}</p>
+                                        <p className="text-black text-base px-4 py-1 mx-auto">{ability.mastery.infuse_effect.desc} | {ability.mastery.infuse_effect.actions} actions | {ability.mastery.infuse_effect.area}</p>
                                         <div className="h-full flex-center flex-col p-4">
                                             {/* Effects */}
                                             {ability.mastery.infuse_effect.effects &&
@@ -384,7 +376,7 @@ export default function AbilityModal({ability}) {
                                 </div>
                             }
                         </div>
-                        <div className="opacity-50 fixed inset-0 z-40 bg-black" onClick={() => setShowModal(false)}></div>
+                        <div className="opacity-25 fixed inset-0 z-40 bg-black" onClick={() => setShowModal(false)}></div>
                     </div>
                 </>
             ) : null}

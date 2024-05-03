@@ -1,4 +1,4 @@
-import DiceModal from "./DiceModal";
+import DiceModal from "./modals/DiceModal";
 
 import { TbHexagon1Filled } from "react-icons/tb";
 import { IoIosCloseCircle } from "react-icons/io";
@@ -9,12 +9,11 @@ import { motion } from "framer-motion"
 /**
  * Modal
  */
-export default function OneActionModal({charData, showDiceModal, setShowDiceModal}) {
+export default function OneActionModal({ charData, showDiceModal, setShowDiceModal }) {
     const [showModal, setShowModal] = useState(false);
 
-    return(
+    return (
         <>
-            <TbHexagon1Filled onClick={() => setShowModal(true)}/> 
             {/* Modal */}
             {showModal ? (
                 <>
@@ -24,10 +23,10 @@ export default function OneActionModal({charData, showDiceModal, setShowDiceModa
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full  text-base bg-white outline-none focus:outline-none">
                                 {/* header */}
                                 <div className="p-4 border-b border-solid rounded-t text-black">
-                                    <div className="grid grid-cols-4 items-center mb-2"> 
+                                    <div className="grid grid-cols-4 items-center mb-2">
                                         <div></div>
-                                        <div className="text-3xl flex-center gap-2 col-span-2 text-primary font-bold"> 
-                                            <TbHexagon1Filled className="text-5xl"/> Actions 
+                                        <div className="text-3xl flex-center gap-2 col-span-2 text-primary font-bold">
+                                            <TbHexagon1Filled className="text-5xl" /> Actions
                                         </div>
                                         {/* Close button */}
                                         <button
@@ -35,7 +34,7 @@ export default function OneActionModal({charData, showDiceModal, setShowDiceModa
                                             type="button"
                                             onClick={() => setShowModal(false)}
                                         >
-                                            <IoIosCloseCircle/>
+                                            <IoIosCloseCircle />
                                         </button>
                                     </div>
                                 </div>
@@ -44,18 +43,18 @@ export default function OneActionModal({charData, showDiceModal, setShowDiceModa
                                     <button onClick={() => {
                                         setShowModal(false)
                                         setShowDiceModal(true)
-                                    }} 
+                                    }}
                                         className="text-white px-8 py-2 bg-secondary text-2xl slick-card border-0"
                                     >
                                         Basic Attack
                                     </button>
-                                    <DiceModal 
-                                        title={"Basic Attack"} 
-                                        dice={charData.class.damagedice} 
+                                    <DiceModal
+                                        title={"Basic Attack"}
+                                        dice={charData.class.damagedice}
                                         fray={charData.class.fray}
                                         actions={1}
                                         showModal={showDiceModal}
-                                        setShowModal={setShowDiceModal}/>
+                                        setShowModal={setShowDiceModal} />
                                 </div>
                             </div>
                         </div>

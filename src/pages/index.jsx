@@ -10,8 +10,7 @@ import ArchiveFront from "./Archive/ArchiveFront"
 import ArchiveKeywords from "./Archive/ArchiveKeywords"
 import ArchiveClasses from "./Archive/ArchiveClasses"
 import About from "./About"
-import CharacterSheetA from "./CharacterSheetA"
-import CharacterSheetB from "./CharacterSheetB"
+import CharacterSheet from "./CharacterSheet"
 import CCLayout from "./CharCreation/CCLayout"
 
 export {
@@ -27,7 +26,6 @@ export {
     ArchiveKeywords,
     ArchiveClasses,
     About,
-    CharacterSheetA,
-    CharacterSheetB,
+    CharacterSheet,
     CCLayout
 }

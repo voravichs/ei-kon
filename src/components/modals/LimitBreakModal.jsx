@@ -1,17 +1,13 @@
-import { FaExpandArrowsAlt } from "react-icons/fa";
 import { TbHexagonFilled, TbHexagon1Filled, TbHexagon2Filled, TbRosetteNumber1, TbRosetteNumber2, TbRosetteNumber3, TbRosetteNumber4,TbRosetteNumber5 } from "react-icons/tb";
 import { IoIosCloseCircle } from "react-icons/io";
 
-import { useState } from "react";
 import { motion } from "framer-motion"
 import parse from 'html-react-parser';
 
 /**
  * Modal
  */
-export default function LimitBreakModal({limitbreak}) {
-    const [showModal, setShowModal] = useState(false);
-
+export default function LimitBreakModal({limitbreak, showModal, setShowModal}) {
     const tooltip = {
         initial: { scale: 0, opacity: 0 },
         animate: { scale: 1, opacity: 1 },
@@ -61,12 +57,11 @@ export default function LimitBreakModal({limitbreak}) {
 
     return(
         <>
-            <FaExpandArrowsAlt onClick={() => setShowModal(true)} className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"/>
             {/* Modal */}
             {showModal ? (
                 <div className="relative">
                     {/* Modal */}
-                    <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default">
+                    <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default text-center font-noto-sans">
                         <div className="relative w-1/2 z-50">
                             {/*content*/}
                             <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full text-base bg-white outline-none focus:outline-none">
@@ -242,7 +237,6 @@ export default function LimitBreakModal({limitbreak}) {
                         </div>
                         <div className="opacity-50 fixed inset-0 z-40 bg-black" onClick={() => setShowModal(false)}></div>
                     </div>
-                    
                 </div>
             ) : null}
         </>

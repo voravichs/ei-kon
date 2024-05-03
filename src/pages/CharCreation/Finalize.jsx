@@ -37,7 +37,7 @@ export default function Finalize() {
         const charData = {
             "name": name,
             "kin": kin.value,
-            "culture:": culture.value,
+            "culture": culture.value,
             "class": characterContext,
             "job": jobContext,
             "abilities": abilitiesContext,
@@ -45,9 +45,12 @@ export default function Finalize() {
             "chapter": 1,
             "current": {
                 "hp": characterContext.hp,
+                "vigor": 0,
                 "actions": 2,
                 "move": characterContext.speed,
-                "wounds": 0
+                "dash": 0,
+                "dashedThisTurn": false,
+                "wounds": []
             }
         }
         localStorage.setItem(name, JSON.stringify(charData));
