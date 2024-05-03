@@ -2,20 +2,18 @@ import keywords from "../data/keywords";
 import DiceModal from '../components/modals/DiceModal';
 import AbilityModal from "../components/modals/AbilityModal";
 import LimitBreakModal from "../components/modals/LimitBreakModal";
-import OneActionModal from "../components/OneActionModal";
-import TwoActionModal from "../components/TwoActionModal";
 
 import Icon from '@mdi/react';
 import { mdiDiceD10, mdiDiceD8, mdiDiceD6 } from '@mdi/js';
 import { GiOpenWound } from "react-icons/gi";
-import { FaPlusCircle, FaMinusCircle, FaRegCircle, FaArrowAltCircleRight, FaExpandArrowsAlt, FaJournalWhills   } from "react-icons/fa";
+import { FaPlusCircle, FaMinusCircle, FaRegCircle, FaArrowAltCircleRight, FaExpandArrowsAlt  } from "react-icons/fa";
 import { TbHexagon, TbHexagonFilled, TbHexagon1Filled, TbHexagon2Filled} from "react-icons/tb";
-import { IoIosCloseCircle } from "react-icons/io";
 
 import { useParams } from 'react-router-dom';
 import { motion } from "framer-motion"
 import { useEffect, useState } from "react";
 import parse from 'html-react-parser';
+import { IoIosCloseCircle } from "react-icons/io";
 
 export default function CharacterSheet() {
     const { statusConditions, rules } = keywords;
@@ -42,9 +40,11 @@ export default function CharacterSheet() {
     
     // Modals
     const [showBasicAttack, setShowBasicAttack] = useState(false);
+    const [showHeavyAttack, setShowHeavyAttack] = useState(false);
     const [showAbilityModal, setShowAbilityModal] = useState(false);
     const [showLimitBreak, setShowLimitBreak] = useState(false);
     const [currAbilityModal, setCurrAbilityModal] = useState();
+    const [actionsActive, setActionsActive] = useState(false)
     
     const [conditions, setConditions] = useState(() => {
         let array = []
@@ -230,7 +230,7 @@ export default function CharacterSheet() {
     function handleEndTurn() {
         setActions(2)
         setMovement(charData.class.speed)
-        setDash(charData.class.dash)
+        setDash(0)
         setDashActive(false)
         setDashedThisTurn(false)
         setActionPing(true)
@@ -250,7 +250,7 @@ export default function CharacterSheet() {
                 "vigor": charData.current.vigor,
                 "actions": 2,
                 "move": charData.class.speed,
-                "dash": charData.class.dash,
+                "dash": 0,
                 "dashedThisTurn": false,
                 "wounds": charData.current.wounds,
             }
@@ -313,7 +313,7 @@ export default function CharacterSheet() {
         let arr = [];
         for (let i = 0; i < actions; i++) {
             arr.push(
-                <TbHexagonFilled className={`text-5xl text-primary cursor-pointer`} key={`${charData.class.class}actions${i}`} onClick={() => setMovement(i)}/>
+                <TbHexagonFilled className={`text-5xl text-primary cursor-pointer`} key={`${charData.class.class}actions${i}`} onClick={() => setActionsActive(true)}/>
             )
         }
         for (let i = actions; i < 2; i++) {
@@ -519,7 +519,7 @@ export default function CharacterSheet() {
                             animate="initial"
                             whileHover="animate"
                             className="text-4xl">
-                            <motion.div className="flex-center">
+                            <motion.div className="flex-center cursor-pointer">
                                 <motion.div variants={diceHover}>
                                     {charData.class.damagedice === 6 ? <Icon path={mdiDiceD6} size={3} onClick={() => setShowBasicAttack(true)} />
                                         : charData.class.damagedice === 8 ? <Icon path={mdiDiceD8} size={3} onClick={() => setShowBasicAttack(true)} />
@@ -667,6 +667,45 @@ export default function CharacterSheet() {
                                                     }} 
                                                     className="absolute bottom-2 right-2 text-3xl cursor-pointer hover:animate-ping"
                                                 />
+                                                <div className="absolute bottom-0 left-2">
+                                                    {ability.actions > actions
+                                                        ?
+                                                        <>
+                                                            {ability.actions == 1
+                                                                ? <TbHexagon1Filled className="text-5xl text-primary opacity-50"/>
+                                                            : ability.actions == 2
+                                                                ? <TbHexagon2Filled className="text-5xl text-primary opacity-50"/>
+                                                                : <TbHexagonFilled className="text-5xl text-primary opacity-50"/>
+                                                            }
+                                                        </>
+                                                        :
+                                                        <>
+                                                            
+                                                            <motion.div
+                                                                initial="initial"
+                                                                animate="initial"
+                                                                whileHover="animate"
+                                                                className="relative cursor-pointer flex-center"
+                                                            >
+                                                                {ability.actions == 1
+                                                                    ? <TbHexagon1Filled className="text-5xl text-primary" onClick={() => handleAction(1)}/>
+                                                                : ability.actions == 2
+                                                                    ? <TbHexagon2Filled className="text-5xl text-primary" onClick={() => handleAction(2)}/>
+                                                                    : <TbHexagonFilled className="text-5xl text-primary "/>
+                                                                }
+                                                                <motion.span
+                                                                    variants={tooltip}
+                                                                    transition={{ duration: 0.1, ease: "easeInOut" }}
+                                                                    className="absolute z-10 tooltip-xsm-t">
+                                                                    <p>Perform <b>{ability.name}</b> with</p>
+                                                                    <p className="font-bold">{ability.actions} action(s)</p>
+                                                                </motion.span>
+
+                                                            </motion.div>
+                                                        </>
+                                                    }
+                                                    
+                                                </div>
                                             </div>
                                         )
                                     })}
@@ -717,6 +756,62 @@ export default function CharacterSheet() {
                                     </span>
                                 </div>
                             }
+                            {actionsActive &&
+                                <div className="absolute -top-80 bg-card-accent rounded-lg w-96 h-72 drop-shadow-lg text-2xl ">
+                                    <div className="w-full h-full flex divide-x relative">
+                                        {actions < 1
+                                            ?
+                                            <div className="w-1/2 p-4 flex flex-col gap-4 opacity-50">
+                                                <p className="flex-center gap-1"><TbHexagon1Filled/> Action</p>
+                                                <div
+                                                    className="bg-primary px-4 py-1 text-white text-lg rounded-full text-center"
+                                                >
+                                                    Basic Attack
+                                                </div>
+                                            </div>
+                                            :
+                                            <div className="w-1/2 p-4 flex flex-col gap-4">
+                                                <p className="flex-center gap-1"><TbHexagon1Filled/> Action</p>
+                                                <button
+                                                    onClick={() => setShowBasicAttack(true)} 
+                                                    className="bg-primary px-4 py-1 text-white text-lg rounded-full"
+                                                >
+                                                    Basic Attack
+                                                </button>
+                                            </div>
+                                        }
+                                        {actions < 2
+                                            ?
+                                            <div className="w-1/2 p-4 flex flex-col gap-4 opacity-50">
+                                                <p className="flex-center gap-1"><TbHexagon2Filled/> Actions</p>
+                                                <div
+                                                    className="bg-primary px-4 py-1 text-white text-lg rounded-full text-center"
+                                                >
+                                                    Heavy Attack
+                                                </div>
+                                            </div>
+                                            :
+                                            <div className="w-1/2 p-4 flex flex-col gap-4">
+                                                <p className="flex-center gap-1"><TbHexagon2Filled/> Actions</p>
+                                                <button
+                                                    onClick={() => setShowHeavyAttack(true)} 
+                                                    className="bg-primary px-4 py-1 text-white text-lg rounded-full"
+                                                >
+                                                    Heavy Attack
+                                                </button>
+                                            </div>
+                                        }
+                                            
+                                        <button
+                                            className="absolute top-2 right-2 text-red-500 text-2xl justify-self-end"
+                                            onClick={() => setActionsActive(false)}
+                                        >
+                                            <IoIosCloseCircle/>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                            
                         </div>
 
                         {/* Movement */}
@@ -793,8 +888,6 @@ export default function CharacterSheet() {
                                 : null    
                             }
                         </div>
-                        
-
                     </div>
                 </div>
             </div>
@@ -808,6 +901,17 @@ export default function CharacterSheet() {
                 setActions={setActions}
                 showModal={showBasicAttack}
                 setShowModal={setShowBasicAttack} 
+                
+            />
+            <DiceModal
+                title={"Heavy Attack"}
+                dice={charData.class.damagedice}
+                fray={charData.class.fray}
+                actions={2}
+                actionsRef={actions}
+                setActions={setActions}
+                showModal={showHeavyAttack}
+                setShowModal={setShowHeavyAttack} 
                 
             />
             <AbilityModal

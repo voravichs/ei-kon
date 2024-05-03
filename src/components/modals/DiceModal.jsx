@@ -12,6 +12,7 @@ import { motion } from "framer-motion"
 export default function DiceModal({title, dice, fray, actions, showModal, setShowModal, actionsRef, setActions}) {
     const [dice1Result, setDice1Result] = useState();
     const [dice2Result, setDice2Result] = useState();
+    const [doubleDice, setDoubleDice] = useState();
 
     const tooltip = {
         initial: { scale: 0, opacity: 0 },
@@ -31,6 +32,12 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
         setDice2Result(Math.floor(Math.random() * size) + 1);
     }
 
+    function rollDoubleDice(size) {
+        let res1 = Math.floor(Math.random() * size) + 1;
+        let res2 = Math.floor(Math.random() * size) + 1;
+        setDoubleDice(res1 + res2)
+    }
+
     let actionsIcon;
     switch (actions) {
         case 1:
@@ -48,6 +55,7 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
         setShowModal(false);
         setDice1Result();
         setDice2Result();
+        setDoubleDice()
     }
 
     function handleActions() {
@@ -114,7 +122,7 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
                                                     whileTap="tap"
                                                     variants={diceRoll}
                                                     onClick={() => rollDice1(20)}
-                                                    className='col-span-2'
+                                                    className='col-span-2 cursor-pointer'
                                                 >
                                                     <Icon path={mdiDiceD20} size={3}/>    
                                                 </motion.div>
@@ -137,8 +145,8 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
                                                         whileHover="hover"
                                                         whileTap="tap"
                                                         variants={diceRoll}
-                                                        onClick={() => rollDice2(6)}
-                                                        className='h-3/4'
+                                                        onClick={() => rollDice2(dice)}
+                                                        className='h-3/4 cursor-pointer'
                                                     >
                                                         {dice === 6 ? <Icon path={mdiDiceD6} size={3}/>
                                                         :dice === 8 ? <Icon path={mdiDiceD8} size={3}/>
@@ -187,58 +195,85 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
                                             </div>
                                         </div>
                                         <div className="p-4 px-8 flex-center flex-col border-b border-solid text-primary">
-                                            <h1>Roll to Hit</h1>
+                                            <h1>Roll for Damage</h1>
                                             <div className='grid grid-cols-4 justify-items-center items-center w-full'>
-                                                <motion.div
+                                                <motion.div 
                                                     whileHover="hover"
                                                     whileTap="tap"
-                                                    variants={diceRoll}
-                                                    onClick={() => rollDice2(6)}
-                                                    className='flex-center'
+                                                    className='flex'
+                                                    onClick={() => rollDoubleDice(dice)}
                                                 >
-                                                    <div className='flex items-center justify-end flex-col h-24'>
+                                                    <motion.div className='flex items-center justify-end flex-col h-24'>
                                                         <motion.div
-                                                            className='h-3/4'
+                                                            variants={diceRoll}
+                                                            className='h-3/4 cursor-pointer'
                                                         >
                                                             {dice === 6 ? <Icon path={mdiDiceD6} size={3}/>
                                                             :dice === 8 ? <Icon path={mdiDiceD8} size={3}/>
                                                             :<Icon path={mdiDiceD10} size={3}/>}      
                                                         </motion.div>
                                                         <p>[D]</p>   
-                                                    </div>
-                                                    <div className='flex items-center justify-end flex-col h-24'>
+                                                    </motion.div>
+                                                    <motion.div className='flex items-center justify-end flex-col h-24'>
                                                         <motion.div
-                                                            className='h-3/4'
+                                                            variants={diceRoll}
+                                                            className='h-3/4 cursor-pointer'
                                                         >
                                                             {dice === 6 ? <Icon path={mdiDiceD6} size={3}/>
                                                             :dice === 8 ? <Icon path={mdiDiceD8} size={3}/>
                                                             :<Icon path={mdiDiceD10} size={3}/>}      
                                                         </motion.div>
                                                         <p>[D]</p>   
-                                                    </div>
+                                                    </motion.div>
                                                 </motion.div>
                                                 <div className='text-4xl'>+</div> 
                                                 <div className='flex items-center justify-end flex-col h-24'>
                                                     <p className='text-5xl h-3/4 p-4 self-center'>{fray}</p>
                                                     <p>Fray</p>   
                                                 </div> 
-                                                {dice2Result && 
+                                                {doubleDice
+                                                    ?
                                                     <div className='flex-center flex-col justify-self-end'>
-                                                        <p className='text-4xl'>{dice2Result + fray}</p>
+                                                        <p className='text-4xl'>{doubleDice + fray}</p>
                                                         <p className='font-normal text-sm'>Result</p>
                                                     </div>
+                                                    : null
                                                 }
                                             </div>
                                         </div>
                                     </>
                                 : null }
                                 {/* Result */}
-                                <div className="p-4 border-solid rounded-b text-black flex justify-end">
-                                    <button className='px-2 py-1 bg-primary rounded-md text-white text-xl' onClick={() => {
-                                        handleClose()
-                                        handleActions()
-                                    }}>Confirm</button>
-                                </div>
+                                {title === "Basic Attack"
+                                    ?
+                                    <>
+                                        {dice1Result && dice2Result
+                                            ?
+                                            <div className="p-4 border-solid rounded-b text-black flex justify-end">
+                                                <button className='px-2 py-1 bg-primary rounded-md text-white text-xl' onClick={() => {
+                                                    handleClose()
+                                                    handleActions()
+                                                }}>Confirm</button>
+                                            </div>
+                                            : null
+                                        }
+                                    </>
+                                    :
+                                    <>
+                                        {dice1Result && doubleDice
+                                            ?
+                                            <div className="p-4 border-solid rounded-b text-black flex justify-end">
+                                                <button className='px-2 py-1 bg-primary rounded-md text-white text-xl' onClick={() => {
+                                                    handleClose()
+                                                    handleActions()
+                                                }}>Confirm</button>
+                                            </div>
+                                            : null
+                                        }
+                                    </>
+                                }
+                                
+                                
                             </div>
                         </div>
                         <div className="opacity-50 fixed inset-0 z-40 bg-black" onClick={() => handleClose()}></div>
