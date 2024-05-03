@@ -3,7 +3,6 @@ import logowhite from "../assets/images/eikonlogowhite.png"
 import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight, FaQuestionCircle} from "react-icons/fa";
 import { GiRuleBook } from "react-icons/gi";
-import { BsThreeDotsVertical } from "react-icons/bs";
 
 /**
  * Navbar
@@ -38,14 +37,7 @@ export default function Navbar() {
                 <div className="group relative cursor-pointer">
                     <FaQuestionCircle className="text-2xl text-white"/> 
                     <span className="absolute z-10 w-20 text-center -bottom-10 -left-6 opacity-0 rounded bg-gray-700 bg-opacity-85 p-2 text-sm font-noto-sans text-white group-hover:opacity-100 ">
-                        <p className="font-bold">TODO</p>
-                    </span>   
-                </div>
-                
-                <div className="group relative cursor-pointer">
-                    <BsThreeDotsVertical className="text-2xl text-white"/>
-                    <span className="absolute z-10 w-20 text-center -bottom-10 -left-6 opacity-0 rounded bg-gray-700 bg-opacity-85 p-2 text-sm font-noto-sans text-white group-hover:opacity-100 ">
-                            <p className="font-bold">TODO</p>
+                        <p className="font-bold">About</p>
                     </span>   
                 </div>
             </div>

@@ -64,7 +64,7 @@ export default function LimitBreakModal({limitbreak, showModal, setShowModal}) {
                     <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default text-center font-noto-sans">
                         <div className="relative w-1/2 z-50">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full text-base bg-white outline-none focus:outline-none">
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full text-sm 2xl:text-base bg-white outline-none focus:outline-none">
                                 {/* header */}
                                 <div className="pt-4 px-8 rounded-t-lg text-black">
                                     <div className="grid grid-cols-6 items-center mb-2"> 
@@ -217,7 +217,7 @@ export default function LimitBreakModal({limitbreak, showModal, setShowModal}) {
                                                     animate="initial"
                                                     whileHover="animate"
                                                     key={item.name + index}
-                                                    className="rounded-xl text-xl bg-primary px-4 py-2 drop-shadow w-1/4 cursor-pointer flex-center"
+                                                    className="rounded-xl text-sm 2xl:text-xl bg-primary px-4 py-2 drop-shadow w-1/4 cursor-pointer flex-center"
                                                 >
                                                     <p>{item.name}</p>
                                                     <motion.span

@@ -188,7 +188,7 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
                                                 </motion.div>
                                                 {dice1Result && 
                                                     <div className='flex-center flex-col justify-self-end'>
-                                                        <p className='text-4xl'>{dice1Result}</p>
+                                                        <p className='text-4xl font-bold'>{dice1Result}</p>
                                                         <p className='font-normal text-sm'>Result</p>
                                                     </div>
                                                 }
@@ -234,7 +234,7 @@ export default function DiceModal({title, dice, fray, actions, showModal, setSho
                                                 {doubleDice
                                                     ?
                                                     <div className='flex-center flex-col justify-self-end'>
-                                                        <p className='text-4xl'>{doubleDice + fray}</p>
+                                                        <p className='text-4xl font-bold'>{doubleDice + fray}</p>
                                                         <p className='font-normal text-sm'>Result</p>
                                                     </div>
                                                     : null

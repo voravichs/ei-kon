@@ -44,7 +44,7 @@ export default function ClassCard({selectedClass}) {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -100 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className={`slick-card w-full h-full bg-card-accent ${colorSwap.border(selectedClass)} border-l-[36px] mx-16 p-8 font-noto-sans flex flex-col relative`}
+            className={`slick-card w-full h-full bg-card-accent ${colorSwap.border(selectedClass)} border-l-[36px] ml-12 mr-8 p-8 font-noto-sans flex flex-col relative`}
         >
                 {/* Title */}
                 <div className="h-1/5">
@@ -54,7 +54,7 @@ export default function ClassCard({selectedClass}) {
                 </div>
 
                 {/* Description */}
-                <div className="h-2/5 text-lg font-light flex flex-col gap-4">
+                <div className="h-2/5 text-base 2xl:text-lg font-light flex flex-col gap-4">
                     {parse(selectedClass.longdesc)}
                 </div>
 
@@ -69,7 +69,7 @@ export default function ClassCard({selectedClass}) {
                                     initial="initial"
                                     animate="initial"
                                     whileHover="animate"
-                                    className={`w-2/3 ${colorSwap.bg(selectedClass)} text-white slick-card p-4 relative cursor-pointer flex-center`}
+                                    className={`w-2/3 ${colorSwap.bg(selectedClass)} text-white slick-card px-4 py-2 relative cursor-pointer flex-center`}
                                     key={item.name}
                                 >
                                     <p className="font-bold text-xl flex-center gap-2">{item.icon}{item.name}</p>
@@ -85,7 +85,7 @@ export default function ClassCard({selectedClass}) {
                             );
                         })}
                     </div>
-                    <div className="w-3/5 grid grid-cols-3 grid-rows-2 items-center justify-center">
+                    <div className="w-3/5 grid grid-cols-3 grid-rows-2 gap-y-4 items-center justify-center">
                         {/* HP */}
                         <motion.div
                             initial="initial"

@@ -212,6 +212,7 @@ const spellblade = {
                 ],
                 "tags": [interrupt]
             },
+            "desc": "Gain the Aether Deflection interrupt, which grants reistance against damage from abilities within range 2."
         },
         {
             "name": "Conqueror's Edge",

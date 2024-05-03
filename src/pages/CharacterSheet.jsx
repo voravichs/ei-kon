@@ -462,9 +462,9 @@ export default function CharacterSheet() {
                     {/* Chapter & Level */}
                     <div className='pt-4 flex flex-col gap-1'>
                         <p className='text-4xl'>{charData.name}</p>
-                        <p className='text-xl'> {charData.kin} | {charData.culture}</p>
-                        <p className='text-xl first-letter:uppercase'>{charData.class.class} | {charData.job.jobName} </p>
-                        <p className='text-xl'>Chapter {charData.chapter} | Level {charData.level}</p>
+                        <p className='text-lg 2xl:text-xl'> {charData.kin} | {charData.culture}</p>
+                        <p className='text-lg 2xl:text-xl first-letter:uppercase'>{charData.class.class} | {charData.job.jobName} </p>
+                        <p className='text-lg 2xl:text-xl'>Chapter {charData.chapter} | Level {charData.level}</p>
                         
                         {/* <button className="text-white px-4 py-1 bg-secondary text-2xl slick-card border-0">
                             EXP
@@ -512,7 +512,7 @@ export default function CharacterSheet() {
                         </div>
                     </div>
                     {/* Dice */}
-                    <div className={`h-44 w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
+                    <div className={`h-32 w-32 2xl:h-44 2xl:w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
                         <p className='text-xl'>Damage</p>
                         <motion.div
                             initial="initial"
@@ -537,7 +537,7 @@ export default function CharacterSheet() {
                         </motion.div>
                     </div>
                     {/* Defense */}
-                    <div className={`h-44 w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
+                    <div className={`h-32 w-32 2xl:h-44 2xl:w-44 text-primary bg-white justify-self-center font-bold flex-center flex-col p-4 relative rounded-lg`}>
                         <p className='text-xl'>Defense</p>
                         <motion.div
                             initial="initial"
@@ -579,7 +579,7 @@ export default function CharacterSheet() {
                                                     key={item.name}
                                                 >
                                                     <motion.p className="font-bold text-xl flex-center gap-2">
-                                                        <span className="text-3xl">{item.icon}</span>
+                                                        <span className="text-xl 2xl:text-3xl">{item.icon}</span>
                                                         {item.name}
                                                     </motion.p>
                                                     <motion.span
@@ -597,7 +597,22 @@ export default function CharacterSheet() {
                                         })}
                                     </div>
                                     <div className="absolute top-2 right-2">
-                                        <FaPlusCircle className="text-secondary text-2xl bg-white rounded-full cursor-pointer" />
+                                        <motion.div
+                                            initial="initial"
+                                            animate="initial"
+                                            whileHover="animate"
+                                            className="relative cursor-pointer flex-center"
+                                        >
+                                            <FaPlusCircle className="text-secondary text-2xl bg-white rounded-full cursor-pointer" />
+                                            <motion.span
+                                                variants={tooltip}
+                                                transition={{ duration: 0.1, ease: "easeInOut" }}
+                                                className="absolute z-50 tooltip-xsm-t"
+                                            >
+                                                <p>WIP</p>
+                                            </motion.span>
+                                        </motion.div>
+                                        
                                     </div>
                                 </div>
 
@@ -672,10 +687,10 @@ export default function CharacterSheet() {
                                                         ?
                                                         <>
                                                             {ability.actions == 1
-                                                                ? <TbHexagon1Filled className="text-5xl text-primary opacity-50"/>
+                                                                ? <TbHexagon1Filled className="text-4xl 2xl:text-5xl text-primary opacity-50"/>
                                                             : ability.actions == 2
-                                                                ? <TbHexagon2Filled className="text-5xl text-primary opacity-50"/>
-                                                                : <TbHexagonFilled className="text-5xl text-primary opacity-50"/>
+                                                                ? <TbHexagon2Filled className="text-4xl 2xl:text-5xl text-primary opacity-50"/>
+                                                                : <TbHexagonFilled className="text-4xl 2xl:text-5xl text-primary opacity-50"/>
                                                             }
                                                         </>
                                                         :
@@ -688,15 +703,15 @@ export default function CharacterSheet() {
                                                                 className="relative cursor-pointer flex-center"
                                                             >
                                                                 {ability.actions == 1
-                                                                    ? <TbHexagon1Filled className="text-5xl text-primary" onClick={() => handleAction(1)}/>
+                                                                    ? <TbHexagon1Filled className="text-4xl 2xl:text-5xl text-primary" onClick={() => handleAction(1)}/>
                                                                 : ability.actions == 2
-                                                                    ? <TbHexagon2Filled className="text-5xl text-primary" onClick={() => handleAction(2)}/>
-                                                                    : <TbHexagonFilled className="text-5xl text-primary "/>
+                                                                    ? <TbHexagon2Filled className="text-4xl 2xl:text-5xl text-primary" onClick={() => handleAction(2)}/>
+                                                                    : <TbHexagonFilled className="text-4xl 2xl:text-5xl text-primary "/>
                                                                 }
                                                                 <motion.span
                                                                     variants={tooltip}
                                                                     transition={{ duration: 0.1, ease: "easeInOut" }}
-                                                                    className="absolute z-10 tooltip-xsm-t">
+                                                                    className="absolute z-10 tooltip-sm-t">
                                                                     <p>Perform <b>{ability.name}</b> with</p>
                                                                     <p className="font-bold">{ability.actions} action(s)</p>
                                                                 </motion.span>

@@ -8,6 +8,7 @@ export default {
     extend: {
       colors: {
         primary: '#1A81EF',
+        'primary-hover': '#66ABF4',
         secondary: '#3DDC97',
         'lavender-accent': '#D6E4FF',
         'card-accent': '#F8F6F2',

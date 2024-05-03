@@ -268,6 +268,7 @@ const sealer = {
     ],
     "startbattle": {
         "conditions": [
+            "dodge",
         ]
     },
     "abilities": { ch1Abilities },

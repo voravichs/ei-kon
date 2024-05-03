@@ -19,9 +19,9 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
             {showModal ? (
                 <>
                     <div className="flex-center overflow-x-hidden overflow-y-auto z-50 fixed inset-0 outline-none focus:outline-none cursor-default">
-                        <div className="relative w-3/5 z-50 my-6 mx-auto font-noto-sans text-center">
+                        <div className="relative w-3/5 z-50 my-6 mx-auto font-noto-sans text-center text-sm 2xl:text-base">
                             {/*content*/}
-                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full  text-base bg-white outline-none focus:outline-none">
+                            <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
                                 {/* header */}
                                 <div className="p-4 px-12 border-b border-solid rounded-t text-black">
                                     <div className="grid grid-cols-4 items-center"> 
@@ -189,7 +189,7 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
                                     <div className="mb-2 text-black flex">
                                         <TbHexagonLetterM className="text-4xl text-primary w-1/6 justify-self-end"/>
                                         <div className="flex flex-col w-full gap-2">
-                                            <p className="w-5/6 text-start">{ability.mastery.desc}</p>
+                                            <p className="w-5/6 text-start">{parse(ability.mastery.desc)}</p>
                                         </div>
                                         
                                     </div>
@@ -205,7 +205,7 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
                                                     animate="initial"
                                                     whileHover="animate"
                                                     key={item.name + index}
-                                                    className="rounded-xl text-lg bg-primary px-4 py-2 drop-shadow w-1/5 cursor-pointer flex-center"
+                                                    className="rounded-xl text-sm 2xl:text-lg bg-primary px-4 py-2 drop-shadow w-1/5 cursor-pointer flex-center"
                                                 >
                                                     <p>{item.name}</p>
                                                     <motion.span
@@ -225,10 +225,10 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
 
                             {/* Combo Actions */}
                             {ability.combo_action &&
-                                <div className="absolute -right-72 top-0 w-64 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-72 top-0 w-64 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
-                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.combo_action.name}</span>
-                                        <p className="text-black text-base px-4 py-1 mx-auto">{ability.combo_action.desc}</p>
+                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg px-4 py-2 mb-2">{ability.combo_action.name}</span>
+                                        <p className="text-black text-sm 2xl:text-base px-4 py-1 mx-auto">{ability.combo_action.desc}</p>
                                         <div className="h-full flex-center flex-col p-4">
                                             {/* Effects */}
                                             {ability.combo_action.effects &&
@@ -262,10 +262,10 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
                                 </div>
                             }
                             {ability.mastery.combo_action &&
-                                <div className="absolute -right-72 -bottom-4 w-64 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-72 -bottom-4 w-64 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
-                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.mastery.combo_action.name}</span>
-                                        <p className="text-black text-base px-4 py-1mx-auto">{ability.mastery.combo_action.desc}</p>
+                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg px-4 py-2 mb-2">{ability.mastery.combo_action.name}</span>
+                                        <p className="text-black text-sm 2xl:text-base px-4 py-1mx-auto">{ability.mastery.combo_action.desc}</p>
                                         <div className="h-full flex-center flex-col p-4">
                                             {/* Effects */}
                                             {ability.mastery.combo_action.effects &&
@@ -301,10 +301,10 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
 
                             {/* Infuse */}
                             {ability.infuse_effect &&
-                                <div className="absolute -right-80 top-0 w-72 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-72 top-0 w-64 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
-                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.infuse_effect.text}: {ability.infuse_effect.name}</span>
-                                        <p className="text-black text-base px-4 py-1 mx-auto">{ability.infuse_effect.desc}</p>
+                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg px-4 py-2 mb-2">{ability.infuse_effect.text}: {ability.infuse_effect.name}</span>
+                                        <p className="text-black text-sm 2xl:text-base px-4 py-1 mx-auto">{ability.infuse_effect.desc}</p>
                                         <div className="h-full flex-center flex-col p-4">
                                             {/* Effects */}
                                             {ability.infuse_effect.effects &&
@@ -339,10 +339,10 @@ export default function AbilityModal({ability, showModal, setShowModal}) {
                             }
 
                             {ability.mastery.infuse_effect &&
-                                <div className="absolute -right-80 -bottom-4 w-72 h-1/2 bg-white rounded-lg">
+                                <div className="absolute -right-72 -bottom-4 w-64 bg-white rounded-lg">
                                     <div className="leading-relaxed flex flex-col gap-0 h-full">
-                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg p-4 mb-2">{ability.mastery.infuse_effect.text}: {ability.mastery.infuse_effect.name}</span>
-                                        <p className="text-black text-base px-4 py-1 mx-auto">{ability.mastery.infuse_effect.desc} | {ability.mastery.infuse_effect.actions} actions | {ability.mastery.infuse_effect.area}</p>
+                                        <span className="bg-primary text-white font-bold text-xl rounded-t-lg px-4 py-2 mb-2">{ability.mastery.infuse_effect.text}: {ability.mastery.infuse_effect.name}</span>
+                                        <p className="text-black text-sm 2xl:text-base px-4 py-1 mx-auto">{ability.mastery.infuse_effect.desc} | {ability.mastery.infuse_effect.actions} actions | {ability.mastery.infuse_effect.area}</p>
                                         <div className="h-full flex-center flex-col p-4">
                                             {/* Effects */}
                                             {ability.mastery.infuse_effect.effects &&

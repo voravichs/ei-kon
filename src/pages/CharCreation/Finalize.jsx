@@ -132,7 +132,7 @@ export default function Finalize() {
                             <button 
                                 onClick={() => {
                                     handleSubmit()
-                                    navigate("/")
+                                    navigate("/load")
                                 }}
                                 className={`w-1/2 text-white p-4 rounded-lg text-2xl font-bona-nova ${colorSwap.bg(characterContext)}`}> 
                                     REGISTER
