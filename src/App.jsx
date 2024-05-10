@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages
-import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheet, CCLayout} from './pages'
+import { Home, Layout, NoPage, CharCreate, Jobs, Abilities, Finalize, LoadChar, ArchiveFront, ArchiveKeywords, ArchiveClasses, About, CharacterSheet, CCLayout, Reflection} from './pages'
 
 function App() {
   return (
@@ -28,6 +28,10 @@ function App() {
               <Route path="*" element={<NoPage />} />
             </Route>
             <Route path="about" element={<About />} />
+            <Route path="about" >
+              <Route path="reflection" element={<Reflection />} />
+              <Route path="*" element={<NoPage />} />
+            </Route>
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

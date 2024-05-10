@@ -12,6 +12,7 @@ import ArchiveClasses from "./Archive/ArchiveClasses"
 import About from "./About"
 import CharacterSheet from "./CharacterSheet"
 import CCLayout from "./CharCreation/CCLayout"
+import Reflection from "./Reflection/Reflection"
 
 export {
     Home,
@@ -27,5 +28,6 @@ export {
     ArchiveClasses,
     About,
     CharacterSheet,
-    CCLayout
+    CCLayout,
+    Reflection
 }
