@@ -112,10 +112,10 @@ export default function CharCreate() {
                         {!selected &&
                             <motion.div
                                 key="waiting"
-                                animate={{ opacity: [0.25, 0.75, 0.25] }}
+                                animate={{ opacity: [0.5, 1, 0.25] }}
                                 transition={{
                                     ease: "linear",
-                                    duration: 3,
+                                    duration: 1,
                                     times: [0, 0.5, 1],
                                     repeat: Infinity
                                 }}
